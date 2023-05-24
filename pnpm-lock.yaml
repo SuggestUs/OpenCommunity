@@ -20,7 +20,7 @@ dependencies:
     specifier: 5.0.0-alpha.129
     version: 5.0.0-alpha.129(@emotion/react@11.11.0)(@emotion/styled@11.11.0)(@mui/material@5.13.2)(@types/react@18.0.28)(react-dom@18.2.0)(react@18.2.0)
   '@mui/material':
-    specifier: ^5.13.0
+    specifier: ^5.13.2
     version: 5.13.2(@emotion/react@11.11.0)(@emotion/styled@11.11.0)(@types/react@18.0.28)(react-dom@18.2.0)(react@18.2.0)
   '@tailwindcss/custom-forms':
     specifier: ^0.2.1
