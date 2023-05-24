@@ -11,6 +11,7 @@ import Mission from './Pages/Mission';
 import DashBord from './Pages/DashBord';
 import Footer from './component/Footer';
 
+
 export default function MainRoute() {
   return (
     <Router>
@@ -67,7 +68,7 @@ export default function MainRoute() {
         />
        
         <Route
-          path='/Dashbord'
+          path='/Dashbord/:name?'
           element={
             <Suspense fallback={<CircularProgress/>}>
               <DashBord />
