@@ -1,6 +1,9 @@
 
+
 export default function EventPage() {
   return (
-    <div>EventPage</div>
+    <div className="text-black">
+      EventPage
+    </div>
   )
 }

@@ -58,14 +58,7 @@ export default function DashBord() {
               </Suspense>
             }
           />
-          {/* <Route
-            path='/community'
-            element={
-              <Suspense fallback={<CircularProgress />}>
-              </Suspense>
-            }
-          />
-        */}
+         
         </Routes>
 
         <DashbordForCommunity />

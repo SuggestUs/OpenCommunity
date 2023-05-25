@@ -15,6 +15,8 @@ import Footer from './component/Footer';
 // import HackethonPage from './Pages/comman-page/HackethonPage';
 // import DashbordForCommunity from './Pages/community-page/DashbordForCommunity';
 
+import EventPage from './Pages/comman-page/EventPage'
+import HackethonPage from './Pages/comman-page/HackethonPage'
 
 export default function MainRoute() {
 

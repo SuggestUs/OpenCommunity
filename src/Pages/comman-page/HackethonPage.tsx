@@ -1,5 +1,9 @@
+
+
 export default function HackethonPage() {
   return (
-    <div>HackethonPage</div>
+    <div className="text-black">
+      Hack
+    </div>
   )
 }
