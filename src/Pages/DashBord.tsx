@@ -24,7 +24,7 @@ export default function DashBord() {
   return (
     <div className=' h-screen flex md:flex-row flex-col w-full'>
       <NavbarForDashBord />
-      <div className=' md:w-11/12 w-full'>
+      <div className=' md:w-11/12 w-full overflow-auto'>
         <Routes>
           <Route
             path='/home'
