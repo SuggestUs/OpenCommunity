@@ -14,7 +14,7 @@ export default function DashBord() {
   let permission = useLocation().pathname.startsWith('/home') ||
     useLocation().pathname.startsWith('/event') ||
     useLocation().pathname.startsWith('/job')
-    || useLocation().pathname.startsWith('/hackethon')
+    || useLocation().pathname.startsWith('/hackathon')
     || useLocation().pathname.startsWith('/community');
 
 
@@ -51,7 +51,7 @@ export default function DashBord() {
             }
           />
           <Route
-            path='/hackethon'
+            path='/hackathon'
             element={
               <Suspense fallback={<CircularProgress />}>
                 <HackethonPage />
