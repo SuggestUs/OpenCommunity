@@ -8,7 +8,7 @@ import Authentication from './component/Authentication';
 import LogInPage from './Pages/LogInPage';
 import SignInPage from './Pages/SignInPage';
 import Mission from './Pages/Mission';
-import DashBord from './Pages/DashBord';
+import DashBoard from './Pages/DashBoard';
 import Footer from './component/Footer';
 // import NavbarForDashBord from './component/NavbarForDashBord';
 // import EventPage from './Pages/comman-page/EventPage';
@@ -78,7 +78,7 @@ export default function MainRoute() {
 
 
         </Routes>
-        <DashBord />
+        <DashBoard />
         <Footer />
       </main>
     </Router>
