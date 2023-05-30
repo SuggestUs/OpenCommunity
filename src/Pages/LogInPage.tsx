@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState } from 'react'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
@@ -7,13 +7,18 @@ import TextField from '@mui/material/TextField'
 import { Button } from '@mui/material'
 import { Link, useNavigate } from 'react-router-dom'
 
+import loginWithGithub from '../Appwrite/service'
+
 export default function Login() {
   const navigate = useNavigate()
-  const [Role, setRole] = React.useState('User')
+  const [Role, setRole] = useState('User')
   const handleChange = (event: any) => {
     setRole(event.target.value)
   }
-  const handleLogIn = () => {
+
+  const handleLogIn = async () => {
+    const res = loginWithGithub()
+    console.log(res)
     navigate('/home')
   }
   return (
@@ -56,7 +61,7 @@ export default function Login() {
           color='success'
           onClick={() => handleLogIn()}
         >
-          Log In
+          Log In with Github
         </Button>
         <Link to='/'>
           <Button variant='outlined' color='success'>
