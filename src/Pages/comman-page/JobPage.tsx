@@ -1,5 +1,3 @@
 export default function JobPage() {
-  return (
-    <div>JobPage</div>
-  )
+  return <div className="text-black">JobPage</div>;
 }

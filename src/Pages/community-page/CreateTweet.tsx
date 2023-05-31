@@ -1,7 +1,3 @@
-
-
 export default function CreateTweet() {
-  return (
-    <div>CreateTweet</div>
-  )
+  return <div>CreateTweet</div>;
 }

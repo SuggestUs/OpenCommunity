@@ -1,7 +1,3 @@
-
-
 export default function CreateHackethons() {
-  return (
-    <div>CreateHackethons</div>
-  )
+  return <div>CreateHackethons</div>;
 }
