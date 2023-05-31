@@ -1,5 +1,5 @@
-// import { Client as Appwrite, Databases, Account } from 'appwrite'
 import { Client, Account } from 'appwrite'
+// import { Client as Appwrite, Databases, Account } from 'appwrite'
 
 const client = new Client();
 client
