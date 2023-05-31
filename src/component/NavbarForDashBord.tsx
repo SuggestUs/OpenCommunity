@@ -2,7 +2,6 @@ import { Link, NavLink } from "react-router-dom";
 import {
   HomeIcon,
   TicketIcon,
-  BriefcaseIcon,
   RocketLaunchIcon,
   UserGroupIcon,
 } from "@heroicons/react/20/solid";
@@ -24,13 +23,7 @@ export default function NavbarForDashBord() {
         <TicketIcon className="text-black w-8 hover:text-primary focus:text-primary" />
       ),
     },
-    {
-      name: "Job",
-      path: "/job",
-      icon: (
-        <BriefcaseIcon className="text-black w-8 hover:text-primary focus:text-primary" />
-      ),
-    },
+
     {
       name: "Hackathon",
       path: "/hackathon",

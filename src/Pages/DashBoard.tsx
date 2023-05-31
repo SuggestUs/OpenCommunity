@@ -5,14 +5,12 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { Suspense } from "react";
 import EventPage from "./comman-page/EventPage";
 import HackathonPage from "./comman-page/HackathonPage";
-import JobPage from "./comman-page/JobPage";
 import HomaPageForCommunity from "./comman-page/HomaPageForCommunity";
 
 export default function DashBord() {
   let permission =
     useLocation().pathname.startsWith("/home") ||
     useLocation().pathname.startsWith("/event") ||
-    useLocation().pathname.startsWith("/job") ||
     useLocation().pathname.startsWith("/hackathon") ||
     useLocation().pathname.startsWith("/community");
 
@@ -37,14 +35,6 @@ export default function DashBord() {
             element={
               <Suspense fallback={<CircularProgress />}>
                 <EventPage />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/job"
-            element={
-              <Suspense fallback={<CircularProgress />}>
-                <JobPage />
               </Suspense>
             }
           />

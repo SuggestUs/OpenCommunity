@@ -17,8 +17,8 @@ export default function Login() {
   };
 
   const handleLogIn = async () => {
-    const res = loginWithGithub();
-    console.log(res);
+    // const res = loginWithGithub();
+    // console.log(res);
     navigate("/home");
   };
   return (
