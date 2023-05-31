@@ -1,58 +1,39 @@
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom'
-import { lazy, Suspense } from 'react'
-import CircularProgress from '@mui/material/CircularProgress';
-import HomePage from './Pages/HomePage';
-import Navbar from './component/Navbar';
-import WhoWeAre from './Pages/WhoWeAre';
-import Authentication from './component/Authentication';
-import LogInPage from './Pages/LogInPage';
-import SignInPage from './Pages/SignInPage';
-import Mission from './Pages/Mission';
-import DashBoard from './Pages/DashBoard';
-import Footer from './component/Footer';
-// import NavbarForDashBord from './component/NavbarForDashBord';
-// import EventPage from './Pages/comman-page/EventPage';
-// import HackethonPage from './Pages/comman-page/HackethonPage';
-// import DashbordForCommunity from './Pages/community-page/DashbordForCommunity';
-
-import EventPage from './Pages/comman-page/EventPage'
-import HackethonPage from './Pages/comman-page/HackethonPage'
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Suspense } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
+import HomePage from "./Pages/HomePage";
+import Navbar from "./component/Navbar";
+import AboutUs from "./Pages/AboutUs";
+import Authentication from "./component/Authentication";
+import LogInPage from "./Pages/LogInPage";
+import SignInPage from "./Pages/SignInPage";
+import DashBoard from "./Pages/DashBoard";
+import Footer from "./component/Footer";
 
 export default function MainRoute() {
-
-
-
   return (
     <Router>
-      <main className=' w-full h-screen'>
+      <main className=" w-full h-screen">
         <Navbar />
         <Routes>
           <Route
-            path='/'
+            path="/"
             element={
               <Suspense fallback={<CircularProgress />}>
-                <HomePage />{' '}
+                <HomePage />{" "}
               </Suspense>
             }
           />
           <Route
-            path='/WhoWeAre'
+            path="/about"
             element={
               <Suspense fallback={<CircularProgress />}>
-                <WhoWeAre />
+                <AboutUs />
               </Suspense>
             }
           />
           <Route
-            path='/Mission'
-            element={
-              <Suspense fallback={<CircularProgress />}>
-                <Mission />
-              </Suspense>
-            }
-          />
-          <Route
-            path='/Authentication'
+            path="/Authentication"
             element={
               <Suspense fallback={<CircularProgress />}>
                 <Authentication />
@@ -60,7 +41,7 @@ export default function MainRoute() {
             }
           />
           <Route
-            path='/LogInPage'
+            path="/LogInPage"
             element={
               <Suspense fallback={<CircularProgress />}>
                 <LogInPage />
@@ -68,19 +49,17 @@ export default function MainRoute() {
             }
           />
           <Route
-            path='/SignInPage'
+            path="/SignInPage"
             element={
               <Suspense fallback={<CircularProgress />}>
                 <SignInPage />
               </Suspense>
             }
           />
-
-
         </Routes>
         <DashBoard />
         <Footer />
       </main>
     </Router>
-  )
+  );
 }
