@@ -1,30 +1,25 @@
-
 import { Dialog } from "@headlessui/react";
 import { useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom";
 
 //  Navigation items that will be rendered in the navbar+mobile menu
 //  If you want to add more items, just add them to this array
 const navigation = [
   { name: "Home", to: "/" },
-  { name: "Mission", to: "/Mission" },
-  { name: "Who we are", to: "/WhoWeAre" }
+  { name: "About", to: "/about" },
 ];
 
-
 export default function Navbar() {
-
   const location = useLocation().pathname;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // console.log("location", useLocation())
-  const isAuthentication = (location === '/WhoWeAre' || location === '/Mission' || location === '/JoinUs'
-    || location === '/')
+  const isAuthentication =
+    location === "/about" || location === "/JoinUs" || location === "/";
 
   if (!isAuthentication) {
-
-    return null
+    return null;
   }
   return (
     <header className="absolute inset-x-0 top-0 z-50 ">
@@ -34,7 +29,10 @@ export default function Navbar() {
       >
         <div className="flex lg:flex-1">
           <Link to="/" className="-m-1.5 p-1.5 flex">
-            <span className="font-extrabold text-3xl text-green-500">Open</span><span className="font-extrabold text-3xl text-black">Community</span>
+            <span className="font-extrabold text-3xl text-primary">Open</span>
+            <span className="font-extrabold text-3xl text-black">
+              Community
+            </span>
           </Link>
         </div>
         <div className="flex lg:hidden">
@@ -59,8 +57,9 @@ export default function Navbar() {
         </div>
         {/* Additional elemnt of navbar */}
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link to='/Authentication'>Log in<span aria-hidden="true">&rarr;</span></Link>
-
+          <Link to="/authentication">
+            Log in<span aria-hidden="true">&rarr;</span>
+          </Link>
         </div>
       </nav>
       <Dialog
@@ -95,7 +94,13 @@ export default function Navbar() {
                 ))}
               </div>
               <div className="py-6">
-                <Link to='/Auth' onClick={() => setMobileMenuOpen(false)} className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log in<span aria-hidden="true">&rarr;</span></Link>
+                <Link
+                  to="/authentication"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Log in<span aria-hidden="true">&rarr;</span>
+                </Link>
               </div>
             </div>
           </div>

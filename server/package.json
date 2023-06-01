@@ -1,0 +1,20 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "This is a package.json file which conatains dependencies for server side of open community",
+  "main": "index.js",
+  "proxy": "http://localhost:3000/",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Team of open community",
+  "license": "ISC",
+  "dependencies": {
+    "appwrite": "^11.0.0",
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
+  }
+}

@@ -1,61 +1,74 @@
+import { ChangeEvent } from 'react';
 import { useEffect, useState } from 'react'
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material';
-import { Link } from 'react-router-dom';
 import CustomizedSnackbars from '../Alert/Alert.jsx';
-
+import { Link, useNavigate } from "react-router-dom";
+import { SignInRule, AlertRuel, ResultForAuth } from '../../utils/type.ts'
+import axios from 'axios';
+import { signInValidation } from '../../validation/signInValidation.ts';
 export default function SignInForUser() {
 
-interface AlertRuel {
-  display: Boolean,
-  severityType: 'error' | 'warning' | 'info' | 'success',
-  message: String
-}
-  const [alert , setAlert] = useState<AlertRuel>({
+  const navigate = useNavigate();
+
+  const [alert, setAlert] = useState<AlertRuel>({
     display: false,
     severityType: 'error',
     message: ''
   })
 
-  // const handleSignInForUser = () => {
-  //   // let validate = validationForUserSignIn(objForUserSignInData);
-  //   console.log("Chck", validate)
-  //   if (validate.res) {
-  //     setAlert({
-  //       display: validate.res,
-  //       severityType: 'error',
-  //       message: validate.message
-  //     })
-  //   }
-  //   else {
-  //     setAlert({
-  //       display: false,
-  //       severityType: 'error',
-  //       message: ''
-  //     })
+  const [signinData, setSignInData] = useState<SignInRule>({
+    First_Name: '',
+    Last_Name: '',
+    Email: '',
+    Password: '',
+    Confirm_Password: '',
+  })
 
-  //     //  Firebase things 
-  //     // signInForUserInDataBase()
-  //   }
-  // }
+  const handleChangInValue = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setSignInData({
+      ...signinData,
+      [name]: value
+    })
 
-  const handleSignInData = (event : any) => {
-    // setUserSignInData({
-    //   ...dataForUserSignIn,
-    //   [event.target.name]: event.target.value
-    // })
-    // objForUserSignInData[event.target.name] = event.target.value
+  }
+
+  const handleSignIn = async () => {
+
+    const res: ResultForAuth = signInValidation(signinData);
+    console.log("Result", res);
+    if (res.isValid) {
+
+      try {
+        await axios.post('http://localhost:3000/signin', signinData);
+        console.log("Authentication is done")
+        navigate("/home")
+      } catch (error) {
+        console.log("Error", error);
+      }
+
+
+    } else {
+      console.log('Insdide Else', res.message)
+      setAlert(
+        {
+          display: true,
+          severityType: 'error',
+          message: res.message
+        })
+    }
   }
 
   useEffect(() => {
-    // setUserSignInData(objForUserSignInData)
+    // setUserSignInData(objForUserSignInData)  
   }, [])
 
   return (
     <div className='User-from flex flex-col'>
       <div className='alert-box absolute top-0 z-10 left-1 w-1/3'>
-        {alert.display && (<CustomizedSnackbars status={alert.severityType} message={alert.message} />)}
+        {alert.display && (<CustomizedSnackbars status={alert.severityType} message={alert.message} setAlert={setAlert} />)}
       </div>
       <div className='text-center'>
         <FormControl fullWidth className='my-5'>
@@ -64,44 +77,45 @@ interface AlertRuel {
             label="First Name"
             type='First Name'
             name='First_Name'
-            onChange={handleSignInData}
+            onChange={handleChangInValue}
             style={{
               margin: '10px 0px'
             }}
-            // value={objForUserSignInData.First_Name}
+            // value={}
+            value={signinData.First_Name}
           />
           <TextField
             className='my-5'
             label="Last Name"
             type='Last Name'
             name='Last_Name'
-            onChange={handleSignInData}
+            onChange={handleChangInValue}
             style={{
               margin: '10px 0px'
             }}
-            // value={objForUserSignInData.Last_Name}
+          // value={objForUserSignInData.Last_Name}
           />
           <TextField
             className='my-5'
             label="Email"
             type='email'
             name='Email'
-            onChange={handleSignInData}
+            onChange={handleChangInValue}
             style={{
               margin: '10px 0px'
             }}
-            // value={objForUserSignInData.Email}
+            value={signinData.Email}
           />
           <TextField
             className='my-5'
             label="Password"
             type='password'
             name='Password'
-            onChange={handleSignInData}
+            onChange={handleChangInValue}
             style={{
               margin: '10px 0px'
             }}
-            // value={objForUserSignInData.Password}
+            value={signinData.Password}
           />
           <TextField
             className='my-5'
@@ -111,19 +125,20 @@ interface AlertRuel {
             style={{
               margin: '10px 0px'
             }}
-            onChange={handleSignInData}
+            onChange={handleChangInValue}
+            value={signinData.Confirm_Password}
           />
         </FormControl>
       </div>
       <div className='my-auto space-x-5'>
-        
+
         <Link to='/'>
           <Button variant='outlined' color='success'>Back</Button>
         </Link>
         <div className='my-auto'>
-          <Button variant='contained' color='success'>Sign In</Button>
+          <Button variant='contained' color='success' onClick={handleSignIn}>Sign In</Button>
         </div>
       </div>
-      </div>
-      )
+    </div>
+  )
 }
