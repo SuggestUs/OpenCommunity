@@ -63,18 +63,19 @@ export default function Authentication() {
         <span className="text-black">Community</span>
       </div>
       <div
-        className="bg-white p-4 rounded-lg md:w-1/2 w-5/6 text-center flex flex-row shadow-md "
+        className="bg-white p-4 rounded-lg md:w-1/3 w-5/6 text-center flex flex-row shadow-md "
         style={Shadow}
       >
-        <div className=" md:flex justify-start w-1/3 items-center hidden"></div>
-        <div className=" md:w-2/3 w-full mx-2 md:justify-end justify-center h-96 overflow-y-auto">
+        <div className=" md:w-full w-full mx-2 md:justify-end justify-center h-[30rem] overflow-y-auto">
           <Box sx={{ width: "100%" }}>
-            <Box sx={{ borderBottom: 1, borderColor: "Background" }}>
+            <Box>
               <Tabs
                 value={value}
                 onChange={handleChange}
                 aria-label="basic tabs example"
-                TabIndicatorProps={{ style: { backgroundColor: "green" } }}
+                TabIndicatorProps={{
+                  style: { backgroundColor: "purple" },
+                }}
               >
                 <Tab label="Log In " style={Fontcolor} />
                 <Tab label="Sign Up" style={Fontcolor} />
