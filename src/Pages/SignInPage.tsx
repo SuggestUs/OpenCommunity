@@ -14,9 +14,9 @@ export default function SignInForUser() {
 
   const [alert, setAlert] = useState<AlertRuel>({
     display: false,
-    severityType: 'error',
-    message: ''
-  })
+    severityType: "error",
+    message: "",
+  });
 
   const [signinData, setSignInData] = useState<SignInRule>({
     First_Name: '',
@@ -70,60 +70,60 @@ export default function SignInForUser() {
       <div className='alert-box absolute top-0 z-10 left-1 w-1/3'>
         {alert.display && (<CustomizedSnackbars status={alert.severityType} message={alert.message} setAlert={setAlert} />)}
       </div>
-      <div className='text-center'>
-        <FormControl fullWidth className='my-5'>
+      <div className="text-center">
+        <FormControl fullWidth className="my-5">
           <TextField
-            className='my-5'
+            className="my-5"
             label="First Name"
             type='First Name'
             name='First_Name'
             onChange={handleChangInValue}
             style={{
-              margin: '10px 0px'
+              margin: "10px 0px",
             }}
             // value={}
             value={signinData.First_Name}
           />
           <TextField
-            className='my-5'
+            className="my-5"
             label="Last Name"
             type='Last Name'
             name='Last_Name'
             onChange={handleChangInValue}
             style={{
-              margin: '10px 0px'
+              margin: "10px 0px",
             }}
           // value={objForUserSignInData.Last_Name}
           />
           <TextField
-            className='my-5'
+            className="my-5"
             label="Email"
             type='email'
             name='Email'
             onChange={handleChangInValue}
             style={{
-              margin: '10px 0px'
+              margin: "10px 0px",
             }}
             value={signinData.Email}
           />
           <TextField
-            className='my-5'
+            className="my-5"
             label="Password"
             type='password'
             name='Password'
             onChange={handleChangInValue}
             style={{
-              margin: '10px 0px'
+              margin: "10px 0px",
             }}
             value={signinData.Password}
           />
           <TextField
-            className='my-5'
+            className="my-5"
             label="Confirm Password"
             name="Confirm_Password"
-            type='password'
+            type="password"
             style={{
-              margin: '10px 0px'
+              margin: "10px 0px",
             }}
             onChange={handleChangInValue}
             value={signinData.Confirm_Password}

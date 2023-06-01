@@ -1,9 +1,9 @@
 import { useState } from "react";
 import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
-import { Button } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import { FaGithub } from "react-icons/fa";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -62,19 +62,15 @@ export default function Login() {
           />
         </FormControl>
       </div>
-      <div className="my-auto space-x-5">
-        <Button
-          variant="contained"
-          color="success"
+      <div className="my-auto space-x-5 flex justify-center items-center">
+        <div
+          className="bg-primary text-black w-1/2 p-2 rounded-lg font-semibold hover:bg-purple-600 cursor-pointer text-center "
           onClick={() => handleLogIn()}
         >
-          Log In with Github
-        </Button>
-        <Link to="/">
-          <Button variant="outlined" color="success">
-            Back
-          </Button>
-        </Link>
+          <span className="flex justify-center items-center gap-3">
+            <FaGithub /> Log In with Github
+          </span>
+        </div>
       </div>
     </div>
   );
