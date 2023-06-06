@@ -8,13 +8,15 @@ import HackathonPage from "./comman-page/HackathonPage";
 import HomaPageForCommunity from "./comman-page/HomaPageForCommunity";
 // import axios from "axios";
 import { client , account } from "../Appwrite/service";
+import ProfilePage from "./comman-page/ProfilePage";
 
 export default function DashBord() {
   let permission =
     useLocation().pathname.startsWith("/home") ||
     useLocation().pathname.startsWith("/event") ||
     useLocation().pathname.startsWith("/hackathon") ||
-    useLocation().pathname.startsWith("/community");
+    useLocation().pathname.startsWith("/community") ||
+    useLocation().pathname.startsWith("/profile");
 
   if (!permission) {
     return null;
@@ -61,6 +63,14 @@ export default function DashBord() {
             element={
               <Suspense fallback={<CircularProgress />}>
                 <HackathonPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <Suspense fallback={<CircularProgress />}>
+                <ProfilePage/>
               </Suspense>
             }
           />

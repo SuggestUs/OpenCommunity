@@ -80,7 +80,7 @@ export default function NavbarForDashBord() {
       </div>
       {/* Space for additional Things  */}
       <div className="md:flex text-center justify-center items-center border hidden h-20">
-        <Link to="/" className="flex">
+        <Link to="/profile" className="flex">
           <img
             alt="Remy Sharp"
             src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSfwGAluvdBkYjaFfxCMgTbu05yncARfEF13Jy94w4GKmUS0cfgXPiGKAkJTJJ8aeMgIfnqjigy6i-0CBM"
