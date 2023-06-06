@@ -3,6 +3,7 @@ import { account, ID, database } from '../service';
 type objForSignIn = {
     First_Name: string,
     Last_Name: string,
+    Username : string
     Email: string,
     Password: string,
     Confirm_Password: string,
@@ -26,7 +27,8 @@ export const signInWithAppwrite = async (object: objForSignIn) => {
             userCreation.$id, {
             first_name: object.First_Name,
             last_name: object.Last_Name,
-            email: object.Email
+            email: object.Email,
+            username : object.Username
         });
         console.log("User Created", userDatabase);
 

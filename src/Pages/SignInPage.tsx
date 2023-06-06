@@ -21,6 +21,7 @@ export default function SignInForUser() {
   const [signinData, setSignInData] = useState<SignInRule>({
     First_Name: '',
     Last_Name: '',
+    Username : '',
     Email: '',
     Password: '',
     Confirm_Password: '',
@@ -80,7 +81,7 @@ export default function SignInForUser() {
           <TextField
             className="my-5"
             label="First Name"
-            type='First Name'
+            type='text'
             name='First_Name'
             onChange={handleChangInValue}
             style={{
@@ -92,8 +93,19 @@ export default function SignInForUser() {
           <TextField
             className="my-5"
             label="Last Name"
-            type='Last Name'
+            type='text'
             name='Last_Name'
+            onChange={handleChangInValue}
+            style={{
+              margin: "10px 0px",
+            }}
+          // value={objForUserSignInData.Last_Name}
+          />
+          <TextField
+            className="my-5"
+            label="Username"
+            type='text'
+            name='Username'
             onChange={handleChangInValue}
             style={{
               margin: "10px 0px",
