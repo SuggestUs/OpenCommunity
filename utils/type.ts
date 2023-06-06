@@ -11,6 +11,10 @@ export type SignInRule = {
     Password: string,
     Confirm_Password: string,
 }
+export type LogInRule = {
+    Email: string,
+    Password: string,
+}
 
 export type ResultForAuth = {
     isValid : boolean;

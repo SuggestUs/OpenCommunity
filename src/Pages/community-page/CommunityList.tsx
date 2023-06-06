@@ -11,18 +11,18 @@ export default function CommunityList() {
   return (
     <div className="flex flex-col w-full h-screen overflow-auto">
       <div className="flex flex-row h-16 create-community mt-8 border text-center ">
-        <span className=" w-1/4 my-auto">
-          <UserPlusIcon
+        <span className=" w-1/4 my-auto ">
+        <Link to='/community/createcommunity'><UserPlusIcon
             className="text-black w-28 ml-10 hover:text-green-500 focus:text-green-500 "
             style={{
               width: "50px",
               height: "50px",
             }}
-          />
+          /></Link>
         </span>
-        <p className="flex items-center mx-5 font-extrabold shadow-sm">
+        <Link to='/community/createcommunity'><p className="flex items-center mx-5 font-extrabold shadow-sm">
           Create Community
-        </p>
+        </p></Link>
       </div>
       {/* Section for Community Navigation */}
       <div className="flex my-4 w-full ">

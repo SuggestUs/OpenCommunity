@@ -14,7 +14,7 @@ type AlertColor = "success" | "info" | "warning" | "error";
 
 interface SnackbarStatus {
   status: AlertColor;
-  message: String;
+  message: String ; 
   setAlert : React.Dispatch<React.SetStateAction<any>>;
 }
 

@@ -5,7 +5,7 @@ const port = process.env.port || 3000;
 const cors = require('cors')
 const loginRoute = require('./src/routes/loginRoute');
 const SignInRoute = require('./src/routes/SigninRoute')
-
+const homeRoute = require('./src/routes/homeRoute')
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -19,6 +19,7 @@ app.get('/', (req ,res)=>{
     res.send('Hello I am Server ');
 })
 
+app.use('/home' , homeRoute);
 app.use('/login' , loginRoute);
 app.use('/signin' , SignInRoute);
 

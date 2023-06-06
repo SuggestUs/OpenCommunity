@@ -1,5 +1,6 @@
 const { ID } = require('appwrite');
-const { client, account } = require('../services/appwriteService')
+const { client, account  } = require('../services/appwriteService')
+// const { sdk } = require('../services/appwriteService')
 
 let uniqueID = '';
 const SigninUser = async (req, res) => {
@@ -7,8 +8,13 @@ const SigninUser = async (req, res) => {
     uniqueID = ID.unique();
     console.log('ID', uniqueID);
     try {
-        const result = await account.create(uniqueID, req.body.Email, req.body.Password);
-        console.log('Sign Up Successfull');
+        const result = await account.create(uniqueID, req.body.Email, req.body.Password , req.body.First_Name+""+req.body.Last_Name);
+        const create_session = await account.getSession()
+
+
+        const session = await account.getSession(create_session.$id);
+
+        console.log('Sign Up Successfull' , session);
         return res.status(200).send({data : result })
     } catch (error) {
         console.log("Error....", error.message)

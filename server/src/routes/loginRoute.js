@@ -1,19 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const {Client , Account} = require('appwrite')
+const LoginController = require('../controllers/controllers.login');
 
-
-
-router.post('/' , (req, res)=>{
-    console.log('Data is here ..');
-    res.json(req.body);
-
-})
-
-
+router.post('/' , LoginController.loginUser)
 
 module.exports = router;
 
 
-
-module.exports = router;    

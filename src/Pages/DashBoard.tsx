@@ -1,11 +1,13 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Suspense, useEffect } from "react";
+import { Route, Routes, useLocation ,useNavigate } from "react-router-dom";
 import NavbarForDashBord from "../component/NavbarForDashBord";
 import DashbordForCommunity from "./community-page/DashbordForCommunity";
 import CircularProgress from "@mui/material/CircularProgress";
-import { Suspense } from "react";
 import EventPage from "./comman-page/EventPage";
 import HackathonPage from "./comman-page/HackathonPage";
 import HomaPageForCommunity from "./comman-page/HomaPageForCommunity";
+// import axios from "axios";
+import { client , account } from "../Appwrite/service";
 
 export default function DashBord() {
   let permission =
@@ -17,6 +19,22 @@ export default function DashBord() {
   if (!permission) {
     return null;
   }
+
+  const navigate = useNavigate()
+  const checkForSession = async () => {
+    const promise = account.get();
+    promise.then((res) => {
+      console.log('res', res)
+    })
+      .catch((error) => {
+        console.log("Error ", error.message)
+        navigate('/authentication')
+      })
+  }
+  useEffect(() => {
+    checkForSession();
+
+  }, [])
   return (
     <div className=" h-screen flex md:flex-row flex-col w-full">
       <NavbarForDashBord />

@@ -6,8 +6,8 @@ import { Button } from '@mui/material';
 import CustomizedSnackbars from '../Alert/Alert.jsx';
 import { Link, useNavigate } from "react-router-dom";
 import { SignInRule, AlertRuel, ResultForAuth } from '../../utils/type.ts'
-import axios from 'axios';
 import { signInValidation } from '../../validation/signInValidation.ts';
+import { signInWithAppwrite } from '../Appwrite/auth/signIn.app.ts'
 export default function SignInForUser() {
 
   const navigate = useNavigate();
@@ -40,15 +40,20 @@ export default function SignInForUser() {
     const res: ResultForAuth = signInValidation(signinData);
     console.log("Result", res);
     if (res.isValid) {
-
       try {
-        await axios.post('http://localhost:3000/signin', signinData);
-        console.log("Authentication is done")
-        navigate("/home")
-      } catch (error) {
-        console.log("Error", error);
+        await signInWithAppwrite(signinData)
+          .then((res) => {
+            navigate("/home")
+          })
+      } catch (error : any) {
+        const errorMessage : string = error.toString();
+        setAlert(
+          {
+            display: true,
+            severityType: 'error',
+            message: errorMessage
+          })
       }
-
 
     } else {
       console.log('Insdide Else', res.message)
