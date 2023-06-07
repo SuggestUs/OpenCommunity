@@ -5,6 +5,7 @@ import {
   RocketLaunchIcon,
   UserGroupIcon,
 } from "@heroicons/react/20/solid";
+import Avatar from '@mui/material/Avatar'
 
 export default function NavbarForDashBord() {
   //  for navlinks add navlinks using this format and add icon from heroicons
@@ -79,13 +80,15 @@ export default function NavbarForDashBord() {
         <ul>{navDashLink}</ul>
       </div>
       {/* Space for additional Things  */}
-      <div className="md:flex text-center justify-center items-center border hidden h-20">
-        <Link to="/profile" className="flex">
-          <img
-            alt="Remy Sharp"
-            src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSfwGAluvdBkYjaFfxCMgTbu05yncARfEF13Jy94w4GKmUS0cfgXPiGKAkJTJJ8aeMgIfnqjigy6i-0CBM"
-            className="w-14 h-14 rounded-full"
-          />
+      <div className="md:flex text-center justify-center items-center border hidden h-20  ">
+        <Link to="/profile">
+            <Avatar
+                style={{
+                  // marginLeft: "30px",
+                }}
+                src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSfwGAluvdBkYjaFfxCMgTbu05yncARfEF13Jy94w4GKmUS0cfgXPiGKAkJTJJ8aeMgIfnqjigy6i-0CBM"
+                sx={{ width: 60, height: 60 }}
+              />
         </Link>
       </div>
     </div>

@@ -1,16 +1,16 @@
-import { useState , MouseEvent} from 'react'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import CallIcon from '@mui/icons-material/Call'
 import SchoolIcon from '@mui/icons-material/School'
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital'
 import MarkEmailUnreadOutlinedIcon from '@mui/icons-material/MarkEmailUnreadOutlined'
 import AddModeratorIcon from '@mui/icons-material/AddModerator'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
-import Avatar from '@mui/material/Avatar'
-import PhotoCamera from '@mui/icons-material/PhotoCamera';
-import IconButton from '@mui/material/IconButton'
+import PhotoCamera from '@mui/icons-material/PhotoCamera'
+import { Button , IconButton , Avatar} from '@mui/material'
 export default function ProfilePage() {
 
-//   const params = useParams(null)
+  const navigate = useNavigate();
   const [initialLoading, setInitialLoading] = useState(false)
   const [data, setData] = useState()
 
@@ -32,18 +32,22 @@ export default function ProfilePage() {
   }
 
 
+  const handleBack =()=>{
+    navigate(-1);
+  }
   return (
     <div>
       {!initialLoading ? (
         <div className='rounded-lg mt-10 shadow-lg bg-white mx-6 font-inter flex flex-col scroll-m-0'>
-          <div className='flex flex-row items-center justify-between w-full '>
+          <Button variant='outlined' color='primary' className='w-4' onClick={handleBack}>Back</Button>
+          <div className='flex flex-row items-center justify-between w-full my-1'>
             <div className='flex justify-center '>
               <Avatar
                 style={{
                   marginLeft: "30px",
                 }}
                 // src={(urlForProfile!== '') && URL.createObjectURL(urlForProfile) }
-                src=""
+                src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSfwGAluvdBkYjaFfxCMgTbu05yncARfEF13Jy94w4GKmUS0cfgXPiGKAkJTJJ8aeMgIfnqjigy6i-0CBM"
                 sx={{ width: 90, height: 90 }}
               />
             </div>
