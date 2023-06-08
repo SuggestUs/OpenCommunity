@@ -1,13 +1,14 @@
 import { Suspense, useEffect } from "react";
-import { Route, Routes, useLocation ,useNavigate } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import NavbarForDashBord from "../component/NavbarForDashBord";
 import DashbordForCommunity from "./community-page/DashbordForCommunity";
 import CircularProgress from "@mui/material/CircularProgress";
 import EventPage from "./comman-page/EventPage";
 import HackathonPage from "./comman-page/HackathonPage";
 import HomaPageForCommunity from "./comman-page/HomaPageForCommunity";
+import HackathonDetailsPage from "./comman-page/HackathonDetailsPage";
 // import axios from "axios";
-import { client , account } from "../Appwrite/service";
+import { account } from "../Appwrite/service";
 import ProfilePage from "./comman-page/ProfilePage";
 import EventDetailsPage from "./comman-page/EventDetailsPage";
 
@@ -23,21 +24,21 @@ export default function DashBord() {
     return null;
   }
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const checkForSession = async () => {
     const promise = account.get();
-    promise.then((res) => {
-      console.log('res', res)
-    })
-      .catch((error) => {
-        console.log("Error ", error.message)
-        navigate('/authentication')
+    promise
+      .then((res) => {
+        console.log("res", res);
       })
-  }
+      .catch((error) => {
+        console.log("Error ", error.message);
+        navigate("/authentication");
+      });
+  };
   useEffect(() => {
     checkForSession();
-
-  }, [])
+  }, []);
   return (
     <div className=" h-screen flex md:flex-row flex-col w-full">
       <NavbarForDashBord />
@@ -76,10 +77,19 @@ export default function DashBord() {
             }
           />
           <Route
-            path='/profile/:username'
+            path="/hackathon/:id"
             element={
               <Suspense fallback={<CircularProgress />}>
-                <ProfilePage/>
+                <HackathonDetailsPage />
+              </Suspense>
+            }
+          />
+
+          <Route
+            path="/profile/:username"
+            element={
+              <Suspense fallback={<CircularProgress />}>
+                <ProfilePage />
               </Suspense>
             }
           />
