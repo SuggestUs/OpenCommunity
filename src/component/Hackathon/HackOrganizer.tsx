@@ -1,4 +1,4 @@
-function OrgCom() {
+function HackOrgCom() {
   const posts = [
     {
       id: 1,
@@ -41,4 +41,4 @@ function OrgCom() {
   );
 }
 
-export default OrgCom;
+export default HackOrgCom;

@@ -5,8 +5,6 @@ import HomePage from "./Pages/HomePage";
 import Navbar from "./component/Navbar";
 import AboutUs from "./Pages/AboutUs";
 import Authentication from "./component/Authentication";
-import LogInPage from "./Pages/LogInPage";
-import SignInPage from "./Pages/SignInPage";
 import DashBoard from "./Pages/DashBoard";
 import Footer from "./component/Footer";
 

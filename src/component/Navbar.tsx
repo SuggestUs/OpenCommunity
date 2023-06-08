@@ -57,11 +57,14 @@ export default function Navbar() {
         </div>
         {/* Additional elemnt of navbar */}
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link to="/authentication">
+          <Link
+            to="/authentication"
+            className="text-primary font-bold hover:text-purple-900"
+          >
             Log in<span aria-hidden="true">&rarr;</span>
           </Link>
         </div>
-      </nav>  
+      </nav>
       <Dialog
         as="div"
         className="lg:hidden"
