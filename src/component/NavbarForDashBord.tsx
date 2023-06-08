@@ -41,16 +41,18 @@ export default function NavbarForDashBord() {
     },
   ];
 
-  const navDashLink = navLink.map((navLink) => (
-    <li key={navLink.path}>
-      <NavLink
-        to={navLink.path}
-        className="flex flex-col text-center p-5 justify-center items-center h-1/6 w-1/6 md:w-auto flex-grow-0"
-      >
-        {navLink.icon}
-        <span className="text-black">{navLink.name}</span>
-      </NavLink>
-    </li>
+  const navDashLink = navLink.map((navLink, index) => (
+    <div key={index} className="flex flex-col h-20 my-2">
+      <div>
+        <NavLink
+          to={navLink.path}
+          className="flex text-center p-5 justify-center items-center h-10 w-auto flex-grow-0"
+        >
+          {navLink.icon}
+        </NavLink>
+      </div>
+      <NavLink to={navLink.path}><span className="text-black">{navLink.name}</span></NavLink>
+    </div>
   ));
 
   //  for shadow
@@ -76,19 +78,19 @@ export default function NavbarForDashBord() {
         </Link>
       </div>
       {/* Space for adding main  */}
-      <div className="flex md:flex-grow md:flex-col flex-row md:mt-4">
-        <ul>{navDashLink}</ul>
+      <div className="flex md:flex-grow md:flex-col flex-row mt-4">
+        {navDashLink}
       </div>
       {/* Space for additional Things  */}
       <div className="md:flex text-center justify-center items-center border hidden h-20  ">
         <Link to="/profile/pmoModi">
-            <Avatar
-                style={{
-                  // marginLeft: "30px",
-                }}
-                src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSfwGAluvdBkYjaFfxCMgTbu05yncARfEF13Jy94w4GKmUS0cfgXPiGKAkJTJJ8aeMgIfnqjigy6i-0CBM"
-                sx={{ width: 60, height: 60 }}
-              />
+          <Avatar
+            style={{
+              // marginLeft: "30px",
+            }}
+            src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSfwGAluvdBkYjaFfxCMgTbu05yncARfEF13Jy94w4GKmUS0cfgXPiGKAkJTJJ8aeMgIfnqjigy6i-0CBM"
+            sx={{ width: 60, height: 60 }}
+          />
         </Link>
       </div>
     </div>

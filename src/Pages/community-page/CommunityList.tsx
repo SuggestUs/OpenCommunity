@@ -79,7 +79,7 @@ export default function CommunityList() {
         </Accordion>
       </div>
       {/* Section for Community Navigation */}
-      <div className="flex my-4 w-full ">
+      {/* <div className="flex my-4 w-full ">
         <Accordion style={{ width: "100%" }}>
           <AccordionSummary
             expandIcon={<ChevronDownIcon className="h-6 w-6 text-gray-500" />}
@@ -131,7 +131,7 @@ export default function CommunityList() {
             </div>
           </AccordionDetails>
         </Accordion>
-      </div>
+      </div> */}
     </div>
   );
 }

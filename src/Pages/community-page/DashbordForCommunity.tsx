@@ -5,9 +5,10 @@ import AccountForCommuntity from "./AccountForCommuntity";
 import CreateHackethons from "./CreateHackethons";
 import CreateTweet from "./CreateTweet";
 import CreateEvents from "./CreateEvents";
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import { Button } from "@mui/material";
+// import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+// import { Button } from "@mui/material";
 import CreateCommuity from "./CreateCommuity";
+import IntroToCommunity from "./IntroToCommunity";
 
 export default function DashbordForCommunity() {
   console.log("Data ", useLocation().pathname.startsWith("/community"));
@@ -38,6 +39,14 @@ export default function DashbordForCommunity() {
       <div className="w-4/5 border">
         <Routes>
           <Route
+            path="/community"
+            element={
+              <Suspense>
+                <IntroToCommunity />
+              </Suspense>
+            }
+          />
+          <Route
             path="/community/1111/CreateHackethons"
             element={
               <Suspense>
@@ -59,7 +68,7 @@ export default function DashbordForCommunity() {
           />
           <Route
           path="/community/createcommunity"
-          element={<CreateCommuity/>}
+          element={<CreateCommuity openDrawer={true}/>}
           />
         </Routes>
       </div>
