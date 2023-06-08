@@ -10,32 +10,12 @@ import { Button, IconButton, Avatar } from "@mui/material";
 export default function ProfilePage() {
   const navigate = useNavigate();
   const [initialLoading, setInitialLoading] = useState(false);
-  const [data, setData] = useState();
+  const [data] = useState();
 
   const [urlForProfile, setUrl] = useState<Blob>();
 
   const handleChangeInProfile = (event: any) => {
     setUrl(event.target.files[0]);
-  };
-
-  // const copyText = async (e: any, type: string) => {
-  //   let itemToCopy = "";
-  //   if (type === "phone") {
-  //     itemToCopy = "+91 234567890";
-  //   } else if (type === "email") {
-  //     itemToCopy = "abc@gmail.com";
-  //   }
-  //   await navigator.clipboard.writeText(itemToCopy);
-  // };
-
-  const copyText = async (e: any, type: string) => {
-    let itemToCopy = "";
-    if (type === "phone") {
-      itemToCopy = "+91 234567890";
-    } else if (type === "email") {
-      itemToCopy = "abc@gmail.com";
-    }
-    await navigator.clipboard.writeText(itemToCopy);
   };
 
   const handleBack = () => {
@@ -44,7 +24,7 @@ export default function ProfilePage() {
   return (
     <div>
       {!initialLoading ? (
-        <div className="rounded-lg mt-10 shadow-lg border bg-white mx-6 font-inter flex flex-col scroll-m-0">
+        <div className="rounded-lg mt-10 shadow-lg border bg-white mx-6 text-xl font-inter flex flex-col scroll-m-0">
           <div className="p-5 flex justify-start">
             <Button variant="outlined" color="secondary" onClick={handleBack}>
               Back
