@@ -81,7 +81,7 @@ export default function NavbarForDashBord() {
       </div>
       {/* Space for additional Things  */}
       <div className="md:flex text-center justify-center items-center border hidden h-20  ">
-        <Link to="/profile">
+        <Link to="/profile/pmoModi">
             <Avatar
                 style={{
                   // marginLeft: "30px",

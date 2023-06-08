@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 export default function EventPage() {
   const callouts = [
     {
@@ -62,6 +63,7 @@ export default function EventPage() {
 
           <div className="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
             {callouts.map((callout, index) => (
+              <Link to={`/event/${index}`}>
               <div key={index} className="group relative">
                 <div className="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-14 ">
                   <img
@@ -79,7 +81,7 @@ export default function EventPage() {
                 <p className="text-base font-semibold text-gray-900">
                   {callout.description}
                 </p>
-              </div>
+              </div></Link>
             ))}
           </div>
         </div>

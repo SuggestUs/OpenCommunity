@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import CallIcon from '@mui/icons-material/Call'
 import SchoolIcon from '@mui/icons-material/School'
@@ -30,11 +30,13 @@ export default function ProfilePage() {
     }
     await navigator.clipboard.writeText(itemToCopy)
   }
-
-
+  
   const handleBack =()=>{
     navigate(-1);
   }
+  useEffect(()=>{
+    
+  })
   return (
     <div>
       {!initialLoading ? (

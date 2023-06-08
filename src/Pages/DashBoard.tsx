@@ -9,6 +9,7 @@ import HomaPageForCommunity from "./comman-page/HomaPageForCommunity";
 // import axios from "axios";
 import { client , account } from "../Appwrite/service";
 import ProfilePage from "./comman-page/ProfilePage";
+import EventDetailsPage from "./comman-page/EventDetailsPage";
 
 export default function DashBord() {
   let permission =
@@ -59,6 +60,14 @@ export default function DashBord() {
             }
           />
           <Route
+            path="/event/:id"
+            element={
+              <Suspense fallback={<CircularProgress />}>
+                <EventDetailsPage />
+              </Suspense>
+            }
+          />
+          <Route
             path="/hackathon"
             element={
               <Suspense fallback={<CircularProgress />}>
@@ -67,7 +76,7 @@ export default function DashBord() {
             }
           />
           <Route
-            path="/profile"
+            path='/profile/:username'
             element={
               <Suspense fallback={<CircularProgress />}>
                 <ProfilePage/>

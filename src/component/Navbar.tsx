@@ -61,7 +61,7 @@ export default function Navbar() {
             Log in<span aria-hidden="true">&rarr;</span>
           </Link>
         </div>
-      </nav>
+      </nav>  
       <Dialog
         as="div"
         className="lg:hidden"
