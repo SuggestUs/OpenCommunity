@@ -1,4 +1,4 @@
-export default function SpeakersCom() {
+export default function EventSpeakersCom() {
   const people = [
     {
       name: "Leslie Alexander",
@@ -20,7 +20,7 @@ export default function SpeakersCom() {
     },
   ];
   return (
-    <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
+    <div className="mx-auto grid max-w-7xl gap-x-8  gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
       <ul
         role="list"
         className="grid gap-x-8 gap-y-12 sm:grid-cols-3 sm:gap-y-16 xl:col-span-2"

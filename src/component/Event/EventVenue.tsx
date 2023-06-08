@@ -1,4 +1,4 @@
-export default function VenueCom() {
+export default function EventVenueCom() {
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-7xl  sm:px-6 p-10 lg:px-8">
@@ -40,13 +40,11 @@ export default function VenueCom() {
             </div>
           </div>
           <div className="relative mt-16 h-80 lg:mt-8">
-            <img
-              className="absolute left-0 top-0 w-[57rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10"
-              src="https://www.google.com/maps/d/thumbnail?mid=1ZWssZn9iDIO6B8B-06-qGhVampM&hl=en"
-              alt="App screenshot"
-              width={1824}
-              height={1080}
-            />
+            <iframe
+              className="absolute left-0 top-0 w-[57rem] h-[35rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224097.62384740493!2d76.92842363118233!3d28.64398388186441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x37205b715389640!2sDelhi%2C%20India!5e0!3m2!1sen!2suk!4v1686238653415!5m2!1sen!2suk"
+              loading="lazy"
+            ></iframe>
           </div>
         </div>
       </div>
