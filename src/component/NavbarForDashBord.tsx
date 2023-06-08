@@ -59,12 +59,9 @@ export default function NavbarForDashBord() {
     boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
   };
   return (
-    <div
-      className="md:w-1/12 md:flex md:flex-col flex-row w-full "
-      style={Shadow}
-    >
+    <div className="flex md:flex-col flex-col md:w-1/12 " style={Shadow}>
       {/* Space for add logo */}
-      <div className="flex lg:flex-initial text-center justify-center items-center border md:h-20">
+      <div className="flex lg:flex-initial  text-center justify-center items-center border md:h-20">
         <Link to="/" className="flex">
           <p className="font-extrabold text-3xl text-primary md:block hidden">
             O
@@ -77,7 +74,7 @@ export default function NavbarForDashBord() {
         </Link>
       </div>
       {/* Space for adding main  */}
-      <div className="flex md:flex-grow md:flex-col flex-row md:mt-4">
+      <div className="flex md:flex-grow  md:flex-row md:mt-4">
         <ul>{navDashLink}</ul>
       </div>
       {/* Space for additional Things  */}
