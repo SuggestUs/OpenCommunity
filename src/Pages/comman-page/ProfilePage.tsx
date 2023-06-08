@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import CallIcon from "@mui/icons-material/Call";
 import SchoolIcon from "@mui/icons-material/School";
-import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 import MarkEmailUnreadOutlinedIcon from "@mui/icons-material/MarkEmailUnreadOutlined";
-import AddModeratorIcon from "@mui/icons-material/AddModerator";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { Button, IconButton, Avatar } from "@mui/material";
 export default function ProfilePage() {
   const navigate = useNavigate();
