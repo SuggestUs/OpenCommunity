@@ -6,6 +6,7 @@ import HackDescriptionCom from ".././community-page/hackathon-inputs/HackDescrip
 export default function CreateHackathons() {
   return (
     <section className="my-5 min-h-[60rem]  text-black">
+      <p className="text-2xl font-bold mb-5">Create a Hackathon 🎉</p>
       {/*  for only cover image */}
       <div className="col-span-full w-[94%] mx-auto ">
         <label
@@ -31,7 +32,7 @@ export default function CreateHackathons() {
             <div className="mt-4 flex text-sm leading-6 text-gray-600">
               <label
                 htmlFor="file-upload"
-                className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                className="relative cursor-pointer rounded-md bg-white font-semibold text-primary focus-within:outline-none focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 hover:text-purple-500"
               >
                 <span>Upload a file</span>
                 <input
@@ -66,7 +67,7 @@ export default function CreateHackathons() {
         </div>
       </article>
       <article className=" p-5 mt-9 w-[95%] ml-9 border">
-        <p className="font-bold text-left  text-2xl">Location 🗺️</p>
+        <p className="font-bold text-left text-2xl">Location 🗺️</p>
         <HackVenueCom />
       </article>
     </section>

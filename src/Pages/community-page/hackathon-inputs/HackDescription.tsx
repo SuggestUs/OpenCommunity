@@ -3,6 +3,9 @@ export default function HackDescriptionCom() {
     <div className="text-left ">
       <div className="mt-6  border-gray-100 ">
         <dl className=" divide-gray-100 ">
+          <p className="flex items-center justify-center mb-10 font-bold text-2xl">
+            All details about the hackathon
+          </p>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
             <dt className="text-sm font-bold leading-6 text-gray-900 ">
               Hackathon name
