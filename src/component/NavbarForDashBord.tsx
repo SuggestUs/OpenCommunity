@@ -6,7 +6,6 @@ import {
   RocketLaunchIcon,
   UserGroupIcon,
 } from "@heroicons/react/20/solid";
-import Avatar from "@mui/material/Avatar";
 
 export default function NavbarForDashBord() {
   //  for navlinks add navlinks using this format and add icon from heroicons
@@ -15,14 +14,14 @@ export default function NavbarForDashBord() {
       name: "Home",
       path: "/home",
       icon: (
-        <HomeIcon className="text-black w-8 hover:text-primary focus:text-primary" />
+        <HomeIcon className="text-black w-6 hover:text-primary focus:text-primary" />
       ),
     },
     {
       name: "Event",
       path: "/event",
       icon: (
-        <TicketIcon className="text-black w-8 hover:text-primary focus:text-primary" />
+        <TicketIcon className="text-black w-6 hover:text-primary focus:text-primary" />
       ),
     },
 
@@ -30,67 +29,46 @@ export default function NavbarForDashBord() {
       name: "Hackathon",
       path: "/hackathon",
       icon: (
-        <RocketLaunchIcon className="text-black w-8 hover:text-primary focus:text-primary" />
+        <RocketLaunchIcon className="text-black w-6 hover:text-primary focus:text-primary" />
       ),
     },
     {
       name: "Community",
       path: "/community",
       icon: (
-        <UserGroupIcon className="text-black w-8 hover:text-primary focus:text-primary" />
+        <UserGroupIcon className="text-black w-6 hover:text-primary focus:text-primary" />
       ),
     },
   ];
 
   const navDashLink = navLink.map((navLink, index) => (
     <div key={index} className="flex flex-col h-20 my-2">
-      <div>
-        <NavLink
-          to={navLink.path}
-          className="flex text-center p-5 justify-center items-center h-10 w-auto flex-grow-0"
-        >
-          {navLink.icon}
-        </NavLink>
-      </div>
-      <NavLink to={navLink.path}><span className="text-black">{navLink.name}</span></NavLink>
+      <NavLink
+        to={navLink.path}
+        className="flex text-center p-5 justify-center items-center h-10 w-auto flex-grow-0"
+      >
+        {navLink.icon}
+      </NavLink>
+      <NavLink to={navLink.path}>
+        <span className="text-black ">{navLink.name}</span>
+      </NavLink>
     </div>
   ));
 
-  //  for shadow
-  const Shadow = {
-    boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-  };
   return (
-    <div className="flex md:flex-col flex-col md:w-1/12 " style={Shadow}>
+    <div className="flex flex-col md:w-1/12 border justify-center items-center ">
       {/* Space for add logo */}
-      <div className="flex lg:flex-initial  text-center justify-center items-center border md:h-20">
-        <Link to="/" className="flex">
-          <p className="font-extrabold text-3xl text-primary md:block hidden">
-            O
-          </p>
-          <p className="font-extrabold text-3xl text-black md:block hidden">
-            C
-          </p>
-          <span className="text-primary md:hidden block">Open</span>
-          <span className="md:hidden block text-black">Community</span>
-        </Link>
+      <div className="flex lg:flex-initial  text-center justify-center items-center md:h-20">
+        <span className="flex text-3xl">🧑🏻‍💻</span>
       </div>
       {/* Space for adding main  */}
-      <div className="flex md:flex-grow  md:flex-row md:mt-4">
+      <div className="flex md:flex-grow justify-center md:flex-row md:mt-4">
         <ul>{navDashLink}</ul>
       </div>
       {/* Space for additional Things  */}
-      <div className="md:flex text-center justify-center items-center border hidden h-20  ">
-        <Link to="/profile/pmoModi">
-          <Avatar
-            style={
-              {
-                // marginLeft: "30px",
-              }
-            }
-            src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSfwGAluvdBkYjaFfxCMgTbu05yncARfEF13Jy94w4GKmUS0cfgXPiGKAkJTJJ8aeMgIfnqjigy6i-0CBM"
-            sx={{ width: 60, height: 60 }}
-          />
+      <div className="flex justify-center items-center rounded-full border h-20 w-20 bg-gray-100 ">
+        <Link to="/profile/editprofile" className="text-3xl ">
+          👶
         </Link>
       </div>
     </div>
