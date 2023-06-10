@@ -6,9 +6,8 @@ const loginUser = async(req, res)=>{
         const result = await account.createEmailSession(req.body.Email, req.body.Password)
         console.log('result' , result);
         sessionID = result.$id;
-        
         const session = await account.getSession(sessionID);
-        res.json({ failed : false , error : 'Successfull Login' })
+        res.json({ failed : false , error : 'Successfull Login'})
      } catch (error) {
         console.log("error" , error)
         let errorMessage = error.response ? error.response.message : 'Server Error';

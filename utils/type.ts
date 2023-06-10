@@ -17,6 +17,11 @@ export type LogInRule = {
     Password: string,
 }
 
+export type CommunityLogInRule = {
+    Email : string,
+    name : string,
+}
+
 export type ResultForAuth = {
     isValid : boolean;
     message : string;

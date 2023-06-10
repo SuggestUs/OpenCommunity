@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent , useContext} from "react";
 import { Button, TextField, FormControl } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
@@ -7,9 +7,12 @@ import { FaGithub } from "react-icons/fa";
 import { LogInRule, AlertRuel, ResultForAuth } from '../../utils/type';
 import { LoginInValidation } from '../../validation/loginValidation.js';
 import { loginWithAppwrite } from '../Appwrite/auth/login.app.js'
+import {MainContext} from '../context/context.tsx'
 
 export default function Login() {
   const navigate = useNavigate();
+
+  const mainContext = useContext(MainContext);
   const [loginData, setLogInData] = useState<LogInRule>({
     Email: '',
     Password: ''
@@ -32,6 +35,7 @@ export default function Login() {
         await loginWithAppwrite(loginData)
         .then((res)=>{
           console.log("res" , res)
+          mainContext?.getSession();
           navigate("/home");
         })
       } catch (error : any) {

@@ -1,8 +1,11 @@
-import { useState, ChangeEvent, useEffect, useRef } from "react";
+import { useState, ChangeEvent, useEffect, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, TextField, FormControl, Avatar } from "@mui/material";
 import CustomizedSnackbars from "../../Alert/Alert";
 import { account } from "../../Appwrite/service";
+import { createCommunity } from '../../Appwrite/datbase/database.js'
+import { MainContext } from "../../context/context.js";
+import {communityLoginInValidation} from '../../../validation/communityValidation.js'
 
 type typeForCommunity = {
     Email: string
@@ -24,11 +27,9 @@ export default function LogInForCommunity({ setclose, defaultEmail }: closeDrowe
 
     const navigate = useNavigate();
 
-    const fileInputRef = useRef<HTMLInputElement>(null);
+    const mainContext = useContext(MainContext)
 
-    const handleCreationForCommunity = () => {
-       
-    }
+    const fileInputRef = useRef<HTMLInputElement>(null);
 
     const [dataForComm, setdataForComm] = useState<typeForCommunity>({
         Email: '',
@@ -37,13 +38,64 @@ export default function LogInForCommunity({ setclose, defaultEmail }: closeDrowe
 
     const defaultProfile = "https://t3.ftcdn.net/jpg/00/64/67/52/360_F_64675209_7ve2XQANuzuHjMZXP3aIYIpsDKEbF5dD.jpg"
 
-    const [srcForAvtar , setSrcForAvtar] = useState<string>('');
+    const [srcForAvtar, setSrcForAvtar] = useState<string>('');
+
+    const [selectedFile , setSelectedFile] = useState<File | undefined>(undefined)
 
     const [alertForError, setAlert] = useState<AlertRuel>({
         display: false,
         severityType: "error",
         message: "",
     });
+
+
+
+    const handleCreationForCommunity = async () => {
+        //  function for creation documents 
+        const validate = communityLoginInValidation(dataForComm);
+
+        if(validate.isValid){
+            const objForCommunity = {
+                'community-name': dataForComm.name,
+                'community-email': dataForComm.Email,
+                'creatorId': mainContext?.userData.userId,
+                'creator-email': mainContext?.userData.email,
+                'profileId' : ''
+            }
+            try {
+                await createCommunity(objForCommunity , selectedFile).then((responce)=>{
+                    // setclose(false);
+                    navigate('/community');
+                    setAlert(
+                        {
+                          display: true,
+                          severityType: 'success',
+                          message: "Your Communiy is created Successfully"
+                        })
+                })
+
+            } catch (error: any) {
+                const errorMessage: string = error.toString();
+                setAlert(
+                    {
+                      display: true,
+                      severityType: 'error',
+                      message: errorMessage
+                    })
+            }
+        }else{
+            setAlert(
+                {
+                  display: true,
+                  severityType: 'error',
+                  message: validate.message
+                })
+        }
+        
+    }
+
+
+
 
 
     const handleChangInValue = (event: ChangeEvent<HTMLInputElement>) => {
@@ -61,13 +113,13 @@ export default function LogInForCommunity({ setclose, defaultEmail }: closeDrowe
 
     const changeProfileImageForCommunity = () => {
         fileInputRef.current?.click();
-        // setSrcForAvtar('');
     }
 
-    const handleFileInputChange = (event : ChangeEvent<HTMLInputElement>)=>{
+    const handleFileInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
-        console.log("file" , file)
-        if(file){
+        console.log("file", file)
+        if (file) {
+            setSelectedFile(file);
             setSrcForAvtar(URL.createObjectURL(file));
         }
     }
@@ -96,9 +148,6 @@ export default function LogInForCommunity({ setclose, defaultEmail }: closeDrowe
             </div>
             <div className=" h-auto flex justify-center">
                 <Avatar
-                    // src={(urlForProfile!== '') && URL.createObjectURL(urlForProfile) }
-                    // src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSfwGAluvdBkYjaFfxCMgTbu05yncARfEF13Jy94w4GKmUS0cfgXPiGKAkJTJJ8aeMgIfnqjigy6i-0CBM"
-                    
                     src={srcForAvtar}
                     sx={{ width: 150, height: 150 }}
                     onClick={changeProfileImageForCommunity}
@@ -106,7 +155,7 @@ export default function LogInForCommunity({ setclose, defaultEmail }: closeDrowe
                 >
                     <input
                         ref={fileInputRef}
-                        id="avatarInput"    
+                        id="avatarInput"
                         type="file"
                         accept="image/*"
                         style={{ display: 'none' }}

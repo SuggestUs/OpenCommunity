@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent , useContext} from 'react';
 import { useEffect, useState } from 'react'
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
@@ -8,9 +8,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { SignInRule, AlertRuel, ResultForAuth } from '../../utils/type.ts'
 import { signInValidation } from '../../validation/signInValidation.ts';
 import { signInWithAppwrite } from '../Appwrite/auth/signIn.app.ts'
+import {MainContext} from '../context/context.tsx'  
+
 export default function SignInForUser() {
 
   const navigate = useNavigate();
+
+  const mainContext = useContext(MainContext);
 
   const [alert, setAlert] = useState<AlertRuel>({
     display: false,
@@ -44,6 +48,7 @@ export default function SignInForUser() {
       try {
         await signInWithAppwrite(signinData)
           .then((res) => {
+            mainContext?.getSession();
             navigate("/home")
           })
       } catch (error : any) {

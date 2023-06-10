@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useContext } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import NavbarForDashBord from "../component/NavbarForDashBord";
 import DashbordForCommunity from "./community-page/DashbordForCommunity";
@@ -11,8 +11,14 @@ import HackathonDetailsPage from "./comman-page/HackathonDetailsPage";
 import { account } from "../Appwrite/service";
 import ProfilePage from "./comman-page/ProfilePage";
 import EventDetailsPage from "./comman-page/EventDetailsPage";
-
+import { MainContext } from '../context/context'
 export default function DashBord() {
+
+  // const authenticationContextProvider = useContext(null);
+
+
+  const mainContext = useContext(MainContext);
+
   let permission =
     useLocation().pathname.startsWith("/home") ||
     useLocation().pathname.startsWith("/event") ||
@@ -25,22 +31,26 @@ export default function DashBord() {
   }
 
   const navigate = useNavigate();
-  const checkForSession = async () => {
-    const promise = account.get();
-    promise
-      .then((res) => {
-        console.log("res", res);
-      })
-      .catch((error) => {
-        console.log("Error ", error.message);
-        navigate("/authentication");
-      });
-  };
+
+  
   useEffect(() => {
-    checkForSession();
+    const fetchData = async () => {
+      try {
+        await mainContext?.getSession();
+         
+      } catch (error) {
+        navigate("/authentication");
+      }
+    }
+    fetchData();
+
+    if(!mainContext?.isAuthenticate){
+      console.log("User is not aunthenticated")
+    }
   }, []);
-  return (
-    <div className=" h-screen flex md:flex-row flex-col w-full">
+
+  if(mainContext?.isAuthenticate) { 
+    return (<div className=" h-screen flex md:flex-row flex-col w-full">
       <NavbarForDashBord />
       <div className=" md:w-11/12 w-full overflow-auto">
         <Routes>
@@ -96,6 +106,8 @@ export default function DashBord() {
         </Routes>
         <DashbordForCommunity />
       </div>
-    </div>
-  );
+    </div>)
+  }else{
+    return <h1>{'Checking for data'}</h1>
+  }
 }
