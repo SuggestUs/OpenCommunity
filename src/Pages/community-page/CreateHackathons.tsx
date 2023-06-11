@@ -5,7 +5,7 @@ import HackDescriptionCom from ".././community-page/hackathon-inputs/HackDescrip
 
 export default function CreateHackathons() {
   return (
-    <section className="my-5 min-h-[60rem]  text-black">
+    <section className="my-5 min-h-[60rem]  text-black ">
       <p className="text-2xl font-bold mb-5">Create a Hackathon 🎉</p>
       {/*  for only cover image */}
       <div className="col-span-full w-[94%] mx-auto ">

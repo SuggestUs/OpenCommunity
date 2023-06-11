@@ -29,10 +29,8 @@ export default function DashbordForCommunity() {
     setSideBar(res);
   };
   return (
-    <div className="flex flex-row border w-full h-screen text-black">
-      <div className="flex flex-col  border w-auto">
-        {/* <Button variant="contained" color="primary">Open</Button> */}
-
+    <div className="flex flex-row w-full  h-screen text-black ">
+      <div className="flex flex-col border-r w-auto ">
         <CommunityList />
       </div>
       <div className="w-4/5">
@@ -46,7 +44,7 @@ export default function DashbordForCommunity() {
             }
           />
           <Route
-            path="/community/createHackathons"
+            path="/community/createhackathons"
             element={
               <Suspense>
                 <CreateHackathons />
