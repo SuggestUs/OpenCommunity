@@ -7,15 +7,10 @@ import EventPage from "./comman-page/EventPage";
 import HackathonPage from "./comman-page/HackathonPage";
 import HomaPageForCommunity from "./comman-page/HomaPageForCommunity";
 import HackathonDetailsPage from "./comman-page/HackathonDetailsPage";
-// import axios from "axios";
-import { account } from "../Appwrite/service";
 import ProfilePage from "./comman-page/ProfilePage";
 import EventDetailsPage from "./comman-page/EventDetailsPage";
 import { MainContext } from '../context/context'
 export default function DashBord() {
-
-  // const authenticationContextProvider = useContext(null);
-
 
   const mainContext = useContext(MainContext);
 
@@ -37,16 +32,11 @@ export default function DashBord() {
     const fetchData = async () => {
       try {
         await mainContext?.getSession();
-         
       } catch (error) {
         navigate("/authentication");
       }
     }
     fetchData();
-
-    if(!mainContext?.isAuthenticate){
-      console.log("User is not aunthenticated")
-    }
   }, []);
 
   if(mainContext?.isAuthenticate) { 

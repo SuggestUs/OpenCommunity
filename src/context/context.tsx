@@ -1,6 +1,6 @@
 import { createContext, useState , Dispatch, SetStateAction, useEffect} from "react";
 import {account } from '../Appwrite/service'
-
+import { getDocument } from "../Appwrite/datbase/database";
 
 type child = {
   children : React.ReactNode
@@ -14,7 +14,6 @@ type userData = {
   email : string,
   username : string,
   communities : string[],
-  Events : string[],  
 }
 
 type authentication = boolean;
@@ -41,13 +40,13 @@ function MainContextProvider({children} : child) {
     email : '',
     username : '',
     communities : [],
-    Events : [],
   }) 
 
   const checkForSession = () => {
 
-       return new Promise((resolve, reject)=>{
-        account.get().then((res)=>{
+       return new Promise(async(resolve, reject)=>{
+        await account.get()
+        .then((res)=>{
           console.log('res from promise inside context', res)
           setAutenticatication(true);
           setUserData({
@@ -56,10 +55,18 @@ function MainContextProvider({children} : child) {
             email : res.email,
             name : res.name
           })
-          resolve(res);
-        }).catch((error)=>{
+        }).then(async()=>{
+          console.log("userData.userId" , userData.userId)  
+          await getDocument("647c8c44c131fcc60809","647c8c5108eba726ecdb", userData.userId).then((res)=>{
+            // setUserData({
+              console.log("new data", res)
+              resolve(res);
+            // })
+          })
+        })
+        .catch((error)=>{
           console.log(error)
-          reject(new Error('User id not authenticated'))
+          reject(new Error('User is not authenticated'))
         });
        })
   };
@@ -78,14 +85,14 @@ function MainContextProvider({children} : child) {
 
     const fetchData = async () => {
       try {
-        await checkForSession();
+        await checkForSession()
       } catch (error) {
         console.log(error);
       }
     };
     fetchData();
     console.log("we are Inside Context hook " , userData , isAutenticate);
-  }, [])
+  }, [userData])
   return (
     <MainContext.Provider value ={contextValues}>
          {children} 
