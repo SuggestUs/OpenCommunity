@@ -1,63 +1,62 @@
-import { useEffect , useState}  from "react";
-import * as React from 'react';
-import { useNavigate } from "react-router-dom";
-import { account, client } from "../../Appwrite/service";
-import Dialog from '@mui/material/Dialog';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import Slide from '@mui/material/Slide';
-import { TransitionProps } from '@mui/material/transitions';
-import LogInForCommunity from "./LogInForCommunity";
-import { Typography } from "@mui/material";
+import { useEffect, useState } from 'react'
+import * as React from 'react'
+import { useNavigate } from 'react-router-dom'
+import { account, client } from '../../Appwrite/service'
+import Dialog from '@mui/material/Dialog'
+import DialogContent from '@mui/material/DialogContent'
+import DialogContentText from '@mui/material/DialogContentText'
+import DialogTitle from '@mui/material/DialogTitle'
+import Slide from '@mui/material/Slide'
+import { TransitionProps } from '@mui/material/transitions'
+import LogInForCommunity from './LogInForCommunity'
+import { Typography } from '@mui/material'
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
-    children: React.ReactElement<any, any>;
+    children: React.ReactElement<any, any>
   },
-  ref: React.Ref<unknown>,
+  ref: React.Ref<unknown>
 ) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
-   
+  return <Slide direction='up' ref={ref} {...props} />
+})
+
 type propsForDrawer = {
-  openDrawer : boolean
+  openDrawer: boolean
 }
 
+export default function CreateCommuity({ openDrawer }: propsForDrawer) {
+  const [open, setOpen] = useState(false)
+  const [defaultEmail, setDefaultEmail] = useState('')
 
-
-export default function CreateCommuity({openDrawer} : propsForDrawer) {
-  
-  const [open , setOpen] = useState(false);
-  const[defaultEmail , setDefaultEmail] = useState('');
-  const navigate = useNavigate ();
+  const navigate = useNavigate()
 
   const checkForSession = async () => {
-    const promise = account.get();
-    promise.then((res) => {
-      console.log('res', res.email)
-      setDefaultEmail(res.email)
-      setOpen(openDrawer);
-    })
+    const promise = account.get()
+    promise
+      .then((res) => {
+        console.log('res', res.email)
+
+        setDefaultEmail(res.email)
+        setOpen(openDrawer)
+      })
       .catch((error) => {
-        console.log("Error ", error.message)
+        console.log('Error ', error.message)
         navigate('/authentication')
       })
   }
   // const handleClickOpen = () => {
   //   setOpen(true);
   // };
-  
+
   // const handleClose = () => {
   //   setOpen(false);
   //   navigate(-1);
   // };
   useEffect(() => {
-    checkForSession();
-
+    checkForSession()
   })
   return (
-    <div className="">
+    <div className=''>
       <Dialog
         open={true}
         TransitionComponent={Transition}
@@ -65,15 +64,16 @@ export default function CreateCommuity({openDrawer} : propsForDrawer) {
         fullWidth
         keepMounted
         // onClose={handleClose}
-        aria-describedby="alert-dialog-slide-description"
+        aria-describedby='alert-dialog-slide-description'
       >
-        <DialogTitle className="text-center text-xs">{"Customize your community here !!"}</DialogTitle>
+        <DialogTitle className='text-center text-xs'>
+          {'Customize your community here !!'}
+        </DialogTitle>
         <DialogContent>
           <Typography></Typography>
-          <DialogContentText id="alert-dialog-slide-description">
-             <LogInForCommunity setclose={setOpen} defaultEmail={defaultEmail} />
+          <DialogContentText id='alert-dialog-slide-description'>
+            <LogInForCommunity setclose={setOpen} defaultEmail={defaultEmail} />
           </DialogContentText>
-
         </DialogContent>
         {/* <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
@@ -83,5 +83,3 @@ export default function CreateCommuity({openDrawer} : propsForDrawer) {
     </div>
   )
 }
-
-

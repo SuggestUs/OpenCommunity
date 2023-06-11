@@ -1,115 +1,130 @@
-import { useState, ChangeEvent , useContext} from "react";
-import { Button, TextField, FormControl } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import axios from 'axios';
-import CustomizedSnackbars from '../Alert/Alert.jsx';
-import { FaGithub } from "react-icons/fa";
-import { LogInRule, AlertRuel, ResultForAuth } from '../../utils/type';
-import { LoginInValidation } from '../../validation/loginValidation.js';
+import { useState, ChangeEvent, useContext } from 'react'
+import { Button, TextField, FormControl } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import CustomizedSnackbars from '../Alert/Alert.jsx'
+import { FaGithub } from 'react-icons/fa'
+import { LogInRule, AlertRuel, ResultForAuth } from '../../utils/type'
+import { LoginInValidation } from '../../validation/loginValidation.js'
 import { loginWithAppwrite } from '../Appwrite/auth/login.app.js'
-import {MainContext} from '../context/context.tsx'
+import { MainContext } from '../context/context.tsx'
 
 export default function Login() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const mainContext = useContext(MainContext);
+  const mainContext = useContext(MainContext)
   const [loginData, setLogInData] = useState<LogInRule>({
     Email: '',
-    Password: ''
-  });
+    Password: '',
+  })
 
   const [alert, setAlert] = useState<AlertRuel>({
     display: false,
-    severityType: "error",
-    message: "",
-  });
+    severityType: 'error',
+    message: '',
+  })
 
-  const handleLogIn2 = async () => {
-  };
+  const [initialLoading, setInitialLoading] = useState(false)
+
+  const handleLogIn2 = async () => {}
 
   const handleLogIn = async () => {
+    setInitialLoading(true)
 
-    const res: ResultForAuth = LoginInValidation(loginData);
+    const res: ResultForAuth = LoginInValidation(loginData)
     if (res.isValid) {
       try {
-        await loginWithAppwrite(loginData)
-        .then((res)=>{
-          console.log("res" , res)
-          mainContext?.getSession();
-          navigate("/home");
+        await loginWithAppwrite(loginData).then((res) => {
+          // console.log("res" , res)
+          mainContext?.getSession()
+          setInitialLoading(false)
+          navigate('/home')
         })
-      } catch (error : any) {
-        const errorMessage : string = error.toString();
+      } catch (error: any) {
+        const errorMessage: string = error.toString()
         setAlert({
           display: true,
-          severityType: "error",
-          message: errorMessage
+          severityType: 'error',
+          message: errorMessage,
         })
       }
     } else {
-      setAlert(
-        {
-          display: true,
-          severityType: 'error',
-          message: res.message
-        })
+      setAlert({
+        display: true,
+        severityType: 'error',
+        message: res.message,
+      })
     }
+    // setInitialLoading(false)
   }
 
   const handleChangInValue = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
+    const { name, value } = event.target
     setLogInData({
       ...loginData,
-      [name]: value
+      [name]: value,
     })
   }
 
   return (
-    <div className="flex flex-col my-auto">
-
+    <div className='flex flex-col my-auto'>
       <div className='alert-box absolute top-0 z-10 left-1 w-1/3'>
-        {alert.display && (<CustomizedSnackbars status={alert.severityType} message={alert.message} setAlert={setAlert} />)}
+        {alert.display && (
+          <CustomizedSnackbars
+            status={alert.severityType}
+            message={alert.message}
+            setAlert={setAlert}
+            setClose={setInitialLoading}
+          />
+        )}
       </div>
-      <div className="my-5 ">
+      <div className='my-5 '>
         <FormControl fullWidth>
-
           <TextField
-            className="my-5"
-            label="Email"
-            type="email"
+            className='my-5'
+            label='Email'
+            type='email'
             style={{
-              margin: "10px 0px",
+              margin: '10px 0px',
             }}
             name='Email'
             onChange={handleChangInValue}
             value={loginData.Email}
           />
           <TextField
-            className="my-5"
-            label="Password"
-            type="password"
+            className='my-5'
+            label='Password'
+            type='password'
             style={{
-              margin: "10px 0px",
+              margin: '10px 0px',
             }}
-            name="Password"
+            name='Password'
             onChange={handleChangInValue}
             value={loginData.Password}
           />
         </FormControl>
       </div>
-      <div className="my-auto space-x-5 flex justify-center items-center">
+      <div className='my-auto space-x-5 flex justify-center items-center'>
         <div
-          className="bg-primary text-black w-1/2 p-2 rounded-lg font-semibold hover:bg-purple-600 cursor-pointer text-center "
+          className='bg-primary text-black w-1/2 p-2 rounded-lg font-semibold hover:bg-purple-600 cursor-pointer text-center '
           onClick={() => handleLogIn2()}
         >
-          <span className="flex justify-center items-center gap-3">
-            <FaGithub /> Log In with Github
+          <span className='flex justify-center items-center gap-3'>
+            {initialLoading ? (
+              'loading...'
+            ) : (
+              <>
+                <FaGithub /> Log In with Github
+              </>
+            )}
           </span>
         </div>
         <div className='my-auto'>
-          <Button variant='contained' color='success' onClick={handleLogIn}>Log In</Button>
+          <Button variant='contained' color='success' onClick={handleLogIn}>
+            {initialLoading ? 'loading...' : <>Log In</>}
+          </Button>
         </div>
       </div>
     </div>
-  );
+  )
 }

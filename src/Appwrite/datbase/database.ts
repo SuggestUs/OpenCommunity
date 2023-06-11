@@ -1,4 +1,5 @@
 import { account, client, database , storage , ID} from '../service'
+
 type objForCommunity = {
     'community-name' : string,
     'community-email' :  string,
@@ -57,7 +58,7 @@ const updateUserData =(databaseId: string, collectionId: string, documentId: any
 export const getDocument  = (databaseId: string, collectionId: string, documentId: any)=>{
        return new Promise((relove , reject)=>{
          database.getDocument(databaseId, collectionId, documentId).then((res)=>{
-            console.log("get data about user" , res);
+            // console.log("get data about user" , res);
             relove(res)
          }).catch((error)=>{
               reject(new Error(error))

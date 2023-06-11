@@ -1,6 +1,7 @@
-
 export default function IntroToCommunity() {
   return (
-    <div>IntroToCommunity</div>
-  )
+    <div className="flex items-center justify-center h-screen">
+      IntroToCommunity
+    </div>
+  );
 }

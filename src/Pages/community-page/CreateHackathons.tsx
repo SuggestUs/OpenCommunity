@@ -1,12 +1,12 @@
-import EventTopicsCom from ".././community-page/EventInputs/EventTopics";
-import EventSpeakersCom from ".././community-page/EventInputs/EventSpeakers";
-import EventVenueCom from ".././community-page/EventInputs/EventVenue";
-import EventDescriptionCom from ".././community-page/EventInputs/EventDescription";
+import HackTopicsCom from ".././community-page/hackathon-inputs/HackTopics";
+import HackSpeakersCom from ".././community-page/hackathon-inputs/HackSpeakers";
+import HackVenueCom from ".././community-page/hackathon-inputs/HackVenue";
+import HackDescriptionCom from ".././community-page/hackathon-inputs/HackDescription";
 
-export default function CreateEvents() {
+export default function CreateHackathons() {
   return (
     <section className="my-5 min-h-[60rem]  text-black ">
-      <p className="text-2xl font-bold mb-5">Create a Event 🎉</p>
+      <p className="text-2xl font-bold mb-5">Create a Hackathon 🎉</p>
       {/*  for only cover image */}
       <div className="col-span-full w-[94%] mx-auto ">
         <label
@@ -53,22 +53,22 @@ export default function CreateEvents() {
       </div>
       <article className="h-full  p-10 m-9  grid grid-cols-2 border gap-10 ">
         <div className=" ">
-          <EventDescriptionCom />
+          <HackDescriptionCom />
         </div>
       </article>
       <article className=" p-5 ml-9 border w-[95%]">
-        <p className="font-bold text-left text-2xl">Event Topics 📌</p>
-        <EventTopicsCom />
+        <p className="font-bold text-left text-2xl">Hackathon Topics 📌</p>
+        <HackTopicsCom />
       </article>
       <article className="p-5  ml-9 flex border mt-9 w-[95%]  justify-between ">
-        <p className="font-bold text-left  text-2xl">Speakers 🧑‍⚖️</p>
+        <p className="font-bold text-left  text-2xl">Judges 🧑‍⚖️</p>
         <div className="mt-5">
-          <EventSpeakersCom />
+          <HackSpeakersCom />
         </div>
       </article>
       <article className=" p-5 mt-9 w-[95%] ml-9 border">
         <p className="font-bold text-left text-2xl">Location 🗺️</p>
-        <EventVenueCom />
+        <HackVenueCom />
       </article>
     </section>
   );
