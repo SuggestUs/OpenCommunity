@@ -1,7 +1,12 @@
 # openCommunity
 Open Community is a platform for creating your event, hackathons or even adding your community.
 
-How to run in local? 
+## Tech stacks
+- ReactJs
+- Typescript
+- Appwrite
+
+## How to run in local? 
 To run in local you need to follow this contributing guide.
 - Fork the repo
 - clone the forked repo
