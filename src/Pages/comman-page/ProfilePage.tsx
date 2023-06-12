@@ -22,7 +22,7 @@ export default function ProfilePage() {
     navigate(-1);
   };
   return (
-    <div>
+    <section>
       {!initialLoading ? (
         <div className="rounded-lg mt-10 shadow-lg border bg-white mx-6 text-xl font-inter flex flex-col scroll-m-0">
           <div className="p-5 flex justify-start">
@@ -31,7 +31,7 @@ export default function ProfilePage() {
             </Button>
           </div>
           <div className="flex flex-row items-center justify-between w-full my-1">
-            <div className="flex justify-center ">
+            <div className="flex justify-center  ">
               <Avatar
                 style={{
                   marginLeft: "50px",
@@ -60,13 +60,15 @@ export default function ProfilePage() {
                 backgroundImage: `url()`,
               }}
             />
-            <h1 className="text-3xl font-bold text-gray-900">Priyankar Pal</h1>
-            <div className="flex gap-2 mt-5">
+            <h1 className="text-xl md:text-3xl  pl-5 md:p-0 font-bold text-gray-900">
+              Priyankar Pal
+            </h1>
+            <div className="flex gap-2 pl-5 md:p-0 ">
               <GitHubIcon className="text-black" />
               <TwitterIcon className="text-blue-400" />
               <LinkedInIcon className="text-blue-800" />
             </div>
-            <p className="text-md  text-gray-500 mt-9">
+            <p className="text-md  text-gray-500 mt-9 pl-5 md:p-0">
               <span style={{ display: "inline-block" }}>
                 {" "}
                 <MarkEmailUnreadOutlinedIcon
@@ -78,7 +80,7 @@ export default function ProfilePage() {
               </span>
               <span className="ml-2 mb-10">abc@gmail.com</span>
             </p>
-            <p className="pt-2 text-md text-gray-900 mt-1 ">
+            <p className="pt-2 text-md text-gray-900 mt-1 pl-5 md:p-0">
               <span style={{ display: "inline-block" }}>
                 {" "}
                 <SchoolIcon
@@ -94,7 +96,7 @@ export default function ProfilePage() {
               </span>
             </p>
             {/* School */}
-            <p className="pt-2 text-md text-gray-900 mt-1 ">
+            <p className="pt-2 text-md text-gray-900 mt-1 pl-5 md:p-0">
               <span style={{ display: "inline-block" }}>
                 {" "}
                 <SchoolIcon
@@ -108,7 +110,7 @@ export default function ProfilePage() {
                 Member of <span className="font-bold">XYZ community</span>
               </span>
             </p>
-            <div className="pt-2 text-md text-gray-900 mt-1 ">
+            <div className="pt-2 text-md text-gray-900 mt-1 pl-5 md:p-0 ">
               <span style={{ display: "inline-block" }}>
                 {" "}
                 <SchoolIcon
@@ -122,8 +124,11 @@ export default function ProfilePage() {
                 Building <span className="font-bold">ABC community</span>
               </span>
             </div>
-            <p className="text-black mt-5 font-bold">organizations</p>
-            <div className="flex gap-2 mt-4">
+            <p className="text-black mt-5 font-bold pl-5 md:p-0">
+              organizations
+            </p>
+
+            <div className="flex gap-2 mt-4 pl-5 md:p-0 ">
               <img
                 src="https://media.istockphoto.com/id/1124838925/vector/programming-code-application-window.jpg?s=612x612&w=0&k=20&c=2J2JZP7cQltD03QkOMl6JYfzcmD-GN7bjrWVuieD7Jc="
                 height={50}
@@ -152,6 +157,6 @@ export default function ProfilePage() {
       ) : (
         <>loading</>
       )}
-    </div>
+    </section>
   );
 }

@@ -6,31 +6,39 @@ import HackOrgCom from "../../component/Hackathon/HackOrganizer";
 
 export default function HackathonDetailsPage() {
   return (
-    <section className="my-5 min-h-[60rem] text-black">
+    <section className="flex flex-col my-5 min-h-[60rem]  text-black ">
       {/*  for only cover image */}
-      <article className="h-full  p-10 m-9 grid grid-cols-2 border gap-10 ">
+      <div className="h-96 w-full p-1">
+        <img
+          src="https://img.freepik.com/premium-vector/music-event-horizontal-poster-flyer-template-with-gradient-colorful-design_85212-212.jpg"
+          className="h-96 w-full"
+        />
+      </div>
+      <article className="h-full p-10 m-1 mt-5 flex-col md:grid grid-cols-2 border gap-10 ">
         <div className="w-full">
-          <p className="font-bold text-left text-2xl">
+          <p className="font-bold text-left text-[1.5rem] md:text-2xl">
             Open Community Hackathon 👨‍💻
           </p>
           <HackDescriptionCom />
         </div>
         <div className="w-full md:block">
-          <p className="font-bold text-left text-2xl">Organised by 👯 </p>
+          <p className="font-bold text-left text-[1.5rem] md:text-2xl">
+            Organised by 👯{" "}
+          </p>
           <HackOrgCom />
         </div>
       </article>
-      <article className=" p-5 ml-9 border w-[95%]">
+      <article className=" p-5 m-1 border w-full md:w-[99.5%] ">
         <p className="font-bold text-left text-2xl">Hackathon Topics 📌</p>
         <HackTopicsCom />
       </article>
-      <article className="p-5  ml-9 flex border mt-9 w-[95%]  justify-between ">
-        <p className="font-bold text-left  text-2xl">Judges 🧑‍⚖️</p>
-        <div className="mt-5">
+      <article className="p-5  m-1 w-full flex border md:w-[99.5%]">
+        <p className="font-bold flex text-left  text-2xl">Judges 🧑‍⚖️</p>
+        <div className="mt-5 ">
           <HackSpeakersCom />
         </div>
       </article>
-      <article className=" p-5 mt-9 w-[95%] ml-9 border">
+      <article className=" p-5 m-1 w-full md:w-[99.5%] border">
         <p className="font-bold text-left  text-2xl">Location 🗺️</p>
         <HackVenueCom />
       </article>

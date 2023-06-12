@@ -16,7 +16,7 @@ export default function CommunityList() {
 
   
   return (
-    <div className="flex flex-col w-full overflow-auto pl-2 pr-2 ">
+    <div className="flex flex-col w-full overflow-auto pl-2 pr-2 border  ">
       <div className="flex mt-5 items-center justify-center">
         <Link
           to="/community/createcommunity"
