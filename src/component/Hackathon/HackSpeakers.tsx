@@ -20,10 +20,10 @@ export default function SpeakersCom() {
     },
   ];
   return (
-    <div className="mx-auto grid max-w-7xl gap-x-8  gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
+    <div className="mx-auto grid max-w-7xl gap-x-8 lg:px-8 xl:grid-cols-3 ">
       <ul
         role="list"
-        className="grid gap-x-8 gap-y-12 sm:grid-cols-3 sm:gap-y-16 xl:col-span-2"
+        className="grid gap-x-8 gap-y-12 grid-cols-1 md:grid-cols-3 xl:col-span-2"
       >
         {people.map((person) => (
           <li key={person.name}>
