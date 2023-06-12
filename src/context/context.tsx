@@ -1,93 +1,92 @@
-import { createContext, useState , Dispatch, SetStateAction, useEffect , useContext} from "react";
-import {account } from '../Appwrite/service'
+import { createContext, useEffect, useState } from "react";
+import { account } from '../Appwrite/service'
 import { getDocument } from "../Appwrite/datbase/database";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 type child = {
-  children : React.ReactNode
+  children: React.ReactNode
 }
 
 type userData = {
-  userId : string,
-  first_name : string,
-  last_name : string,
-  email : string,
-  username : string,
-  community : string[],
+  isAuthenticate: boolean,
+  userId: string,
+  first_name: string,
+  last_name: string,
+  email: string,
+  username: string,
+  community: string[],
 }
 
-type authentication = boolean;
 
 type contextType = {
-  isAuthenticate : boolean
-  userData : userData,
-  setUserData : Dispatch<SetStateAction<userData>>, 
-  getSession : Function
+  userData: userData,
+  getSession: Function
 }
 
 //  Main context 
-const MainContext = createContext<contextType | undefined>(undefined); 
 
+const objForUserContext: userData = {
+  isAuthenticate: false,
+  userId: '',
+  first_name: '',
+  last_name: '',
+  email: '',
+  username: '',
+  community: [],
+}
 
+const checkForSession = () => {
 
-function MainContextProvider({children} : child) {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const session = await account.get();
+      const commdata: any = await getDocument("647c8c44c131fcc60809", "647c8c5108eba726ecdb", session.$id)
+ 
+      objForUserContext.isAuthenticate = true;
+      objForUserContext.community = [...commdata?.communities],
+      objForUserContext.first_name = commdata.first_name,
+      objForUserContext.last_name = commdata.last_name,
+      objForUserContext.email = commdata.email,
+      objForUserContext.userId = commdata.$id,
+      objForUserContext.username = commdata.username;
+      resolve(commdata)
 
-  
-  // const context = useContext(MainContext);
+    } catch (error) {
+      reject("You are not logged In SORRY")
+    }
+  })
+};
 
-  const [isAutenticate , setAutenticatication] = useState<boolean>(false);
-  const [userData, setUserData]= useState<userData>({
-    userId : '',
-    first_name : '',
-    last_name : '',
-    email : '',
-    username : '',
-    community : [],
-  }) 
+const contextValues: contextType = {
+  userData: objForUserContext,
+  getSession: checkForSession
+}
+const MainContext = createContext<contextType>(contextValues);
 
-   const checkForSession = async() => {
-    
-        const res = await account.get()
-        console.log('res from promise inside context', res);
-        setAutenticatication(true);
-  
-        console.log("isAutenticate", isAutenticate);
-  
-        const commdata : any = await getDocument("647c8c44c131fcc60809", "647c8c5108eba726ecdb", res.$id)
+function MainContextProvider({ children }: child) {
 
-          console.log("new data", commdata);
-          setUserData({
-            ...userData,
-            community :  [...commdata?.communities],
-            first_name : commdata.first_name,
-            last_name : commdata.last_name,
-            username : commdata.username,
-            userId: commdata.$id,
-            email: commdata.email,
-          })
-          
-  };
-  
-  const contextValues : contextType  = {
-    isAuthenticate: isAutenticate,
-    userData: userData,
-    setUserData: setUserData, 
-    getSession: checkForSession
-  }
+  useEffect(() => {
 
-  
-  useEffect(()=>{
-    checkForSession()
-  }, []);
-  
-  console.log("we are Inside Context hook " , userData);
-
+    async function fetchData() {
+      try {
+        // await checkForSession();
+        console.log("updated data", objForUserContext)
+      } catch (error) {
+        console.log("error", error)
+      }
+    }
+    fetchData();
+  }, [objForUserContext]);
     return (
-      <MainContext.Provider value ={contextValues}>
-         {children} 
-    </MainContext.Provider>
-  )
- }
+      <MainContext.Provider value={contextValues}>
+        {children}
+      </MainContext.Provider>
+
+    )
+}
 
 
 
-export {MainContextProvider , MainContext};
+
+export { MainContextProvider, MainContext };

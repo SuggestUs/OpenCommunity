@@ -7,8 +7,9 @@ import AboutUs from "./Pages/AboutUs";
 import Authentication from "./component/Authentication";
 import DashBoard from "./Pages/DashBoard";
 import Footer from "./component/Footer";
-
+import { MainContextProvider } from "./context/context";
 export default function MainRoute() {
+
   return (
     <Router>
       <main className=" w-full h-screen">
@@ -38,24 +39,10 @@ export default function MainRoute() {
               </Suspense>
             }
           />
-          {/* <Route
-            path="/login"
-            element={
-              <Suspense fallback={<CircularProgress />}>
-                <LogInPage />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/Signin"
-            element={
-              <Suspense fallback={<CircularProgress />}>
-                <SignInPage />
-              </Suspense>
-            }
-          /> */}
         </Routes>
-        <DashBoard />
+        {/* <MainContextProvider> */}
+          <DashBoard />
+        {/* </MainContextProvider> */}
         <Footer />
       </main>
     </Router>

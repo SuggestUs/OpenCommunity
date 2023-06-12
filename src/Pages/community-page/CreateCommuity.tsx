@@ -30,30 +30,9 @@ export default function CreateCommuity({ openDrawer }: propsForDrawer) {
 
   const navigate = useNavigate()
 
-  const checkForSession = async () => {
-    const promise = account.get()
-    promise
-      .then((res) => {
-        console.log('res', res.email)
-
-        setDefaultEmail(res.email)
-        setOpen(openDrawer)
-      })
-      .catch((error) => {
-        console.log('Error ', error.message)
-        navigate('/authentication')
-      })
-  }
-  // const handleClickOpen = () => {
-  //   setOpen(true);
-  // };
-
-  // const handleClose = () => {
-  //   setOpen(false);
-  //   navigate(-1);
-  // };
+  
   useEffect(() => {
-    checkForSession()
+    
   })
   return (
     <div className=''>

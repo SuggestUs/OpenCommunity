@@ -2,21 +2,40 @@ import EventTopicsCom from ".././community-page/EventInputs/EventTopics";
 import EventSpeakersCom from ".././community-page/EventInputs/EventSpeakers";
 import EventVenueCom from ".././community-page/EventInputs/EventVenue";
 import EventDescriptionCom from ".././community-page/EventInputs/EventDescription";
+import { useEffect, useState } from "react";
 
 export default function CreateEvents() {
+
+  const [coverImage , setCoverImage] = useState<File|undefined>(undefined);
+
+  const [url , setUrl] = useState<string>('')
+
+  const handleChangeForCover = (event : any)=>{
+      let file = event.target.files[0];
+      setUrl(URL.createObjectURL(file));
+      setCoverImage(file);
+  }
+
+  useEffect(()=>{
+     if(url){
+      document.getElementById('cover-place')?.classList.add('hidden')
+      document.getElementById('cover-image')?.classList.remove('hidden')
+     }
+  }, [coverImage])
+
   return (
     <section className="my-5 min-h-[60rem]  text-black ">
       <p className="text-2xl font-bold mb-5">Create a Event 🎉</p>
       {/*  for only cover image */}
-      <div className="col-span-full w-[94%] mx-auto ">
+      <div className="col-span-full w-[94%] mx-auto" >
         <label
           htmlFor="cover-photo"
           className="block text-sm font-medium leading-6 text-gray-900"
         >
           Cover photo
         </label>
-        <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-          <div className="text-center">
+        <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 h-96" >
+          <div className="text-center py-40" id='cover-place'>
             <svg
               className="mx-auto h-12 w-12 text-gray-300"
               viewBox="0 0 24 24"
@@ -41,6 +60,7 @@ export default function CreateEvents() {
                   type="file"
                   className="sr-only"
                   accept="image/*"
+                  onChange={handleChangeForCover}
                 />
               </label>
               <p className="pl-1">or drag and drop</p>
@@ -49,6 +69,9 @@ export default function CreateEvents() {
               PNG, JPG up to 5MB
             </p>
           </div>
+          <div className="center hidden" id="cover-image">
+            <img src={url} className='h-96 w-full' alt="#Imaage"/>
+          </div>
         </div>
       </div>
       <article className="h-full  p-10 m-9  grid grid-cols-2 border gap-10 ">
@@ -56,15 +79,15 @@ export default function CreateEvents() {
           <EventDescriptionCom />
         </div>
       </article>
-      <article className=" p-5 ml-9 border w-[95%]">
+      <article className=" p-5 ml-9 border w-[95%] ">
         <p className="font-bold text-left text-2xl">Event Topics 📌</p>
         <EventTopicsCom />
       </article>
-      <article className="p-5  ml-9 flex border mt-9 w-[95%]  justify-between ">
-        <p className="font-bold text-left  text-2xl">Speakers 🧑‍⚖️</p>
-        <div className="mt-5">
+      <article className="p-5  ml-9 flex border mt-9 w-[95%]  justify-between  ">
+        <p className="font-bold text-left  text-2xl ">Speakers 🧑‍⚖️</p>
+        {/* <div className="mt-2 border border-yellow-400 w-full"> */}
           <EventSpeakersCom />
-        </div>
+        {/* </div> */}
       </article>
       <article className=" p-5 mt-9 w-[95%] ml-9 border">
         <p className="font-bold text-left text-2xl">Location 🗺️</p>

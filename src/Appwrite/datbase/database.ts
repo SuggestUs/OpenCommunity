@@ -1,3 +1,4 @@
+import { Query } from 'appwrite'
 import { account, client, database , storage , ID} from '../service'
 
 type objForCommunity = {
@@ -76,8 +77,22 @@ const addProfileForCommunity = (bucketId: string ,file : File | undefined)=>{
         }).catch((error)=>{
             reject(new Error(error));
         })
+     })
+}
 
-        // reject(new Error("Pictutre is not available or not suitable"))
-        
+
+
+export const getCommunityData =(databaseId: string, collectionId: string, userID : string)=> {
+  
+    return new Promise((resolve , reject)=>{
+       database.listDocuments(databaseId, collectionId, 
+        [
+            Query.equal('creatorId' , userID)
+        ]
+        ).then((res)=>{
+            resolve(res)
+        }).catch((error)=>{
+            reject(new Error(error));
+        })          
     })
 }
