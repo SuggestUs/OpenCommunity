@@ -6,6 +6,12 @@ Open Community is a platform for creating your event, hackathons or even adding 
 
 ![OC](https://github.com/priyankarpal/ProjectsHut/assets/88102392/30f8b57d-e06d-4d04-ae28-a1b5d6244195)
 
+## Team members
+
+- [Harsh Panchal](https://github.com/HarshPanchal26)
+- [Sulagna Ghosh](https://github.com/suzy-g38)
+- [Priyankar Pal](https://github.com/priyankarpal)
+
 ## Tech stacks
 
 - [ReactJs](https://react.dev/) a JavaScript library for building user interfaces.
