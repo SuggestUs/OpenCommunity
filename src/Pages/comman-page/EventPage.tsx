@@ -14,7 +14,7 @@ export default function EventPage() {
 
   return (
     <div className="bg-gray-100">
-      <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl sm:px-6 lg:px-8  p-1 ">
         <div className="mx-auto max-w-2xl  sm:py-14 lg:max-w-none ">
           <h2 className="text-2xl font-bold text-gray-900">New Events</h2>
 

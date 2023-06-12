@@ -59,7 +59,7 @@ export default function NavbarForDashBord() {
   ));
 
   return (
-    <section className="flex flex-block md:flex-col md:w-1/12 border-hidden  justify-between md:pt-10 md:pb-10 items-center mr-5 md:m-0">
+    <section className="flex flex-block md:flex-col md:w-1/12 border justify-between md:pt-10 md:pb-10 items-center pr-5 ">
       {/* Space for add logo */}
       <div className="">
         <span className="text-3xl hidden md:flex">🧑🏻‍💻</span>

@@ -16,7 +16,7 @@ function EventOrgCom() {
         {posts.map((post) => (
           <article
             key={post.id}
-            className="flex w-[20rem] border p-5 hover:border-gray-600 rounded-md flex-col "
+            className="flex w-[15rem] md:w-full border p-5 hover:border-gray-600 rounded-md flex-col "
           >
             <div className="flex items-center gap-x-4 text-xs">
               <time dateTime={post.datetime} className="text-gray-500">
