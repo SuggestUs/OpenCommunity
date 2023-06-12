@@ -1,51 +1,21 @@
-# openCommunity
-Open Community is a platform for creating your event, hackathons or even adding your community.
+# OpenCommunity
+
+welcome 👋
+
+Open Community is a platform for creating your event, hackathons or even adding your community. Users(developers) can see all the events and communities and can join them. Users can also create their own events and communities.
+
+![OC](https://github.com/priyankarpal/ProjectsHut/assets/88102392/30f8b57d-e06d-4d04-ae28-a1b5d6244195)
+
+## Team Details
+
+| ![ HP ](https://github.com/HarshPanchal26.png)       | ![ SG ](https://github.com/suzy-g38.png)     | ![ pp ](https://github.com/priyankarpal.png)       |
+| ---------------------------------------------------- | -------------------------------------------- | -------------------------------------------------- |
+| [ Harsh Panchal ](https://github.com/HarshPanchal26) | [Sulagna Ghosh](https://github.com/suzy-g38) | [ Priyankar Pal ](https://github.com/priyankarpal) |
 
 ## Tech stacks
-- ReactJs
-- Typescript
-- Appwrite
 
-## How to run in local? 
-To run in local you need to follow this contributing guide.
-- Fork the repo
-- clone the forked repo
-- install dependencies using
-``` 
-pnpm i 
+- [ReactJs](https://react.dev/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Appwrite](https://appwrite.io/)
 
-```
-- run using this command
-
-```
-pnpm dev
-
-```
-
-- change according your problem
-- Create a branch
-```
-git branch -m branch name
-
-```
-- add upstream command
-
-```
-git remote add upstream https://github.com/SuggestUs/openCommunity
-
-```
-- stage all files
-```
-git add --all
-
-```
-- commit chnaged files, make sure to add a good commit messages
-
-``` 
-git commit -m "your messages" 
-```
-- push the code
-
-```
-git push origin [YOur-branch-name]
-```
+##

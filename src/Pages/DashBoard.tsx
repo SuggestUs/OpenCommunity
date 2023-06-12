@@ -12,7 +12,6 @@ import EventDetailsPage from "./comman-page/EventDetailsPage";
 import { MainContext } from "../context/context";
 
 export default function DashBord() {
-
   const mainContext = useContext(MainContext);
 
   let permission =
@@ -29,11 +28,10 @@ export default function DashBord() {
   const navigate = useNavigate();
 
   useEffect(() => {
-
-    console.log('mainContext' ,mainContext?.userData);
+    console.log("mainContext", mainContext?.userData);
 
     if (mainContext?.isAuthenticate) {
-        navigate("/authentication");
+      navigate("/home");
     }
   }, [mainContext]);
 
@@ -96,7 +94,7 @@ export default function DashBord() {
           <DashbordForCommunity />
         </div>
       </div>
-    )
+    );
   } else {
     return null;
   }
