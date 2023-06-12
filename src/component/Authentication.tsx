@@ -44,9 +44,6 @@ export default function Authentication() {
   const Fontcolor = {
     color: "black",
   };
-  const Shadow = {
-    boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-  };
 
   useEffect(() => {
     //  this function make signIn tab open for user if user navigate back from page which contains doctor's authentication
@@ -56,17 +53,14 @@ export default function Authentication() {
     }
   }, []);
   return (
-    <section className="flex flex-col justify-center items-center h-screen">
-      <div className="my-5  font-bold text-center text-black text-3xl ">
+    <section className="flex flex-col justify-center items-center h-screen ">
+      <div className="my-5 font-bold text-center text-black text-2xl md:text-3xl ">
         {" "}
         Welcome to,<span className="text-primary">Open </span>
         <span className="text-black">Community</span>
       </div>
-      <div
-        className="bg-white p-4 rounded-lg md:w-1/3 w-5/6 text-center flex flex-row shadow-md "
-        style={Shadow}
-      >
-        <div className=" md:w-full w-full mx-2 md:justify-end justify-center h-[30rem] overflow-y-auto">
+      <div className="bg-white p-4 rounded-lg border-2  md:w-1/3 w-5/6 text-center flex flex-row shadow-md ">
+        <div className=" w-full mx-2 md:justify-end justify-center h-[35rem] overflow-y-auto">
           <Box sx={{ width: "100%" }}>
             <Box>
               <Tabs

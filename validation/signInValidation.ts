@@ -3,13 +3,13 @@ export const signInValidation = (obj: SignInRule): ResultForAuth => {
 
     const values = Object.values(obj);
     // Validation for all keys 
-    console.log("X" , values)
+    // console.log("X" , values)
     for (var x in values) {
         
         if (!values[x]) {
             return {
                 isValid: false,
-                message: "Please feel all the feilds"
+                message: "Please fill  all the fields"
             }
         }
 
@@ -31,14 +31,14 @@ export const signInValidation = (obj: SignInRule): ResultForAuth => {
     if (obj.Password !== obj.Confirm_Password) {
         return {
             isValid: false,
-            message: "Both password shouls be match"
+            message: "Both passwords should be same"
         }
     }
 
 
     return {
         isValid: true,
-        message: ""
+        message: "Congratulation!🎉 You are successfully registered"
     }
 
 }
