@@ -56,7 +56,7 @@ export default function Authentication() {
     }
   }, []);
   return (
-    <div className="flex flex-col justify-center items-center h-screen">
+    <section className="flex flex-col justify-center items-center h-screen">
       <div className="my-5  font-bold text-center text-black text-3xl ">
         {" "}
         Welcome to,<span className="text-primary">Open </span>
@@ -90,6 +90,6 @@ export default function Authentication() {
           </Box>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
