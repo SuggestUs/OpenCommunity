@@ -29,7 +29,7 @@ export default function DashbordForCommunity() {
     setSideBar(res);
   };
   return (
-    <div className="flex flex-row w-full  h-screen text-black ">
+    <div className="flex flex-col md:flex-row w-full  h-screen text-black ">
       <div className="flex flex-col border-r w-auto ">
         <CommunityList />
       </div>
