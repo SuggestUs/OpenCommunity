@@ -9,13 +9,12 @@ import HackathonDetailsPage from "./comman-page/HackathonDetailsPage";
 import ProfilePage from "./comman-page/ProfilePage";
 import EventDetailsPage from "./comman-page/EventDetailsPage";
 import { MainContext, MainContextProvider } from "../context/context";
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
-import { CommunityContextProvider } from '../context/communityContext';
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
+import { CommunityContextProvider } from "../context/communityContext";
 import AccountForCommuntity from "./community-page/AccountForCommuntity";
 
 export default function DashBord() {
-
   const navigate = useNavigate();
 
   const mainContext = useContext(MainContext);
@@ -28,30 +27,28 @@ export default function DashBord() {
     useLocation().pathname.startsWith("/hackathon") ||
     useLocation().pathname.startsWith("/community") ||
     useLocation().pathname.startsWith("/profile/user") ||
-    useLocation().pathname.startsWith("/profile/community") 
+    useLocation().pathname.startsWith("/profile/community");
 
   if (!permission) {
     return null;
   }
 
-
   useEffect(() => {
-    console.log("Run useEffect Of Dashbord")
+    console.log("Run useEffect Of Dashbord");
     async function fetchData() {
       try {
         await mainContext.getSession();
-        setisValid(true)
+        setisValid(true);
       } catch (error) {
-        navigate('/');
+        navigate("/");
       }
     }
     if (!mainContext.userData.isAuthenticate) {
       fetchData();
     } else {
-      setisValid(true)
+      setisValid(true);
     }
   }, [isvalid]);
-
 
   return (
     <MainContextProvider>
@@ -126,14 +123,11 @@ export default function DashBord() {
       )}
       {!isvalid && (
         <div className="h-screen flex md:flex-row flex-col w-full">
-          <Box className='mx-10'>
+          <Box className="mx-10">
             <CircularProgress />
           </Box>
         </div>
       )}
     </MainContextProvider>
-  )
+  );
 }
-
-
-
