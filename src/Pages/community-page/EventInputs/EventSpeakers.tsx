@@ -2,17 +2,18 @@ import { Avatar, Button, TextField, Typography, } from "@mui/material";
 import { useEffect, useRef, useState, ChangeEvent } from "react";
 
 export default function EventSpeakersCom() {
-
   type typeForSpeakersImage = {
-    speaker1: File | undefined,
-    speaker2: File | undefined,
-    speaker3: File | undefined
-  }
+    speaker1: File | undefined;
+    speaker2: File | undefined;
+    speaker3: File | undefined;
+  };
   type typeForSpeakersURL = {
-    speaker1: string,
-    speaker2: string,
-    speaker3: string
-  }
+    speaker1: string;
+    speaker2: string;
+    speaker3: string;
+  };
+
+
 
   const fileInputRef1 = useRef<HTMLInputElement>(null);
   // const fileInputRef2 = useRef<HTMLInputElement>(null);

@@ -35,7 +35,7 @@ export default function EventDescriptionCom({ objForEvent, setObj }: props) {
   return (
     <div className="mt-6  border-gray-100 text-left  ">
       <dl className=" divide-gray-100 ">
-        <p className="flex items-center justify-center mb-10 font-bold text-2xl">
+        <p className="flex items-center justify-center mb-10 font-bold text-xl md:text-2xl">
           All details about the Event
         </p>
         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">

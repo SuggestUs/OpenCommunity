@@ -1,5 +1,5 @@
 import { useState, ChangeEvent, useContext } from "react";
-import {  TextField, FormControl } from "@mui/material";
+import { TextField, FormControl } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import CustomizedSnackbars from "../Alert/Alert.jsx";
 import { FaGithub } from "react-icons/fa";
@@ -24,8 +24,6 @@ export default function Login() {
   });
 
   const [initialLoading, setInitialLoading] = useState(false);
-
-  const handleLogIn2 = async () => {};
 
   const handleLogIn = async () => {
     setInitialLoading(true);
@@ -104,30 +102,12 @@ export default function Login() {
         </FormControl>
       </div>
       <div className="my-auto space-y-5 flex  flex-col justify-center items-center">
-        {/*  log in with github */}
         <div
-          className="bg-primary border-2 border-primary text-black w-full p-2 rounded-lg font-semibold hover:bg-purple-600 cursor-pointer text-center "
-          onClick={() => handleLogIn2()}
-        >
-          <span className="flex justify-center items-center gap-3">
-            {initialLoading ? (
-              "loading..."
-            ) : (
-              <>
-                <FaGithub /> Log In with Github
-              </>
-            )}
-          </span>
-        </div>
-        {/*  simple log in button */}
-        <div className="my-auto w-full">
-          <div
-            onClick={handleLogIn}
-            className="border-2 border-gray-300 bg-gray-200 text-black w-full p-2 rounded-lg font-semibold
+          onClick={handleLogIn}
+          className="border-2 border-gray-300 bg-gray-200 text-black w-full p-2 rounded-lg font-semibold
             hover:bg-gray-100 cursor-pointer text-center "
-          >
-            {initialLoading ? "loading..." : <>Log In</>}
-          </div>
+        >
+          {initialLoading ? "loading..." : <>Log In</>}
         </div>
       </div>
     </div>

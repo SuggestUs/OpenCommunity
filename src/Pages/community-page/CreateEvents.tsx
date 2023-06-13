@@ -5,6 +5,7 @@ import EventDescriptionCom from ".././community-page/EventInputs/EventDescriptio
 import { useEffect, useState } from "react";
 import { dataTypeForEventCreation } from '../../../utils/type';
 export default function CreateEvents() {
+  const [coverImage, setCoverImage] = useState<File | undefined>(undefined);
 
   const objForEventCreation = {
     "event-name": '',
@@ -26,7 +27,6 @@ export default function CreateEvents() {
 
   const [dataForEventCreation, setdataForEventCreation] = useState<dataTypeForEventCreation>(objForEventCreation);
 
-  const [coverImage, setCoverImage] = useState<File | undefined>(undefined);
 
   const [url, setUrl] = useState<string>('')
 

@@ -20,7 +20,7 @@ export default function CommunityList({ isMobile, setDrawer }: propsFoeList) {
 
 
   return (
-    <div className="flex flex-col w-full overflow-auto pl-2 pr-2 border  ">
+    <div className="flex flex-col w-full overflow-auto pl-2 pr-2  ">
       <div className="flex mt-5 items-center justify-center">
         <Link
           to="/community/createcommunity"
@@ -34,10 +34,85 @@ export default function CommunityList({ isMobile, setDrawer }: propsFoeList) {
       </div>
       {/* Section for Community Navigation */}
 
-      {dataForCommunty.dataForCommunity.length !== 0 && dataForCommunty.dataForCommunity.map((item, index) => {
-        return (
+      {dataForCommunty.dataForCommunity.length !== 0 &&
+        dataForCommunty.dataForCommunity.map((item, index) => {
+          return (
+            <div
+              className="flex my-4 w-full rounded-sm justify-center "
+              key={index}
+            >
+              <Accordion>
+              <AccordionSummary
+                expandIcon={<ChevronDownIcon className="h-6 w-6 text-gray-500" />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <div className="flex flex-row ">
+                  <div className="">
+                    <Link to={`/profile/community/${item["uniqueID"]}`} className="flex"
+                      onClick={() => {
+                        isMobile && setDrawer(false)
+                      }}
+                    >
+                      <Stack direction="row" spacing={2}>
+                        <Avatar
+                          alt="Remy Sharp"
+                          src="https://static.vecteezy.com/system/resources/previews/004/218/321/original/cute-cat-white-pet-cartoon-character-free-vector.jpg"
+                        />
+                      </Stack>
+                    </Link>
+                  </div>
+                  <div className="flex mx-2 justify-center items-center w-36">
+                    {item["community-name"]}
+                  </div>
+                </div>
+              </AccordionSummary>
+              <AccordionDetails>
+                <div className="flex flex-col text-black">
+                  <div className=" flex w-full h-14  text-black border-b-2 justify-center items-center">
+                    <Link to="/community/CreateEvents/"
+                      onClick={() => {
+                        isMobile && setDrawer(false)
+                      }}
+                    >
+                      <span className="text-black ">Events</span>
+                    </Link>
+                  </div>
+                  <div className=" flex w-full h-14  text-black border-b-2 justify-center items-center">
+                    <Link to="/community/createHackathons"
+                      onClick={() => {
+                        isMobile && setDrawer(false)
+                      }}
+                    >
+                      <span className="text-black ">Hackathons</span>
+                    </Link>
+                  </div>
+                  <div className=" flex w-full h-14  text-black border-b-2 justify-center items-center">
+                    <Link to="/community/CreateInform"
+                      onClick={() => {
+                        isMobile && setDrawer(false)
+                      }}
+                    >
+                      <span className="text-black ">Inform</span>
+                    </Link>
+                  </div>
+                  <div className=" flex w-full h-14  text-black border-b-2 justify-center items-center">
+                    <Link to="/community/Account"
+                      onClick={() => {
+                        isMobile && setDrawer(false)
+                      }}
+                    >
+                      <span className="text-black ">Profile</span>
+                    </Link>
+                  </div>
+                </div>
+              </AccordionDetails>
+            </Accordion>
+            </div>
+          );
+        })}
 
-          <div className="flex my-4 w-full rounded-sm border " key={index}>
+          {/* <div className="flex my-4 w-full rounded-sm border " key={index}>
             <Accordion>
               <AccordionSummary
                 expandIcon={<ChevronDownIcon className="h-6 w-6 text-gray-500" />}
@@ -107,7 +182,7 @@ export default function CommunityList({ isMobile, setDrawer }: propsFoeList) {
             </Accordion>
           </div>
         )
-      })}
+      })} */}
 
       {
         dataForCommunty.dataForCommunity.length == 0 && (
