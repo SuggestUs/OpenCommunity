@@ -46,7 +46,7 @@ export default function DashbordForCommunity() {
   return (
     <>
       {dateRetrived && (
-        <div className="flex flex-row w-full  h-screen text-black">
+        <div className="flex flex-col md:flex-row w-full  h-screen text-black">
           <div className="flex flex-col border-r w-auto border  h-screen">
             <CommunityList />
           </div>

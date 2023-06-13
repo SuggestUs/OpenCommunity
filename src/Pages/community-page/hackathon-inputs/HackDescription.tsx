@@ -13,7 +13,7 @@ export default function HackDescriptionCom() {
             <input
               type="text"
               placeholder="HackTheCode"
-              className="border p-2  outline-none rounded-md "
+              className="border p-2 w-[10rem] md:w-full  outline-none rounded-md "
             />
           </dd>
         </div>
@@ -24,7 +24,7 @@ export default function HackDescriptionCom() {
           <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
             <input
               type="text"
-              className="border outline-none p-2 rounded-md "
+              className="border outline-none p-2 rounded-md w-[10rem] md:w-full"
               placeholder="online/offline"
             />
           </dd>
@@ -37,7 +37,7 @@ export default function HackDescriptionCom() {
             <input
               type="email"
               placeholder="example@gmail.com"
-              className="border p-2 outline-none rounded-md "
+              className="border p-2 outline-none rounded-md w-[10rem] md:w-full "
             />
           </dd>
         </div>
@@ -49,7 +49,7 @@ export default function HackDescriptionCom() {
             <input
               type="text"
               placeholder="$1000"
-              className="border p-2  outline-none rounded-md "
+              className="border p-2  outline-none rounded-md w-[10rem] md:w-full"
             />
           </dd>
         </div>
@@ -60,7 +60,7 @@ export default function HackDescriptionCom() {
           <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
             <input
               type="date"
-              className="border p-2 outline-none rounded-md "
+              className="border p-2 outline-none rounded-md w-[10rem] md:w-full "
             />
           </dd>
           <dt className="text-sm font-bold leading-6 text-gray-900">
@@ -69,7 +69,7 @@ export default function HackDescriptionCom() {
           <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
             <input
               type="date"
-              className="border p-2 outline-none rounded-md "
+              className="border p-2 outline-none rounded-md w-[10rem] md:w-full"
             />
           </dd>
         </div>
@@ -81,7 +81,7 @@ export default function HackDescriptionCom() {
             <input
               type="text"
               placeholder="Free/Paid"
-              className="border p-2  outline-none rounded-md "
+              className="border p-2  outline-none rounded-md w-[10rem] md:w-full"
             />
           </dd>
         </div>
@@ -92,7 +92,7 @@ export default function HackDescriptionCom() {
           <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
             <textarea
               placeholder="Share details about the  Hackathon"
-              className="border p-2 w-[15rem]  outline-none resize-none rounded-md "
+              className="border p-2  outline-none resize-none rounded-md w-[10rem] md:w-full"
             />
           </dd>
         </div>

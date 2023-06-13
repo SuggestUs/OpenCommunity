@@ -51,22 +51,20 @@ export default function CreateHackathons() {
           </div>
         </div>
       </div>
-      <article className="h-full  p-10 m-9  grid grid-cols-2 border gap-10 ">
-        <div className=" ">
-          <HackDescriptionCom />
-        </div>
+      <article className="h-full  p-5 m-3 w-[95%]  grid grid-cols-2 border gap-10 ">
+        <HackDescriptionCom />
       </article>
-      <article className=" p-5 ml-9 border w-[95%]">
+      <article className=" p-5 m-3 border w-[95%]">
         <p className="font-bold text-left text-2xl">Hackathon Topics 📌</p>
         <HackTopicsCom />
       </article>
-      <article className="p-5  ml-9 flex border mt-9 w-[95%]  justify-between ">
+      <article className="p-5  m-3 flex border mt-9 w-[95%]  justify-between ">
         <p className="font-bold text-left  text-2xl">Judges 🧑‍⚖️</p>
         <div className="mt-5">
           <HackSpeakersCom />
         </div>
       </article>
-      <article className=" p-5 mt-9 w-[95%] ml-9 border">
+      <article className=" p-5 m-3 w-[95%]  border">
         <p className="font-bold text-left text-2xl">Location 🗺️</p>
         <HackVenueCom />
       </article>
