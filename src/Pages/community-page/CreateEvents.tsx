@@ -16,6 +16,8 @@ export default function CreateEvents() {
       setCoverImage(file);
   }
 
+
+
   useEffect(()=>{
      if(url){
       document.getElementById('cover-place')?.classList.add('hidden')
