@@ -44,7 +44,7 @@ export default function SignInForUser() {
     console.log("Result", res);
     if (res.isValid) {
       try {
-        await signInWithAppwrite(signinData).then((res) => {
+        await signInWithAppwrite(signinData).then((_res) => {
           mainContext?.getSession();
           setInitialLoading(false);
           navigate("/home");

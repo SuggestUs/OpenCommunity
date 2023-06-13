@@ -1,4 +1,4 @@
-import {account , client, database ,storage } from '../service'
+import {database ,storage } from '../service'
 
 
 export function getDataForCommunityProfile(uniqueId : string){

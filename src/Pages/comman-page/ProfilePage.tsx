@@ -9,10 +9,8 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { Button, IconButton, Avatar } from "@mui/material";
 export default function ProfilePage() {
   const navigate = useNavigate();
-  const [initialLoading, setInitialLoading] = useState(false);
-  const [data] = useState();
 
-  const [urlForProfile, setUrl] = useState<Blob>();
+  const [_urlForProfile, setUrl] = useState<Blob>();
 
   const handleChangeInProfile = (event: any) => {
     setUrl(event.target.files[0]);
@@ -23,7 +21,7 @@ export default function ProfilePage() {
   };
   return (
     <section>
-      {!initialLoading ? (
+      
         <div className="rounded-lg mt-10 shadow-lg border bg-white mx-6 text-xl font-inter flex flex-col scroll-m-0">
           <div className="p-5 flex justify-start">
             <Button variant="outlined" color="secondary" onClick={handleBack}>
@@ -154,9 +152,6 @@ export default function ProfilePage() {
           </div>
           <div className="mx-auto w-4/5 pt-3 border-b-2 border-grey-100 opacity-25" />
         </div>
-      ) : (
-        <>loading</>
-      )}
-    </section>
+   </section>
   );
 }

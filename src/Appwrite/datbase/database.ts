@@ -1,5 +1,5 @@
 import { Query } from 'appwrite'
-import { account, client, database , storage , ID} from '../service'
+import { database , storage , ID} from '../service'
 
 type objForCommunity = {
     'community-name' : string,
