@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import * as React from "react";
-import { useNavigate } from "react-router-dom";
-import { account, client } from "../../Appwrite/service";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
@@ -20,20 +18,12 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-type propsForDrawer = {
-  openDrawer: boolean;
-};
 
-export default function CreateCommuity({ openDrawer }: propsForDrawer) {
-  const [open, setOpen] = useState(false);
-  const [defaultEmail, setDefaultEmail] = useState("");
 
-  const navigate = useNavigate();
-
-  
-  useEffect(() => {
-    
-  })
+export default function CreateCommuity() {
+  const [_open, setOpen] = useState(false);
+  const [defaultEmail, _setDefaultEmail] = useState("");
+ 
   return (
     <div className="">
       <Dialog

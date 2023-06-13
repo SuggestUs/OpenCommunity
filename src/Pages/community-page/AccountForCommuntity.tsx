@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext} from "react";
+import { useEffect, useState} from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import MarkEmailUnreadOutlinedIcon from "@mui/icons-material/MarkEmailUnreadOutlined";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
@@ -9,13 +9,12 @@ import { Button, IconButton, Avatar } from "@mui/material";
 import { getDataForCommunityProfile , getProfileForCommunity} from "../../Appwrite/search/searchForUrl";
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
-import {CommunityContext} from '../../context/communityContext';
 
 
 export default function AccountForCommuntity() {
   const navigate = useNavigate();
   const params = useParams();
-  const contextForCommunity = useContext(CommunityContext); 
+  // const contextForCommunity = useContext(CommunityContext); 
 
   const objForProfile = {
     status: false,
@@ -31,7 +30,7 @@ export default function AccountForCommuntity() {
 
   const [inValidRequeat, setinValidRequeat] = useState(false);
 
-  const [profile, setProfile] = useState<File | undefined>();
+  const [_profile, setProfile] = useState<File | undefined>();
 
   const [urlForProfile, setUrl] = useState<string>('');
 

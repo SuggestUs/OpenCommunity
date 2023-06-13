@@ -1,5 +1,4 @@
 import { createContext } from "react";
-import { account } from '../Appwrite/service'
 import { getCommunityData } from "../Appwrite/datbase/database";
 
 

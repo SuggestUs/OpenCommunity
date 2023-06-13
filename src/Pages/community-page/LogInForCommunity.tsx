@@ -68,7 +68,7 @@ export default function LogInForCommunity({
       };
       try {
         await createCommunity(objForCommunity, selectedFile).then(
-          (responce) => {
+          (_responce) => {
             setInitialLoading(false);
             // setclose(false);
             navigate("/community");
@@ -215,37 +215,3 @@ export default function LogInForCommunity({
   );
 }
 
-/*
-
-
-Event 
-
-name 
-image id 
-com -email 
-creator email 
-creator username 
-event : {
-    Name :
-    poster : 
-    about :
-    cretaed by :
-    venue :
-    speakers :
-    topics: 
-}
-
-//    Communities
-    
-     1. Email
-     name 
-     Profile :
-     original email 
-     maintaner
-     co-maintaner
-     Evenst : []
-     Hackethons : []     
-
-
-
-*/
