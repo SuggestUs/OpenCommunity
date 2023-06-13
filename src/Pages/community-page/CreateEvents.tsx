@@ -3,7 +3,6 @@ import EventSpeakersCom from ".././community-page/EventInputs/EventSpeakers";
 import EventVenueCom from ".././community-page/EventInputs/EventVenue";
 import EventDescriptionCom from ".././community-page/EventInputs/EventDescription";
 import { useEffect, useState } from "react";
-import { Button } from "@mui/material";
 import { dataTypeForEventCreation } from '../../../utils/type';
 export default function CreateEvents() {
 

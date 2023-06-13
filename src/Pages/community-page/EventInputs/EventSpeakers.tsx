@@ -15,8 +15,8 @@ export default function EventSpeakersCom() {
   }
 
   const fileInputRef1 = useRef<HTMLInputElement>(null);
-  const fileInputRef2 = useRef<HTMLInputElement>(null);
-  const fileInputRef3 = useRef<HTMLInputElement>(null);
+  // const fileInputRef2 = useRef<HTMLInputElement>(null);
+  // const fileInputRef3 = useRef<HTMLInputElement>(null);
 
   const [speakersURL, setSpeakersURL] = useState<typeForSpeakersURL>({
     speaker1: '',

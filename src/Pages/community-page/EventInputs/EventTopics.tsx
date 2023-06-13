@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react'
-import { dataTypeForEventCreation } from '../../../../utils/type';
+// import { useEffect, useState } from 'react'
+// import { dataTypeForEventCreation } from '../../../../utils/type';
 import Button from '@mui/material/Button';
 
 export default function EventTopicsCom() {
 
 
-  type props = {
-    objForEvent: dataTypeForEventCreation
-    setObj: React.Dispatch<React.SetStateAction<dataTypeForEventCreation>>
-  }
+  // type props = {
+  //   objForEvent: dataTypeForEventCreation
+  //   setObj: React.Dispatch<React.SetStateAction<dataTypeForEventCreation>>
+  // }
 
   const posts = [
     {
