@@ -26,3 +26,22 @@ export type ResultForAuth = {
     isValid : boolean;
     message : string;
 }
+
+
+export type dataTypeForEventCreation = {
+    "event-name" : string,
+    "coverImageId" : string,
+    "event-mode" : string,
+    "event-email" : string,
+    "event-date" : Date | string,
+    "about-event" : string,
+    "event-topic" : string[],
+    "event-tag" : string[],
+    "about-topic" : string[],
+    "speakersProfileId" : string[],
+    "speakers-name" : string[],
+    "speakers-post" : string[],
+    "Location" : string,
+    "creatorId" : string
+    "event-fees" : string,
+  }

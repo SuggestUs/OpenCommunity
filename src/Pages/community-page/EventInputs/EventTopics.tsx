@@ -1,24 +1,43 @@
+import { useEffect, useState } from 'react'
+import { dataTypeForEventCreation } from '../../../../utils/type';
+import Button from '@mui/material/Button';
+
 export default function EventTopicsCom() {
+
+
+  type props = {
+    objForEvent: dataTypeForEventCreation
+    setObj: React.Dispatch<React.SetStateAction<dataTypeForEventCreation>>
+  }
+
   const posts = [
     {
       id: 1,
     },
     {
-      id: 2,
+      id: 1,
     },
     {
-      id: 3,
+      id: 1,
     },
+    {
+      id: 1,
+    },
+    {
+      id: 1,
+    },
+    
   ];
   return (
-    <div className="mx-auto text-left max-w-7xl pb-10 ">
-      <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16  lg:mx-0 lg:max-w-none lg:grid-cols-3">
+    <div className="mx-auto text-left  pb-10 ">
+      <div className="flex flex-row flex-wrap justify-normal:md justify-center">
+
         {posts.map((post) => (
           <article
             key={post.id}
-            className="flex max-w-xl border p-5 hover:border-gray-600 rounded-md flex-col items-start justify-between"
+            className="flex max-w-xl border p-5 hover:border-gray-600 rounded-md flex-col items-start justify-center mx-4 my-4"  
           >
-            <div className="flex items-center gap-x-4 text-xs">
+            <div className="flex items-center gap-x-4 text-xs ">
               <input type="date" className="text-gray-500 outline-none" />
               <input
                 type="text"
@@ -41,7 +60,15 @@ export default function EventTopicsCom() {
             </div>
           </article>
         ))}
+
+      </div>
+      <div className='flex justify-center mt-10'>
+        <Button variant='contained' >Add One</Button>
       </div>
     </div>
   );
 }
+
+
+// 
+// mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16  lg:mx-0 lg:max-w-none lg:grid-cols-3

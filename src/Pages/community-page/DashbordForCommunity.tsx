@@ -11,6 +11,7 @@ import { CommunityContext } from "../../context/communityContext";
 import { MainContext } from "../../context/context";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
+import { Button, Drawer } from "@mui/material";
 
 export default function DashbordForCommunity() {
   if (!useLocation().pathname.startsWith("/community")) {
@@ -21,6 +22,13 @@ export default function DashbordForCommunity() {
   const mainContext = useContext(MainContext);
 
   const [dateRetrived, setdateRetrived] = useState(false);
+
+
+  const [openDrawer, setDrawer] = useState(false)
+
+  const toggleDrawer = () => {
+    setDrawer(false);
+  }
 
   useEffect(() => {
     async function fetchDataForCommunity() {
@@ -47,8 +55,13 @@ export default function DashbordForCommunity() {
     <>
       {dateRetrived && (
         <div className="flex flex-row w-full  h-screen text-black">
-          <div className="flex flex-col border-r w-auto border  h-screen">
-            <CommunityList />
+          <div className="md:flex flex-col border-r w-auto border  h-screen hidden">
+            <CommunityList isMobile={false} setDrawer={setDrawer}/>
+          </div>
+          <div className="flex md:hidden">
+            <Button variant='contained' className="h-10"
+             onClick={()=>setDrawer(true)}
+             >open</Button>
           </div>
           <div className="w-full border  h-auto overflow-auto">
             <Routes>
@@ -92,6 +105,13 @@ export default function DashbordForCommunity() {
           </Box>
         </div>
       )}
+      <Drawer
+        anchor='left'
+        open={openDrawer}
+        onClose={toggleDrawer}
+      >
+        <CommunityList  isMobile={true} setDrawer={setDrawer}/>
+      </Drawer>
     </>
   );
 }
