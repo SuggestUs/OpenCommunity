@@ -2,7 +2,6 @@ import { useState, ChangeEvent, useContext } from "react";
 import { TextField, FormControl } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import CustomizedSnackbars from "../Alert/Alert.jsx";
-import { FaGithub } from "react-icons/fa";
 import { LogInRule, AlertRuel, ResultForAuth } from "../../utils/type";
 import { LoginInValidation } from "../../validation/loginValidation.js";
 import { loginWithAppwrite } from "../Appwrite/auth/login.app.js";
