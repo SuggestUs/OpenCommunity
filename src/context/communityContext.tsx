@@ -18,17 +18,7 @@ type objTypeForCommunity = {
 
 type communityContextType = objTypeForCommunity[];
 
-const objForCommunity: communityContextType = [
-    {
-        "community-name": '',
-        "community-email": '',
-        "creator-email": '',
-        "organized-events": [],
-        "organized-hack	": [],
-        "profileId": '',
-        "uniqueID" : ''
-    }
-];
+const objForCommunity: communityContextType = [];
 
 type typeForContext = {
     dataloaded: boolean,
