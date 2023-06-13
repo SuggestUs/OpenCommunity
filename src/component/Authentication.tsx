@@ -25,7 +25,7 @@ function TabPanel(props: TabPanelProps) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          <Typography component="span">{children}</Typography>
         </Box>
       )}
     </div>
@@ -53,16 +53,14 @@ export default function Authentication() {
 
 
   }, []);
-  console.log("location.state",)
   return (
-    <section className="flex flex-col justify-center items-center h-screen ">
-      <div className="my-5 font-bold text-center text-black text-2xl md:text-3xl ">
-        {" "}
+    <section className="flex flex-col justify-center items-center h-screen">
+      <div className="my-5 font-bold text-center text-black text-2xl md:text-3xl">
         Welcome to,<span className="text-primary">Open </span>
         <span className="text-black">Community</span>
       </div>
-      <div className="bg-white p-4 rounded-lg border-2  md:w-1/3 w-5/6 text-center flex flex-row shadow-md ">
-        <div className=" w-full mx-2 md:justify-end justify-center h-[35rem] overflow-y-auto">
+      <div className="bg-white p-4 rounded-lg border-2 md:w-1/3 w-5/6 text-center flex flex-row shadow-md">
+        <div className="w-full mx-2 md:justify-end justify-center h-[35rem] overflow-y-auto">
           <Box sx={{ width: "100%" }}>
             <Box>
               <Tabs
@@ -73,7 +71,7 @@ export default function Authentication() {
                   style: { backgroundColor: "purple" },
                 }}
               >
-                <Tab label="Log In " style={Fontcolor} />
+                <Tab label="Log In" style={Fontcolor} />
                 <Tab label="Sign Up" style={Fontcolor} />
               </Tabs>
             </Box>

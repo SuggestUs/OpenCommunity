@@ -9,15 +9,13 @@ import HackathonDetailsPage from "./comman-page/HackathonDetailsPage";
 import ProfilePage from "./comman-page/ProfilePage";
 import EventDetailsPage from "./comman-page/EventDetailsPage";
 import { MainContext, MainContextProvider } from "../context/context";
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
-import { CommunityContextProvider } from '../context/communityContext';
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
+import { CommunityContextProvider } from "../context/communityContext";
 import AccountForCommuntity from "./community-page/AccountForCommuntity";
 
 export default function DashBord() {
-
   const mainContext = useContext(MainContext);
-
   const [isvalid, setisValid] = useState(false);
   
   
@@ -47,10 +45,10 @@ export default function DashBord() {
   
   return (
     <MainContextProvider>
-      {isvalid && (
+      {isvalid ? (
         <div className="h-screen flex md:flex-row flex-col w-full">
           <NavbarForDashBord />
-          <div className=" md:w-11/12 w-full overflow-auto">
+          <div className="md:w-11/12 w-full overflow-auto">
             <Routes>
               <Route
                 path="/home"
@@ -115,19 +113,13 @@ export default function DashBord() {
             </CommunityContextProvider>
           </div>
         </div>
-      )}
-      {!isvalid && (
+      ) : (
         <div className="h-screen flex md:flex-row flex-col w-full">
-          <Box className='mx-10'>
+          <Box className="mx-10">
             <CircularProgress />
           </Box>
         </div>
       )}
     </MainContextProvider>
   )
-
- 
 }
-
-
-
