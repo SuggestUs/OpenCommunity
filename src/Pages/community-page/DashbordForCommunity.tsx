@@ -79,7 +79,7 @@ export default function DashbordForCommunity() {
               />
               <Route
                 path="/community/createcommunity"
-                element={<CreateCommuity openDrawer={true} />}
+                element={<CreateCommuity />}
               />
             </Routes>
           </div>
