@@ -37,7 +37,7 @@ export default function Authentication() {
 
   const [value, setValue] = useState(0);
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
@@ -46,12 +46,14 @@ export default function Authentication() {
   };
 
   useEffect(() => {
-    //  this function make signIn tab open for user if user navigate back from page which contains doctor's authentication
-    // console.log("location.state", location)
+     
     if (location.state !== null) {
       setValue(location.state.authNo);
     }
+
+
   }, []);
+  console.log("location.state",)
   return (
     <section className="flex flex-col justify-center items-center h-screen ">
       <div className="my-5 font-bold text-center text-black text-2xl md:text-3xl ">

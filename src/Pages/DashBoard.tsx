@@ -1,5 +1,5 @@
 import { useEffect, useContext, Suspense, useState } from "react";
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import NavbarForDashBord from "../component/NavbarForDashBord";
 import DashbordForCommunity from "./community-page/DashbordForCommunity";
 import EventPage from "./comman-page/EventPage";
@@ -16,43 +16,35 @@ import AccountForCommuntity from "./community-page/AccountForCommuntity";
 
 export default function DashBord() {
 
-  const navigate = useNavigate();
-
   const mainContext = useContext(MainContext);
 
   const [isvalid, setisValid] = useState(false);
+  
+  
+ 
+  const navigate = useNavigate();
 
-  let permission =
-    useLocation().pathname.startsWith("/home") ||
-    useLocation().pathname.startsWith("/event") ||
-    useLocation().pathname.startsWith("/hackathon") ||
-    useLocation().pathname.startsWith("/community") ||
-    useLocation().pathname.startsWith("/profile/user") ||
-    useLocation().pathname.startsWith("/profile/community") 
-
-  if (!permission) {
-    return null;
+  async function fetchData() {
+    try {
+      await mainContext.getSession();
+      setisValid(true);
+    } catch (error) {
+      console.log("error", error)
+      navigate('/authentication');
+    }
   }
 
-
   useEffect(() => {
-    console.log("Run useEffect Of Dashbord")
-    async function fetchData() {
-      try {
-        await mainContext.getSession();
-        setisValid(true)
-      } catch (error) {
-        navigate('/');
+
+      if (!mainContext.userData.isAuthenticate) {
+        fetchData();
       }
-    }
-    if (!mainContext.userData.isAuthenticate) {
-      fetchData();
-    } else {
-      setisValid(true)
-    }
+      else {
+        setisValid(true)
+      }
+
   }, [isvalid]);
-
-
+  
   return (
     <MainContextProvider>
       {isvalid && (
@@ -133,6 +125,8 @@ export default function DashBord() {
       )}
     </MainContextProvider>
   )
+
+ 
 }
 
 

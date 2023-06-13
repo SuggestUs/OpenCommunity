@@ -1,5 +1,5 @@
 import { useState, ChangeEvent, useContext } from "react";
-import { Button, TextField, FormControl } from "@mui/material";
+import {  TextField, FormControl } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import CustomizedSnackbars from "../Alert/Alert.jsx";
 import { FaGithub } from "react-icons/fa";
@@ -33,12 +33,12 @@ export default function Login() {
     const res: ResultForAuth = LoginInValidation(loginData);
     if (res.isValid) {
       try {
-        await loginWithAppwrite(loginData).then((res) => {
+        await loginWithAppwrite(loginData).then((_res) => {
           // console.log("res" , res)
           mainContext?.getSession();
           setInitialLoading(false);
-          navigate("/home");
         });
+        navigate("/home");
       } catch (error: any) {
         const errorMessage: string = error.toString();
         setAlert({

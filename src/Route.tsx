@@ -7,7 +7,6 @@ import AboutUs from "./Pages/AboutUs";
 import Authentication from "./component/Authentication";
 import DashBoard from "./Pages/DashBoard";
 import Footer from "./component/Footer";
-import { MainContextProvider } from "./context/context";
 export default function MainRoute() {
 
   return (
@@ -39,10 +38,8 @@ export default function MainRoute() {
               </Suspense>
             }
           />
-        </Routes>
-        {/* <MainContextProvider> */}
+          </Routes>
           <DashBoard />
-        {/* </MainContextProvider> */}
         <Footer />
       </main>
     </Router>

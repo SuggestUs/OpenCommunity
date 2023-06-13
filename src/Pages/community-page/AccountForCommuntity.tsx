@@ -74,7 +74,7 @@ export default function AccountForCommuntity() {
       }
 
     }
-
+     console.log('urlForProfile' , urlForProfile)
     fetchProfile();
   }, [initialLoading])
 

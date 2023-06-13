@@ -1,8 +1,6 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect } from "react";
 import { account } from '../Appwrite/service'
 import { getDocument } from "../Appwrite/datbase/database";
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
 
 type child = {
   children: React.ReactNode
@@ -53,7 +51,7 @@ const checkForSession = () => {
       resolve(commdata)
 
     } catch (error) {
-      reject("You are not logged In SORRY")
+      reject( new Error("Error is here"))
     }
   })
 };
