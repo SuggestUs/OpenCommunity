@@ -1,4 +1,4 @@
-import { useEffect, useContext, Suspense, useState } from "react";
+import { useEffect, useContext, useState, Suspense } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import NavbarForDashBord from "../component/NavbarForDashBord";
 import DashbordForCommunity from "./community-page/DashbordForCommunity";
@@ -16,22 +16,8 @@ import AccountForCommuntity from "./community-page/AccountForCommuntity";
 
 export default function DashBord() {
   const navigate = useNavigate();
-
   const mainContext = useContext(MainContext);
-
   const [isvalid, setisValid] = useState(false);
-
-  let permission =
-    useLocation().pathname.startsWith("/home") ||
-    useLocation().pathname.startsWith("/event") ||
-    useLocation().pathname.startsWith("/hackathon") ||
-    useLocation().pathname.startsWith("/community") ||
-    useLocation().pathname.startsWith("/profile/user") ||
-    useLocation().pathname.startsWith("/profile/community");
-
-  if (!permission) {
-    return null;
-  }
 
   useEffect(() => {
     console.log("Run useEffect Of Dashbord");
@@ -43,19 +29,28 @@ export default function DashBord() {
         navigate("/");
       }
     }
-    if (!mainContext.userData.isAuthenticate) {
-      fetchData();
-    } else {
-      setisValid(true);
-    }
-  }, [isvalid]);
+
+    fetchData();
+  }, []);
+
+  const permission =
+    useLocation().pathname.startsWith("/home") ||
+    useLocation().pathname.startsWith("/event") ||
+    useLocation().pathname.startsWith("/hackathon") ||
+    useLocation().pathname.startsWith("/community") ||
+    useLocation().pathname.startsWith("/profile/user") ||
+    useLocation().pathname.startsWith("/profile/community");
+
+  if (!permission) {
+    return null;
+  }
 
   return (
     <MainContextProvider>
-      {isvalid && (
+      {isvalid ? (
         <div className="h-screen flex md:flex-row flex-col w-full">
           <NavbarForDashBord />
-          <div className=" md:w-11/12 w-full overflow-auto">
+          <div className="md:w-11/12 w-full overflow-auto">
             <Routes>
               <Route
                 path="/home"
@@ -120,8 +115,7 @@ export default function DashBord() {
             </CommunityContextProvider>
           </div>
         </div>
-      )}
-      {!isvalid && (
+      ) : (
         <div className="h-screen flex md:flex-row flex-col w-full">
           <Box className="mx-10">
             <CircularProgress />
