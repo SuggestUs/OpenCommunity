@@ -9,22 +9,20 @@ import { useContext, useEffect, useState } from "react";
 import { CommunityContext } from "../../context/communityContext";
 
 type propsFoeList = {
-  isMobile: boolean
-  setDrawer: React.Dispatch<React.SetStateAction<boolean>>
-}
+  isMobile: boolean;
+  setDrawer: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 export default function CommunityList({ isMobile, setDrawer }: propsFoeList) {
+  const [isCommunity, setisCommunity] = useState<boolean>(false);
 
+  const dataForCommunty = useContext(CommunityContext);
 
-  const [isCommunity ,  setisCommunity] = useState<boolean>(false);
-
-  const dataForCommunty = useContext(CommunityContext)
-
-  useEffect(()=>{
-    if(dataForCommunty.dataForCommunity.length !== 0){
+  useEffect(() => {
+    if (dataForCommunty.dataForCommunity.length !== 0) {
       setisCommunity(true);
     }
-  }, [])
+  }, []);
 
   return (
     <div className="flex flex-col w-full overflow-auto pl-2 pr-2  ">
@@ -33,7 +31,7 @@ export default function CommunityList({ isMobile, setDrawer }: propsFoeList) {
           to="/community/createcommunity"
           className=" border pr-14 pl-10 pt-5 pb-5 border-gray-300 hover:border-gray-500 rounded-md bg-gray-100"
           onClick={() => {
-            isMobile && setDrawer(false)
+            isMobile && setDrawer(false);
           }}
         >
           Create your Community
@@ -43,7 +41,7 @@ export default function CommunityList({ isMobile, setDrawer }: propsFoeList) {
 
       {isCommunity &&
         dataForCommunty.dataForCommunity.map((item, index) => {
-          console.log("Inside", item)
+          console.log("Inside", item);
           return (
             <div
               className="flex my-4 w-full rounded-sm justify-center "
@@ -51,15 +49,19 @@ export default function CommunityList({ isMobile, setDrawer }: propsFoeList) {
             >
               <Accordion>
                 <AccordionSummary
-                  expandIcon={<ChevronDownIcon className="h-6 w-6 text-gray-500" />}
+                  expandIcon={
+                    <ChevronDownIcon className="h-6 w-6 text-gray-500" />
+                  }
                   aria-controls="panel1a-content"
                   id="panel1a-header"
                 >
                   <div className="flex flex-row ">
                     <div className="">
-                      <Link to={`/profile/community/${item["uniqueID"]}`} className="flex"
+                      <Link
+                        to={`/profile/community/${item["uniqueID"]}`}
+                        className="flex"
                         onClick={() => {
-                          isMobile && setDrawer(false)
+                          isMobile && setDrawer(false);
                         }}
                       >
                         <Stack direction="row" spacing={2}>
@@ -78,36 +80,30 @@ export default function CommunityList({ isMobile, setDrawer }: propsFoeList) {
                 <AccordionDetails>
                   <div className="flex flex-col text-black">
                     <div className=" flex w-full h-14  text-black border-b-2 justify-center items-center">
-                      <Link to="/community/CreateEvents/"
+                      <Link
+                        to="/community/CreateEvents/"
                         onClick={() => {
-                          isMobile && setDrawer(false)
+                          isMobile && setDrawer(false);
                         }}
                       >
                         <span className="text-black ">Events</span>
                       </Link>
                     </div>
                     <div className=" flex w-full h-14  text-black border-b-2 justify-center items-center">
-                      <Link to="/community/createHackathons"
+                      <Link
+                        to="/community/createHackathons"
                         onClick={() => {
-                          isMobile && setDrawer(false)
+                          isMobile && setDrawer(false);
                         }}
                       >
                         <span className="text-black ">Hackathons</span>
                       </Link>
                     </div>
                     <div className=" flex w-full h-14  text-black border-b-2 justify-center items-center">
-                      <Link to="/community/CreateInform"
+                      <Link
+                        to="/community/Account"
                         onClick={() => {
-                          isMobile && setDrawer(false)
-                        }}
-                      >
-                        <span className="text-black ">Inform</span>
-                      </Link>
-                    </div>
-                    <div className=" flex w-full h-14  text-black border-b-2 justify-center items-center">
-                      <Link to="/community/Account"
-                        onClick={() => {
-                          isMobile && setDrawer(false)
+                          isMobile && setDrawer(false);
                         }}
                       >
                         <span className="text-black ">Profile</span>
@@ -120,15 +116,11 @@ export default function CommunityList({ isMobile, setDrawer }: propsFoeList) {
           );
         })}
 
-
-
-      {
-        !isCommunity && (
-          (<div className="flex my-4 w-full rounded-sm border ">
-            {"You do not have any community yet "}
-          </div>)
-        )
-      }
+      {!isCommunity && (
+        <div className="flex my-4 w-full rounded-sm border ">
+          {"You do not have any community yet "}
+        </div>
+      )}
     </div>
   );
 }

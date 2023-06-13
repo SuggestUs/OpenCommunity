@@ -12,7 +12,7 @@ export default function NavbarForDashBord() {
   const navLink = [
     {
       name: "Home",
-      path: "/home",
+      path: "/dashboard",
       icon: (
         <HomeIcon className="text-black w-4 md:w-6 hover:text-primary focus:text-primary " />
       ),

@@ -1,4 +1,4 @@
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import MarkEmailUnreadOutlinedIcon from "@mui/icons-material/MarkEmailUnreadOutlined";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
@@ -6,24 +6,26 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { Button, IconButton, Avatar } from "@mui/material";
-import { getDataForCommunityProfile , getProfileForCommunity} from "../../Appwrite/search/searchForUrl";
-import Box from '@mui/material/Box';
-import CircularProgress from '@mui/material/CircularProgress';
-
+import {
+  getDataForCommunityProfile,
+  getProfileForCommunity,
+} from "../../Appwrite/search/searchForUrl";
+import Box from "@mui/material/Box";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export default function AccountForCommuntity() {
   const navigate = useNavigate();
   const params = useParams();
-  // const contextForCommunity = useContext(CommunityContext); 
+  // const contextForCommunity = useContext(CommunityContext);
 
   const objForProfile = {
     status: false,
-    'community-email': '',
-    'community-name': '',
-    'creator-email': '',
-    'organized-events': [],
-    'organized-hack': [],
-  }
+    "community-email": "",
+    "community-name": "",
+    "creator-email": "",
+    "organized-events": [],
+    "organized-hack": [],
+  };
   const [profileData, setprofileData] = useState(objForProfile);
 
   const [initialLoading, setInitialLoading] = useState(false);
@@ -32,8 +34,7 @@ export default function AccountForCommuntity() {
 
   const [_profile, setProfile] = useState<File | undefined>();
 
-  const [urlForProfile, setUrl] = useState<string>('');
-
+  const [urlForProfile, setUrl] = useState<string>("");
 
   const handleChangeInProfile = (event: any) => {
     let file = event.target.files?.[0];
@@ -46,40 +47,41 @@ export default function AccountForCommuntity() {
   };
 
   useEffect(() => {
-
     async function fetchProfile() {
       const communityId: any = params.id;
       try {
-        let data: any = await getDataForCommunityProfile(communityId)
-        console.log("data data" , data)
+        let data: any = await getDataForCommunityProfile(communityId);
+        console.log("data data", data);
         setprofileData({
           ...profileData,
           status: true,
-          'community-email': data["community-email"],
-          'community-name': data["community-name"],
-          'creator-email': data["creator-email"],
-        })
+          "community-email": data["community-email"],
+          "community-name": data["community-name"],
+          "creator-email": data["creator-email"],
+        });
 
-        let src : any = data.profileId !=='' ?  await getProfileForCommunity(data.profileId) : '';
-        console.log("src" , src)
-         
-        src !== '' && setUrl(src.href)
+        let src: any =
+          data.profileId !== ""
+            ? await getProfileForCommunity(data.profileId)
+            : "";
+        console.log("src", src);
+
+        src !== "" && setUrl(src.href);
 
         setInitialLoading(true);
       } catch (error) {
         // console.log(error);
         setInitialLoading(true);
-        setinValidRequeat(true)
+        setinValidRequeat(true);
       }
-
     }
-     console.log('urlForProfile' , urlForProfile)
+    console.log("urlForProfile", urlForProfile);
     fetchProfile();
-  }, [initialLoading])
+  }, [initialLoading]);
 
   return (
     <div>
-      {(initialLoading && profileData.status) && (
+      {initialLoading && profileData.status && (
         <div className="rounded-lg mt-10 shadow-lg border bg-white mx-6 text-xl font-inter flex flex-col scroll-m-0">
           <div className="p-5 flex justify-start">
             <Button variant="outlined" color="secondary" onClick={handleBack}>
@@ -115,7 +117,9 @@ export default function AccountForCommuntity() {
                 backgroundImage: `url()`,
               }}
             />
-            <h1 className="text-3xl font-bold text-gray-900">{profileData["community-name"]}</h1>
+            <h1 className="text-3xl font-bold text-gray-900">
+              {profileData["community-name"]}
+            </h1>
             <div className="flex gap-2 mt-5">
               <GitHubIcon className="text-black" />
               <TwitterIcon className="text-blue-400" />
@@ -131,12 +135,12 @@ export default function AccountForCommuntity() {
                   }}
                 />
               </span>
-              <span className="ml-2 mb-10">{profileData["community-email"]}</span>
-            </p>  
+              <span className="ml-2 mb-10">
+                {profileData["community-email"]}
+              </span>
+            </p>
             <p className="text-black mt-10 font-bold">organizations</p>
-            <div className="flex gap-2 mt-4">
-              
-            </div>
+            <div className="flex gap-2 mt-4"></div>
           </div>
           <div className="mx-auto w-4/5 pt-3 border-b-2 border-grey-100 opacity-25" />
         </div>
@@ -144,7 +148,7 @@ export default function AccountForCommuntity() {
       {!initialLoading && (
         <>
           <div className="h-screen flex md:flex-row flex-col w-full">
-            <Box className='mx-10'>
+            <Box className="mx-10">
               <CircularProgress />
             </Box>
           </div>
@@ -157,7 +161,7 @@ export default function AccountForCommuntity() {
               Back
             </Button>
           </div>
-          {'Sorry Chhotu , No user'}
+          {"Sorry Chhotu , No user"}
         </div>
       )}
     </div>

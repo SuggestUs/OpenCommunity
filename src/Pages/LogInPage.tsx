@@ -35,7 +35,7 @@ export default function Login() {
           mainContext?.getSession();
           setInitialLoading(false);
         });
-        navigate("/home");
+        navigate("/dashboard");
       } catch (error: any) {
         const errorMessage: string = error.toString();
         setAlert({
