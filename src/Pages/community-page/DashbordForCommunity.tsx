@@ -46,11 +46,11 @@ export default function DashbordForCommunity() {
   return (
     <>
       {dateRetrived && (
-        <div className="flex flex-row w-full  h-screen text-black ">
-          <div className="flex flex-col border-r w-auto ">
+        <div className="flex flex-row w-full  h-screen text-black">
+          <div className="flex flex-col border-r w-auto border  h-screen">
             <CommunityList />
           </div>
-          <div className="w-4/5">
+          <div className="w-full border  h-auto overflow-auto">
             <Routes>
               <Route
                 path="/community"
