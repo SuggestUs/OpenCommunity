@@ -1,47 +1,56 @@
 import EventTopicsCom from "./EventInputs/EventTopicsInput";
 import EventSpeakersCom from "./EventInputs/EventSpeakersInput";
-import EventVenueCom from "./EventInputs/EventVenueInput";
+// import EventVenueCom from "./EventInputs/EventVenueInput";
 import EventDescriptionCom from "./EventInputs/EventDescriptionInput";
 import { useEffect, useState } from "react";
 import { dataTypeForEventCreation } from "../../../utils/type";
+import { Button } from "@mui/material";
 export default function CreateEvents() {
-  const [coverImage, setCoverImage] = useState<File | undefined>(undefined);
 
   const objForEventCreation = {
     "event-name": "",
-    coverImageId: "",
+    "coverImageUrl": '',
+    "coverImageFile": undefined,
     "event-mode": "",
     "event-email": "",
     "event-date": "",
     "about-event": "",
     "event-topic": [],
+    "topic-time": [],
     "event-tag": [],
     "about-topic": [],
-    speakersProfileId: [],
+    "speakersProfileId": [],
     "speakers-name": [],
     "speakers-post": [],
-    Location: "",
-    creatorId: "",
-    "event-fees": "Free",
+    "Location": "",
+    "creatorId": "",
+    "event-fees": 0,
+    "City": '',
+    "country": '',
+    "address": ''
   };
 
   const [dataForEventCreation, setdataForEventCreation] =
     useState<dataTypeForEventCreation>(objForEventCreation);
 
-  const [url, setUrl] = useState<string>("");
 
   const handleChangeForCover = (event: any) => {
     let file = event.target.files[0];
-    setUrl(URL.createObjectURL(file));
-    setCoverImage(file);
+    setdataForEventCreation({
+      ...dataForEventCreation,
+      "coverImageUrl": URL.createObjectURL(file),
+      "coverImageFile": file
+    });
   };
 
+
+
   useEffect(() => {
-    if (url) {
+    if (dataForEventCreation.coverImageUrl) {
       document.getElementById("cover-place")?.classList.add("hidden");
       document.getElementById("cover-image")?.classList.remove("hidden");
     }
-  }, [coverImage]);
+  }, [dataForEventCreation.coverImageUrl]);
 
   return (
     <>
@@ -94,7 +103,7 @@ export default function CreateEvents() {
               </p>
             </div>
             <div className="center hidden" id="cover-image">
-              <img src={url} className="h-96 w-full" alt="#Imaage" />
+              <img src={dataForEventCreation.coverImageUrl} className="h-96 w-full" alt="#Imaage" />
             </div>
           </div>
         </div>
@@ -105,10 +114,16 @@ export default function CreateEvents() {
           />
         </div>
         <div className="border flex flex-row:md flex-col mt-10 rounded-xl mx-4 ">
-          <p className="flex items-center justify-center pt-5 font-bold text-xl md:text-2xl">
-            Event Topics 📌
-          </p>
-          <EventTopicsCom />
+          {/* <div className="flex flex-row ">
+            <p className="flex items-center mx-10 p-5 font-bold text-xl md:text-2xl border w-4/5">
+              Event Topics 📌
+            </p>
+            <Button variant="outlined" onClick={setTomainObj}>Done</Button>
+          </div> */}
+          <EventTopicsCom
+            objForEvent={dataForEventCreation}
+            setObj={setdataForEventCreation}
+          />
         </div>
         <div className="border w-auto flex flex-col mt-10 rounded-xl mx-4 flex-wrap">
           <p className="flex items-center justify-center pt-5 font-bold text-xl md:text-2xl">
@@ -116,12 +131,12 @@ export default function CreateEvents() {
           </p>
           <EventSpeakersCom />
         </div>
-        <div className="border w-auto flex flex-row:md flex-col mt-10 rounded-xl mx-4 flex-wrap">
+        {/* <div className="border w-auto flex flex-row:md flex-col mt-10 rounded-xl mx-4 flex-wrap">
           <p className="flex items-center justify-center pt-5 font-bold text-xl md:text-2xl">
             Event Venue 📌
           </p>
           <EventVenueCom />
-        </div>
+        </div> */}
       </section>
     </>
   );

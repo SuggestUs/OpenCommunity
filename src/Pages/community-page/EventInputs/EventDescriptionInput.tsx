@@ -9,6 +9,7 @@ type props = {
   objForEvent: dataTypeForEventCreation;
   setObj: React.Dispatch<React.SetStateAction<dataTypeForEventCreation>>;
 };
+
 export default function EventDescriptionCom({ objForEvent, setObj }: props) {
   const [mode, setMode] = useState<string>("");
 
@@ -50,6 +51,7 @@ export default function EventDescriptionCom({ objForEvent, setObj }: props) {
               onChange={handleChangeInDetailsForEvent}
               className="border p-2  outline-none rounded-md "
               fullWidth
+              value={objForEvent["event-name"]}
             />
           </dd>
         </div>
@@ -92,6 +94,7 @@ export default function EventDescriptionCom({ objForEvent, setObj }: props) {
               className="border p-2  outline-none rounded-md "
               helperText="This email is for communication purpose with community"
               fullWidth
+              value={objForEvent["event-email"]}
             />
           </dd>
         </div>
@@ -108,6 +111,7 @@ export default function EventDescriptionCom({ objForEvent, setObj }: props) {
               onChange={handleChangeInDetailsForEvent}
               className="border p-2  outline-none rounded-md "
               fullWidth
+              value={objForEvent["event-date"]}
             />
           </dd>
         </div>
@@ -124,19 +128,74 @@ export default function EventDescriptionCom({ objForEvent, setObj }: props) {
               label="Amount"
               onChange={handleChangeInDetailsForEvent}
               fullWidth
+              value={objForEvent["event-fees"]}
             />
           </dd>
         </div>
         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt className="text-sm font-bold leading-6 text-gray-900">
+            Address
+          </dt>
+          <dd>
+            <TextField
+              variant="outlined"
+              type="text"
+              name="address"
+              className="border p-2  outline-none rounded-md"
+              label="Address"
+              onChange={handleChangeInDetailsForEvent}
+              fullWidth
+              value={objForEvent.address}
+              helperText='Do not mention City and Contry here '
+            />
+          </dd>
+        </div>
+        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt className="text-sm font-bold leading-6 text-gray-900">
+            City
+          </dt>
+          <dd>
+            <TextField
+              variant="outlined"
+              type="text"
+              name="City"
+              className="border p-2  outline-none rounded-md"
+              label="City"
+              onChange={handleChangeInDetailsForEvent}
+              fullWidth
+              value={objForEvent.City}
+            />
+          </dd>
+        </div>
+        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt className="text-sm font-bold leading-6 text-gray-900">
+            Country
+          </dt>
+          <dd>
+            <TextField
+              variant="outlined"
+              type="text"
+              name="country"
+              className="border p-2  outline-none rounded-md"
+              label="Country"
+              onChange={handleChangeInDetailsForEvent}
+              fullWidth
+              value={objForEvent.country}
+              helperText='Please give Full address'
+            />
+          </dd>
+        </div>
+        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
           <dt className="text-sm font-bold leading-6 text-gray-900">
             About the Event
           </dt>
           <dd>
             <textarea
               placeholder="Share details about the  Event"
-              className="border p-2 w-full h-32 outline-none resize-none rounded-md "
+              className="border p-2 w-full h-64 outline-none resize-none rounded-md "
               onChange={handleChangeInDetailsForEvent}
               name="about-event"
+              value={objForEvent["about-event"]}
             />
           </dd>
         </div>
