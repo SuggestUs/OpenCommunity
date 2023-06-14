@@ -11,10 +11,10 @@ import { CommunityContext } from "../../context/communityContext";
 import { MainContext } from "../../context/context";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
-import { Button, Drawer } from "@mui/material";
+import { Drawer } from "@mui/material";
+import { Bars3Icon } from "@heroicons/react/24/outline";
 
 export default function DashbordForCommunity() {
-  
   if (!useLocation().pathname.startsWith("/community")) {
     return null;
   }
@@ -24,12 +24,11 @@ export default function DashbordForCommunity() {
 
   const [dateRetrived, setdateRetrived] = useState(false);
 
-
-  const [openDrawer, setDrawer] = useState(false)
+  const [openDrawer, setDrawer] = useState(false);
 
   const toggleDrawer = () => {
     setDrawer(false);
-  }
+  };
 
   useEffect(() => {
     async function fetchDataForCommunity() {
@@ -56,15 +55,15 @@ export default function DashbordForCommunity() {
     <>
       {dateRetrived && (
         <div className="flex flex-row w-full  h-screen text-black">
-          <div className="md:flex flex-col border-r w-auto border  h-screen hidden">
-            <CommunityList isMobile={false} setDrawer={setDrawer}/>
+          <div className="md:flex flex-col border-r w-auto border  h-screen hidden ">
+            <CommunityList isMobile={false} setDrawer={setDrawer} />
           </div>
-          <div className="flex md:hidden h-10">
-            <Button variant='contained' className="h-10"
-             onClick={()=>setDrawer(true)}
-             >open</Button>
+          <div className="flex md:hidden h-10 ">
+            <button className="h-10" onClick={() => setDrawer(true)}>
+              <Bars3Icon className="h-6 w-6 text-black " />
+            </button>
           </div>
-          <div className="w-full border h-auto overflow-auto">
+          <div className="w-full h-auto overflow-auto">
             <Routes>
               <Route
                 path="/community"
@@ -106,12 +105,8 @@ export default function DashbordForCommunity() {
           </Box>
         </div>
       )}
-      <Drawer
-        anchor='left'
-        open={openDrawer}
-        onClose={toggleDrawer}
-      >
-        <CommunityList  isMobile={true} setDrawer={setDrawer}/>
+      <Drawer anchor="left" open={openDrawer} onClose={toggleDrawer}>
+        <CommunityList isMobile={true} setDrawer={setDrawer} />
       </Drawer>
     </>
   );
