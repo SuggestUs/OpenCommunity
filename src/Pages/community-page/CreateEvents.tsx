@@ -1,7 +1,7 @@
-import EventTopicsCom from ".././community-page/EventInputs/EventTopics";
-import EventSpeakersCom from ".././community-page/EventInputs/EventSpeakers";
-import EventVenueCom from ".././community-page/EventInputs/EventVenue";
-import EventDescriptionCom from ".././community-page/EventInputs/EventDescription";
+import EventTopicsCom from "./EventInputs/EventTopicsInput";
+import EventSpeakersCom from "./EventInputs/EventSpeakersInput";
+import EventVenueCom from "./EventInputs/EventVenueInput";
+import EventDescriptionCom from "./EventInputs/EventDescriptionInput";
 import { useEffect, useState } from "react";
 import { dataTypeForEventCreation } from '../../../utils/type';
 export default function CreateEvents() {

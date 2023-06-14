@@ -58,12 +58,12 @@ export default function DashbordForCommunity() {
           <div className="md:flex flex-col border-r w-auto border  h-screen hidden">
             <CommunityList isMobile={false} setDrawer={setDrawer}/>
           </div>
-          <div className="flex md:hidden">
+          <div className="flex md:hidden h-10">
             <Button variant='contained' className="h-10"
              onClick={()=>setDrawer(true)}
              >open</Button>
           </div>
-          <div className="w-full border  h-auto overflow-auto">
+          <div className="w-full border h-auto overflow-auto">
             <Routes>
               <Route
                 path="/community"

@@ -5,10 +5,7 @@ import Button from '@mui/material/Button';
 export default function EventTopicsCom() {
 
 
-  // type props = {
-  //   objForEvent: dataTypeForEventCreation
-  //   setObj: React.Dispatch<React.SetStateAction<dataTypeForEventCreation>>
-  // }
+
 
   const posts = [
     {

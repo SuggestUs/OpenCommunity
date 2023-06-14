@@ -1,4 +1,4 @@
-import { createContext, useEffect } from "react";
+import { createContext, useEffect } from "react"; 
 import { account } from '../Appwrite/service'
 import { getDocument } from "../Appwrite/datbase/database";
 
@@ -42,7 +42,7 @@ const checkForSession = () => {
         "647c8c5108eba726ecdb",
         session.$id
       );
-
+        
       objForUserContext.isAuthenticate = true;
       objForUserContext.community = [...commdata?.communities];
       objForUserContext.first_name = commdata.first_name;
@@ -65,10 +65,14 @@ const contextValues: ContextType = {
 const MainContext = createContext<ContextType>(contextValues);
 
 function MainContextProvider({ children }: Child) {
+
+  // const [isUpdated , setisUpdated] = useState(false)
+
   useEffect(() => {
     async function fetchData() {
       try {
         await checkForSession();
+        // setisUpdated(true)
         console.log("Updated data", objForUserContext);
       } catch (error) {
         console.log("Error", error);
@@ -76,12 +80,12 @@ function MainContextProvider({ children }: Child) {
     }
     fetchData();
   }, []);
-
-  return (
-    <MainContext.Provider value={contextValues}>
-      {children}
-    </MainContext.Provider>
-  );
+   console.log("contextValues", contextValues.userData.username)
+    return (
+      <MainContext.Provider value={contextValues}>
+        {children}
+      </MainContext.Provider>
+    )
 }
 
 export { MainContextProvider, MainContext };

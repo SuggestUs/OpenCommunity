@@ -1,7 +1,7 @@
-import HackTopicsCom from ".././community-page/hackathon-inputs/HackTopics";
-import HackSpeakersCom from ".././community-page/hackathon-inputs/HackSpeakers";
-import HackVenueCom from ".././community-page/hackathon-inputs/HackVenue";
-import HackDescriptionCom from ".././community-page/hackathon-inputs/HackDescription";
+import HackTopicsCom from "./hackathon-inputs/HackTopicsInput";
+import HackSpeakersCom from "./hackathon-inputs/HackSpeakersInput";
+import HackVenueCom from "./hackathon-inputs/HackVenueInput";
+import HackDescriptionCom from "./hackathon-inputs/HackDescriptionInput";
 
 export default function CreateHackathons() {
   return (
