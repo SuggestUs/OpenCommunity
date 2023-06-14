@@ -48,7 +48,7 @@ export default function EventSpeakersCom() {
   }
 
   const hadleChangeInDetails = (event: any, index : number)=>{
-
+    console.log(event,index)
   }
 
   const addProfileForSpeakers = () => {
@@ -76,7 +76,7 @@ export default function EventSpeakersCom() {
     <>
       <div className="flex flex-col h-auto w-full justify-center">
         <div className="flex md:flex-row flex-col h-auto  w-full flex-wrap justify-normal:md justify-center" id='containerForSpeakers'>
-          {arrayForSpeakers.map((item, index) => {
+          {arrayForSpeakers.map((_item, index) => {
             return (
               <div className="flex flex-col my-4 mx-4 justify-center border p-5 hover:border-gray-600" key={index}>
                  <div className="flex w-full justify-end h-10">
