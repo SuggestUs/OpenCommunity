@@ -2,7 +2,6 @@ import HackTopicsCom from "./hackathon-inputs/HackTopicsInput";
 import HackSpeakersCom from "./hackathon-inputs/HackCoOrganizersInput";
 import HackVenueCom from "./hackathon-inputs/HackVenueInput";
 import HackDescriptionCom from "./hackathon-inputs/HackDescriptionInput";
-import { dataTypeForEventCreation } from "../../../utils/type";
 import { useEffect, useState } from "react";
 // import HackJudgeInput from "./hackathon-inputs/HackJudgeInput";
 import HackResourceInput from "./hackathon-inputs/HackResourceInput";
@@ -10,26 +9,26 @@ import HackResourceInput from "./hackathon-inputs/HackResourceInput";
 export default function CreateEvents() {
   const [coverImage, setCoverImage] = useState<File | undefined>(undefined);
 
-  const objForEventCreation = {
-    "event-name": "",
-    coverImageId: "",
-    "event-mode": "",
-    "event-email": "",
-    "event-date": "",
-    "about-event": "",
-    "event-topic": [],
-    "event-tag": [],
-    "about-topic": [],
-    speakersProfileId: [],
-    "speakers-name": [],
-    "speakers-post": [],
-    Location: "",
-    creatorId: "",
-    "event-fees": "Free",
-  };
+  // const objForEventCreation = {
+  //   "event-name": "",
+  //   "coverImageId": "",
+  //   "event-mode": "",
+  //   "event-email": "",
+  //   "event-date": "",
+  //   "about-event": "",
+  //   "event-topic": [],
+  //   "event-tag": [],
+  //   "about-topic": [],
+  //   "speakersProfileId": [],
+  //   "speakers-name": [],
+  //   "speakers-post": [],
+  //   "Location": "",
+  //   "creatorId": "",
+  //   "event-fees": 0,
+  // };
 
-  const [dataForEventCreation, setdataForEventCreation] =
-    useState<dataTypeForEventCreation>(objForEventCreation);
+  // const [dataForEventCreation, setdataForEventCreation] =
+  //   useState<dataTypeForEventCreation>(objForEventCreation);
 
   const [url, setUrl] = useState<string>("");
 
@@ -134,3 +133,4 @@ export default function CreateEvents() {
     </>
   );
 }
+
