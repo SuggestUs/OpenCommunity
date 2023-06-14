@@ -98,22 +98,28 @@ export default function CreateEvents() {
             </div>
           </div>
         </div>
-        <div className="border w-5/6 flex flex-row:md flex-col mt-5 mx-auto ">
+        <div className="border w-auto flex flex-row:md flex-col mt-10 rounded-xl mx-4 flex-wrap">
           <EventDescriptionCom
             objForEvent={dataForEventCreation}
             setObj={setdataForEventCreation}
           />
         </div>
-        <div className="border w-auto flex flex-row:md flex-col mt-10 rounded-xl mx-4 flex-wrap">
-          <p className="font-bold text-left text-2xl">Event Topics 📌</p>
+        <div className="border flex flex-row:md flex-col mt-10 rounded-xl mx-4 ">
+          <p className="flex items-center justify-center pt-5 font-bold text-xl md:text-2xl">
+            Event Topics 📌
+          </p>
           <EventTopicsCom />
         </div>
         <div className="border w-auto flex flex-col mt-10 rounded-xl mx-4 flex-wrap">
-          <p className="font-bold text-left text-2xl">Event Speakers 📌</p>
+          <p className="flex items-center justify-center pt-5 font-bold text-xl md:text-2xl">
+            Event Speakers 📌
+          </p>
           <EventSpeakersCom />
         </div>
         <div className="border w-auto flex flex-row:md flex-col mt-10 rounded-xl mx-4 flex-wrap">
-          <p className="font-bold text-left text-2xl">Event Venue 📌</p>
+          <p className="flex items-center justify-center pt-5 font-bold text-xl md:text-2xl">
+            Event Venue 📌
+          </p>
           <EventVenueCom />
         </div>
       </section>
