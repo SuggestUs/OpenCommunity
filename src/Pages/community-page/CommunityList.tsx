@@ -32,13 +32,13 @@ export default function CommunityList({ isMobile, setDrawer }: propsFoeList) {
   return (
     <div className="flex flex-col w-full overflow-auto pl-2 pr-2  ">
       <span
-        className="md:hidden flex justify-end pt-2"
+        className="md:hidden flex pt-2 bg-primary p-2 w-10 rounded-md absolute mt-2 cursor-pointer"
         typeof="button"
         onClick={toggleDrawer}
       >
-        <XMarkIcon className="h-6 w-6 text-gray-500" />
+        <XMarkIcon className="h-6 w-6 text-black" />
       </span>
-      <div className="flex mt-5 items-center justify-center">
+      <div className="flex mt-5 items-center justify-center pt-10">
         <Link
           to="/community/createcommunity"
           className=" border p-4 w-full border-gray-300 hover:border-gray-500 rounded-md bg-gray-100"

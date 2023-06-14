@@ -58,11 +58,13 @@ export default function DashbordForCommunity() {
           <div className="md:flex flex-col border-r w-auto border  h-screen hidden ">
             <CommunityList isMobile={false} setDrawer={setDrawer} />
           </div>
-          <div className="flex md:hidden h-10 ">
-            <button className="h-10" onClick={() => setDrawer(true)}>
-              <Bars3Icon className="h-6 w-6 text-black " />
-            </button>
-          </div>
+          {/* for menu bars */}
+          <button
+            className="h-10 flex md:hidden bg-primary p-2 rounded-md absolute m-2 cursor-pointer"
+            onClick={() => setDrawer(true)}
+          >
+            <Bars3Icon className="h-6 w-6 text-black " />
+          </button>
           <div className="w-full h-auto overflow-auto">
             <Routes>
               <Route
