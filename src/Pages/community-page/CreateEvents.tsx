@@ -4,7 +4,8 @@ import EventSpeakersCom from "./EventInputs/EventSpeakersInput";
 import EventDescriptionCom from "./EventInputs/EventDescriptionInput";
 import { useEffect, useState } from "react";
 import { dataTypeForEventCreation } from "../../../utils/type";
-import { Button } from "@mui/material";
+
+
 export default function CreateEvents() {
 
   const objForEventCreation = {

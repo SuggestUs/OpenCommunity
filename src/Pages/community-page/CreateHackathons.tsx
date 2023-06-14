@@ -2,7 +2,6 @@ import HackTopicsCom from "./hackathon-inputs/HackTopicsInput";
 import HackSpeakersCom from "./hackathon-inputs/HackCoOrganizersInput";
 import HackVenueCom from "./hackathon-inputs/HackVenueInput";
 import HackDescriptionCom from "./hackathon-inputs/HackDescriptionInput";
-import { dataTypeForEventCreation } from "../../../utils/type";
 import { useEffect, useState } from "react";
 // import HackJudgeInput from "./hackathon-inputs/HackJudgeInput";
 import HackResourceInput from "./hackathon-inputs/HackResourceInput";
