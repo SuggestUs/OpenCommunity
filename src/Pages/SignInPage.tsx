@@ -159,7 +159,7 @@ export default function SignInForUser() {
           className="bg-primary p-2 rounded-md border-2 cursor-pointer w-full text-black text-center mt-5"
           onClick={handleSignIn}
         >
-          {initialLoading ? "Loading..." : "Sign Up"}
+          {initialLoading ? 'grab your coffee' : "Sign Up"}
         </div>
         <Link to="/">
           <div className="w-full border-2 text-black p-2 rounded-md ">Back</div>

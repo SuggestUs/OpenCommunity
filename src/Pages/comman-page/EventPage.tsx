@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { MainContext } from "../../context/context";
+import NavbarForDashBord from "../../component/NavbarForDashBord";
 
 export default function EventPage() {
   const mainContext = useContext(MainContext);
@@ -16,7 +17,10 @@ export default function EventPage() {
   ];
 
   return (
+
     <section className="bg-gray-100 h-screen">
+       <section className="h-screen flex md:flex-row flex-col w-full">
+            <NavbarForDashBord />
       <div className="mx-auto max-w-7xl sm:px-6 lg:px-8  p-1 ">
         <div className="mx-auto max-w-2xl  sm:py-14 lg:max-w-none ">
           <div className="text-2xl font-bold text-gray-900">
@@ -46,6 +50,7 @@ export default function EventPage() {
           </div>
         </div>
       </div>
+    </section>
     </section>
   );
 }

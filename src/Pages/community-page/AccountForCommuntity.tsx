@@ -9,6 +9,7 @@ import { Button, IconButton, Avatar } from "@mui/material";
 import { getDataForCommunityProfile , getProfileForCommunity} from "../../Appwrite/search/searchForUrl";
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
+import NavbarForDashBord from "../../component/NavbarForDashBord";
 
 
 export default function AccountForCommuntity() {
@@ -81,6 +82,9 @@ export default function AccountForCommuntity() {
     <div>
       {(initialLoading && profileData.status) && (
         <div className="rounded-lg mt-10 shadow-lg border bg-white mx-6 text-xl font-inter flex flex-col scroll-m-0">
+           <section className="h-screen flex md:flex-row flex-col w-full">
+            <NavbarForDashBord />
+           
           <div className="p-5 flex justify-start">
             <Button variant="outlined" color="secondary" onClick={handleBack}>
               Back
@@ -139,15 +143,14 @@ export default function AccountForCommuntity() {
             </div>
           </div>
           <div className="mx-auto w-4/5 pt-3 border-b-2 border-grey-100 opacity-25" />
+           </section>
         </div>
       )}
       {!initialLoading && (
         <>
-          <div className="h-screen flex md:flex-row flex-col w-full">
-            <Box className='mx-10'>
-              <CircularProgress />
-            </Box>
-          </div>
+          <Box className='mx-10 flex justify-center text-center'>
+          <CircularProgress />
+        </Box>
         </>
       )}
       {inValidRequeat && (

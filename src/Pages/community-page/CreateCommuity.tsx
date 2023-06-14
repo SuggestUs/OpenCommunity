@@ -8,6 +8,7 @@ import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
 import LogInForCommunity from "./LogInForCommunity";
 import { Typography } from "@mui/material";
+import NavbarForDashBord from "../../component/NavbarForDashBord";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -26,6 +27,8 @@ export default function CreateCommuity() {
  
   return (
     <div className="">
+       <section className="h-screen flex md:flex-row flex-col w-full">
+            <NavbarForDashBord />
       <Dialog
         open={true}
         TransitionComponent={Transition}
@@ -49,6 +52,7 @@ export default function CreateCommuity() {
           <Button onClick={handleClose}>Next</Button>
         </DialogActions> */}
       </Dialog>
+      </section>
     </div>
   );
 }

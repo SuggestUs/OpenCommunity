@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import NavbarForDashBord from "../../component/NavbarForDashBord";
 
 export default function HackathonPage() {
   const callouts = [
@@ -14,6 +15,8 @@ export default function HackathonPage() {
 
   return (
     <div className="bg-gray-100 h-screen">
+       <section className="h-screen flex md:flex-row flex-col w-full">
+            <NavbarForDashBord />
       <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 p-1">
         <div className="mx-auto max-w-2xl  sm:py-14 lg:max-w-none ">
           <h2 className="text-2xl font-bold text-gray-900">New Hacks</h2>
@@ -41,6 +44,7 @@ export default function HackathonPage() {
           </div>
         </div>
       </div>
+       </section>
     </div>
   );
 }

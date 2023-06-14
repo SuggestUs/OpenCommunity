@@ -3,9 +3,12 @@ import HackSpeakersCom from "../../component/Hackathon/HackSpeakers";
 import HackVenueCom from "../../component/Hackathon/HackVenue";
 import HackDescriptionCom from "../../component/Hackathon/HackDescription";
 import HackOrgCom from "../../component/Hackathon/HackOrganizer";
+import NavbarForDashBord from "../../component/NavbarForDashBord";
 
 export default function HackathonDetailsPage() {
   return (
+     <section className="h-screen flex md:flex-row flex-col w-full">
+            <NavbarForDashBord />
     <section className="flex flex-col my-5 min-h-[60rem]  text-black ">
       {/*  for only cover image */}
       <div className="h-96 w-full p-1">
@@ -43,5 +46,6 @@ export default function HackathonDetailsPage() {
         <HackVenueCom />
       </article>
     </section>
+     </section>
   );
 }

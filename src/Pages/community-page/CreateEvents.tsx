@@ -4,6 +4,7 @@ import EventSpeakersCom from "./EventInputs/EventSpeakersInput";
 import EventDescriptionCom from "./EventInputs/EventDescriptionInput";
 import { useEffect, useState } from "react";
 import { dataTypeForEventCreation } from "../../../utils/type";
+import NavbarForDashBord from "../../component/NavbarForDashBord";
 
 
 export default function CreateEvents() {
@@ -55,6 +56,8 @@ export default function CreateEvents() {
 
   return (
     <>
+     <section className="h-screen flex md:flex-row flex-col w-full">
+            <NavbarForDashBord />
       <section className="flex flex-col">
         <div className="flex justify-center font-serif ">
           <p className="font-bold text-2xl font-inter pt-12">
@@ -138,6 +141,7 @@ export default function CreateEvents() {
           </p>
           <EventVenueCom />
         </div> */}
+      </section>
       </section>
     </>
   );

@@ -1,5 +1,5 @@
 import { useState, ChangeEvent, useContext } from "react";
-import { TextField, FormControl } from "@mui/material";
+import { TextField, FormControl, CircularProgress } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import CustomizedSnackbars from "../Alert/Alert.jsx";
 import { LogInRule, AlertRuel, ResultForAuth } from "../../utils/type";
@@ -35,7 +35,7 @@ export default function Login() {
           mainContext?.getSession();
           setInitialLoading(false);
         });
-        navigate("/home");
+        navigate("/dashboard");
       } catch (error: any) {
         const errorMessage: string = error.toString();
         setAlert({
@@ -106,7 +106,7 @@ export default function Login() {
           className="border-2 border-gray-300 bg-gray-200 text-black w-full p-2 rounded-lg font-semibold
             hover:bg-gray-100 cursor-pointer text-center "
         >
-          {initialLoading ? "loading..." : <>Log In</>}
+          {initialLoading ? 'grab your coffee' : <>Log In</>}
         </div>
       </div>
     </div>

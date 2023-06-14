@@ -5,6 +5,7 @@ import HackDescriptionCom from "./hackathon-inputs/HackDescriptionInput";
 import { useEffect, useState } from "react";
 // import HackJudgeInput from "./hackathon-inputs/HackJudgeInput";
 import HackResourceInput from "./hackathon-inputs/HackResourceInput";
+import NavbarForDashBord from "../../component/NavbarForDashBord";
 
 export default function CreateEvents() {
   const [coverImage, setCoverImage] = useState<File | undefined>(undefined);
@@ -47,6 +48,8 @@ export default function CreateEvents() {
 
   return (
     <>
+     <section className="h-screen flex md:flex-row flex-col w-full">
+            <NavbarForDashBord />
       <section className="flex flex-col">
         <div className="flex justify-center font-serif ">
           <p className="font-bold text-2xl font-inter pt-12">
@@ -129,6 +132,7 @@ export default function CreateEvents() {
           </p>
           <HackVenueCom />
         </div>
+      </section>
       </section>
     </>
   );
