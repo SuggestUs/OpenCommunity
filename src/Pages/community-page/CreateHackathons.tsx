@@ -2,7 +2,7 @@ import HackTopicsCom from "./hackathon-inputs/HackTopicsInput";
 import HackSpeakersCom from "./hackathon-inputs/HackCoOrganizersInput";
 import HackVenueCom from "./hackathon-inputs/HackVenueInput";
 import HackDescriptionCom from "./hackathon-inputs/HackDescriptionInput";
-import { dataTypeForEventCreation } from '../../../utils/type';
+import { dataTypeForEventCreation } from "../../../utils/type";
 import { useEffect, useState } from "react";
 // import HackJudgeInput from "./hackathon-inputs/HackJudgeInput";
 import HackResourceInput from "./hackathon-inputs/HackResourceInput";
@@ -11,49 +11,48 @@ export default function CreateEvents() {
   const [coverImage, setCoverImage] = useState<File | undefined>(undefined);
 
   const objForEventCreation = {
-    "event-name": '',
-    "coverImageId": '',
-    "event-mode": '',
-    "event-email": '',
-    "event-date": '',
-    "about-event": '',
+    "event-name": "",
+    coverImageId: "",
+    "event-mode": "",
+    "event-email": "",
+    "event-date": "",
+    "about-event": "",
     "event-topic": [],
     "event-tag": [],
     "about-topic": [],
-    "speakersProfileId": [],
+    speakersProfileId: [],
     "speakers-name": [],
     "speakers-post": [],
-    "Location": '',
-    "creatorId": '',
-    "event-fees": 'Free',
-  }
+    Location: "",
+    creatorId: "",
+    "event-fees": "Free",
+  };
 
-  const [dataForEventCreation, setdataForEventCreation] = useState<dataTypeForEventCreation>(objForEventCreation);
+  const [dataForEventCreation, setdataForEventCreation] =
+    useState<dataTypeForEventCreation>(objForEventCreation);
 
-
-  const [url, setUrl] = useState<string>('')
+  const [url, setUrl] = useState<string>("");
 
   const handleChangeForCover = (event: any) => {
     let file = event.target.files[0];
     setUrl(URL.createObjectURL(file));
     setCoverImage(file);
-  }
-
-
+  };
 
   useEffect(() => {
     if (url) {
-      document.getElementById('cover-place')?.classList.add('hidden')
-      document.getElementById('cover-image')?.classList.remove('hidden')
+      document.getElementById("cover-place")?.classList.add("hidden");
+      document.getElementById("cover-image")?.classList.remove("hidden");
     }
-  }, [coverImage])
+  }, [coverImage]);
 
   return (
     <>
-
       <section className="flex flex-col">
         <div className="flex justify-center font-serif ">
-          <h1>Create a Hackathons 🎉</h1>
+          <p className="font-bold text-2xl font-inter pt-12">
+            Create a Hackathon 🎉
+          </p>
         </div>
         <div className="flex flex-col mx-4 mt-10">
           <label
@@ -62,8 +61,8 @@ export default function CreateEvents() {
           >
             Cover photo
           </label>
-          <div className=" flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 h-96 w-full" >
-            <div className="text-center py-40 " id='cover-place'>
+          <div className=" flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 h-96 w-full">
+            <div className="text-center py-40 " id="cover-place">
               <svg
                 className="mx-auto h-12 w-12 text-gray-300"
                 viewBox="0 0 24 24"
@@ -98,33 +97,40 @@ export default function CreateEvents() {
               </p>
             </div>
             <div className="center hidden" id="cover-image">
-              <img src={url} className='h-96 w-full' alt="#Imaage" />
+              <img src={url} className="h-96 w-full" alt="#Imaage" />
             </div>
           </div>
         </div>
-        <div className="border w-5/6 flex flex-row:md flex-col mt-5 mx-auto "> 
-          <HackDescriptionCom
-          />
-        </div>
         <div className="border w-auto flex flex-row:md flex-col mt-10 rounded-xl mx-4 flex-wrap">
-          <p className="font-bold text-left text-2xl">Topics For Projects 📌</p>
-          <HackTopicsCom                    
-          />
+          <HackDescriptionCom />
         </div>
         <div className="border w-auto flex flex-col mt-10 rounded-xl mx-4 flex-wrap">
-          <p className="font-bold text-left text-2xl"> Add Resources📌 </p>
-          <HackResourceInput/>
+          <p className="flex items-center md:justify-center text-center pt-5 font-bold text-xl md:text-2xl">
+            Topics For Projects 📌
+          </p>
+          <HackTopicsCom />
         </div>
         <div className="border w-auto flex flex-col mt-10 rounded-xl mx-4 flex-wrap">
-          <p className="font-bold text-left text-2xl"> Rules & Regulations</p>
-          <HackSpeakersCom/>
+          <p className="flex items-center md:justify-center text-center  pt-5 font-bold text-xl md:text-2xl">
+            {" "}
+            Add Resources📌{" "}
+          </p>
+          <HackResourceInput />
+        </div>
+        <div className="border w-auto flex flex-col mt-10 rounded-xl mx-4 flex-wrap">
+          <p className="flex items-center justify-center p-10 font-bold text-xl md:text-2xl ">
+            {" "}
+            Rules & Regulations
+          </p>
+          <HackSpeakersCom />
         </div>
         <div className="border w-auto flex flex-row:md flex-col mt-10 rounded-xl mx-4 flex-wrap">
-          <p className="font-bold text-left text-2xl">Event Venue 📌</p>
-          <HackVenueCom/>
+          <p className="flex items-center justify-center p-10 font-bold text-xl md:text-2xl">
+            Event Venue 📌
+          </p>
+          <HackVenueCom />
         </div>
       </section>
-
     </>
   );
 }
