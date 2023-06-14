@@ -33,7 +33,7 @@ export default function EventDescriptionCom({ objForEvent, setObj }: props) {
     console.log(objForEvent, setObj)
   })
   return (
-    <div className="mt-6  border-gray-100 text-left  ">
+    <div className="mt-6  border-gray-100 text-center ">
       <dl className=" divide-gray-100 ">
         <p className="flex items-center justify-center mb-10 font-bold text-xl md:text-2xl">
           All details about the Event

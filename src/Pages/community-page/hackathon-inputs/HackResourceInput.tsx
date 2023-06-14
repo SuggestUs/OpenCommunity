@@ -1,7 +1,7 @@
 import Button from '@mui/material/Button';
 import { useState } from 'react';
 
-export default function EventTopicsCom() {
+export default function HackResourceInput() {
 
   type objFortopicArray = {
     "time-for-topic": string,

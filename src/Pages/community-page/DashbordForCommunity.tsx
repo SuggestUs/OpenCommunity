@@ -14,6 +14,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { Button, Drawer } from "@mui/material";
 
 export default function DashbordForCommunity() {
+  
   if (!useLocation().pathname.startsWith("/community")) {
     return null;
   }

@@ -52,7 +52,7 @@ const checkForSession = () => {
       objForUserContext.username = commdata.username;
       resolve(commdata);
     } catch (error) {
-      reject( new Error("Error is here"))
+      reject( new Error(`${error}`))
     }
   });
 };

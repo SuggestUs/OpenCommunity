@@ -1,49 +1,94 @@
-function HackTopicsCom() {
-  const posts = [
-    {
-      id: 1,
-    },
-    {
-      id: 2,
-    },
-    {
-      id: 3,
-    },
-  ];
+import Button from '@mui/material/Button';
+import { useState } from 'react';
+
+export default function HackTopicsCom() {
+
+  type objFortopicArray = {
+    "time-for-topic": string,
+    "title": string,
+    "speakername": string,
+    "tag": string
+  }
+
+
+  type ArrayForTopic = objFortopicArray[];
+
+  const topicArray =
+  {
+    "time-for-topic": '',
+    "title": '',
+    "speakername": '',
+    "tag": ''
+  }
+
+
+  const [arrayForTpoic, setArrayForTpoic] = useState<ArrayForTopic>([{
+    "time-for-topic": '',
+    "title": '',
+    "speakername": '',
+    "tag": ''
+  }])
+
+  const addAnotherTopic = () => {
+    const newArray = [...arrayForTpoic];
+    newArray.push(topicArray);
+    setArrayForTpoic(newArray);
+  }
+
+  const deleteTopic = (index: number) => {
+    let updatedArray = [...arrayForTpoic]
+    updatedArray.splice(index, 1);
+    setArrayForTpoic(updatedArray);
+  }
   return (
-    <div className="mx-auto text-left max-w-7xl pb-10 ">
-      <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16  lg:mx-0 lg:max-w-none lg:grid-cols-3">
-        {posts.map((post) => (
+    <div className="mx-auto text-left  pb-10 ">
+      <div className="flex flex-row flex-wrap justify-normal:md justify-center">
+
+        {arrayForTpoic.map((items, index) => (
           <article
-            key={post.id}
-            className="flex max-w-xl border p-5 hover:border-gray-600 rounded-md flex-col items-start justify-between"
+            key={index}
+            className="flex max-w-xl border p-5 hover:border-gray-600 rounded-md flex-col items-start justify-center mx-4 my-4"
           >
-            <div className="flex items-center gap-x-4 text-xs">
-              <input type="date" className="text-gray-500 outline-none" />
+            <div className="flex items-center gap-x-4 text-xs ">
+              
               <input
                 type="text"
-                placeholder="web development"
+                placeholder="Related Tag"
+                name='tag'
+                value={items.tag}
                 className="relative z-10 rounded-full w-1/2 outline-none  bg-gray-300 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
               />
+              <div className=' w-16'>
+                {index !== 0 && (<Button variant='outlined' onClick={() => deleteTopic(index)}>D</Button>)}
+              </div>
             </div>
             <div className="group relative">
               <h3 className="mt-3 text-lg font-semibold leading-6">
                 <input
                   type="text"
-                  placeholder="Front-end Development"
+                  placeholder="Title"
                   className="outline-none text-black "
+                  name='title'
+                  value={items.title}
                 />
               </h3>
-              <input
-                className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600 outline-none"
-                placeholder="Add Hackathon topic details"
+              <textarea
+                className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600 outline-none border w-96"
+                placeholder="about topic"
+                name='speakername'
+                // value={items.speakername}
               />
             </div>
           </article>
         ))}
+
+      </div>
+      <div className='flex justify-center mt-10'>
+        <Button variant='contained' onClick={addAnotherTopic}>Add One</Button>
       </div>
     </div>
   );
 }
 
-export default HackTopicsCom;
+
+
