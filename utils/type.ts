@@ -30,18 +30,24 @@ export type ResultForAuth = {
 
 export type dataTypeForEventCreation = {
     "event-name" : string,
-    "coverImageId" : string,
+    "coverImageUrl" : string,
+    "coverImageFile" : File | undefined
     "event-mode" : string,
     "event-email" : string,
     "event-date" : Date | string,
     "about-event" : string,
     "event-topic" : string[],
+    "topic-time":string[]
     "event-tag" : string[],
     "about-topic" : string[],
     "speakersProfileId" : string[],
     "speakers-name" : string[],
     "speakers-post" : string[],
-    "Location" : string,
     "creatorId" : string
-    "event-fees" : string,
+    "event-fees" : number,
+    "City" : string,
+    "country" : string,
+    "address" : string
+
+
   }

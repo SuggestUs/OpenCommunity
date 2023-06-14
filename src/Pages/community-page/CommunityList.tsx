@@ -7,6 +7,7 @@ import Stack from "@mui/material/Stack";
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { CommunityContext } from "../../context/communityContext";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 
 type propsFoeList = {
   isMobile: boolean;
@@ -24,12 +25,24 @@ export default function CommunityList({ isMobile, setDrawer }: propsFoeList) {
     }
   }, []);
 
+  const toggleDrawer = () => {
+    setDrawer(false);
+  };
+
+
   return (
     <div className="flex flex-col w-full overflow-auto pl-2 pr-2  ">
-      <div className="flex mt-5 items-center justify-center">
+      <span
+        className="md:hidden flex pt-2 bg-primary p-2 w-10 rounded-md absolute mt-2 cursor-pointer"
+        typeof="button"
+        onClick={toggleDrawer}
+      >
+        <XMarkIcon className="h-6 w-6 text-black" />
+      </span>
+      <div className="flex mt-5 items-center justify-center pt-10">
         <Link
           to="/community/createcommunity"
-          className=" border pr-14 pl-10 pt-5 pb-5 border-gray-300 hover:border-gray-500 rounded-md bg-gray-100"
+          className=" border p-4 w-full border-gray-300 hover:border-gray-500 rounded-md bg-gray-100"
           onClick={() => {
             isMobile && setDrawer(false);
           }}
@@ -101,10 +114,20 @@ export default function CommunityList({ isMobile, setDrawer }: propsFoeList) {
                     </div>
                     <div className=" flex w-full h-14  text-black border-b-2 justify-center items-center">
                       <Link
-                        to="/community/Account"
+                        to="/community/CreateInform"
                         onClick={() => {
                           isMobile && setDrawer(false);
                         }}
+                      >
+                        <span className="text-black ">Inform</span>
+                      </Link>
+                    </div>
+                    <div className=" flex w-full h-14  text-black border-b-2 justify-center items-center">
+                      <Link
+                        to="/community/Account"
+                        onClick={() => {
+                          isMobile && setDrawer(false);
+                     }}
                       >
                         <span className="text-black ">Profile</span>
                       </Link>

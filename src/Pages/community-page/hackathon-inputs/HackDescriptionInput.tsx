@@ -1,42 +1,25 @@
 import { useEffect, useState } from 'react'
-import { dataTypeForEventCreation } from '../../../../utils/type';
 import { FormControl, TextField } from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 
-type props = {
-  objForEvent: dataTypeForEventCreation
-  setObj: React.Dispatch<React.SetStateAction<dataTypeForEventCreation>>
-}
-export default function EventDescriptionCom({ objForEvent, setObj }: props) {
 
-  const [mode, setMode] = useState<string>('');
+export default function HackDescriptionCom() {
 
-  const hadleChangeInMode = (event: any) => {
-    setMode(event.target.value);
-    setObj({
-      ...objForEvent,
-      'event-mode': event.target.value
-    })
-  }
+  const [mode, _setMode] = useState<string>('');
 
-  const handleChangeInDetailsForEvent = (event: any) => {
-    const { name, value } = event.target
-    setObj({
-      ...objForEvent,
-      [name]: value
-    })
-  }
+  
+
 
   useEffect(() => {
-    console.log(objForEvent, setObj)
+    // console.log(objForEvent, setObj)
   })
   return (
-    <div className="mt-6  border-gray-100 text-left  ">
+    <div className="mt-6  border-gray-100 text-center ">
       <dl className=" divide-gray-100 ">
         <p className="flex items-center justify-center mb-10 font-bold text-xl md:text-2xl">
-          All details about the Event
+          All details about your hack
         </p>
         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
           <dt className="text-sm font-bold leading-6 text-gray-900 ">
@@ -49,7 +32,7 @@ export default function EventDescriptionCom({ objForEvent, setObj }: props) {
               type="text"
               label='Event Name'
               name="event-name"
-              onChange={handleChangeInDetailsForEvent}
+              // onChange={handleChangeInDetailsForEvent}
               className="border p-2  outline-none rounded-md "
               fullWidth
             />
@@ -68,7 +51,7 @@ export default function EventDescriptionCom({ objForEvent, setObj }: props) {
                 id="demo-simple-select"
                 value={mode}
                 name='event-mode'
-                onChange={hadleChangeInMode}
+                // onChange={hadleChangeInMode}
                 fullWidth
               >
                 <MenuItem value={'Online & Offline'} selected>Online & Offline</MenuItem>
@@ -88,7 +71,7 @@ export default function EventDescriptionCom({ objForEvent, setObj }: props) {
               type="email"
               label='Email'
               name="event-email"
-              onChange={handleChangeInDetailsForEvent}
+              // onChange={handleChangeInDetailsForEvent}
               className="border p-2  outline-none rounded-md "
               helperText="This email is for communication purpose with community"
               fullWidth
@@ -105,7 +88,7 @@ export default function EventDescriptionCom({ objForEvent, setObj }: props) {
               variant='outlined'
               type="datetime-local"
               name="event-date"
-              onChange={handleChangeInDetailsForEvent}
+              // onChange={handleChangeInDetailsForEvent}
               className="border p-2  outline-none rounded-md "
               fullWidth
             />
@@ -122,7 +105,7 @@ export default function EventDescriptionCom({ objForEvent, setObj }: props) {
               name="event-fees"
               className="border p-2  outline-none rounded-md"
               label='Amount'
-              onChange={handleChangeInDetailsForEvent}
+              // onChange={handleChangeInDetailsForEvent}
             fullWidth
             />
           </dd>
@@ -135,7 +118,7 @@ export default function EventDescriptionCom({ objForEvent, setObj }: props) {
             <textarea
               placeholder="Share details about the  Event"
               className="border p-2 w-full h-32 outline-none resize-none rounded-md "
-              onChange={handleChangeInDetailsForEvent}
+              // onChange={handleChangeInDetailsForEvent}
               name='about-event'
             />
           </dd>
@@ -146,5 +129,3 @@ export default function EventDescriptionCom({ objForEvent, setObj }: props) {
 }
 
 
-
-// mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0 

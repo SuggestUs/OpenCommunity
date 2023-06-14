@@ -12,6 +12,8 @@ import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Button, Drawer } from "@mui/material";
 import NavbarForDashBord from "../../component/NavbarForDashBord";
+import { Bars3Icon } from "@heroicons/react/24/outline";
+
 
 export default function DashbordForCommunity() {
   if (!useLocation().pathname.startsWith("/community")) {
@@ -56,52 +58,49 @@ export default function DashbordForCommunity() {
         <div className="flex flex-row w-full  h-screen text-black">
           <section className="h-screen flex md:flex-row flex-col w-full">
             <NavbarForDashBord />
-            <div className="md:flex flex-col border-r w-auto border  h-screen hidden">
-              <CommunityList isMobile={false} setDrawer={setDrawer} />
-            </div>
-            <div className="flex md:hidden">
-              <Button
-                variant="contained"
-                className="h-10"
-                onClick={() => setDrawer(true)}
-              >
-                open
-              </Button>
-            </div>
-            <div className="w-full border  h-auto overflow-auto">
-              <Routes>
-                <Route
-                  path="/community"
-                  element={
-                    <Suspense>
-                      <IntroToCommunity />
-                    </Suspense>
-                  }
-                />
-                <Route
-                  path="/community/createhackathons"
-                  element={
-                    <Suspense>
-                      <CreateHackathons />
-                    </Suspense>
-                  }
-                />
-                <Route
-                  path="/community/CreateEvents"
-                  element={<CreateEvents />}
-                />
-
-                <Route
-                  path="/community/Account"
-                  element={<AccountForCommuntity />}
-                />
-                <Route
-                  path="/community/createcommunity"
-                  element={<CreateCommuity />}
-                />
-              </Routes>
-            </div>
-          </section>
+          <div className="md:flex flex-col border-r w-auto border  h-screen hidden ">
+            <CommunityList isMobile={false} setDrawer={setDrawer} />
+          </div>
+          {/* for menu bars */}
+          <button
+            className="h-10 flex md:hidden bg-primary p-2 rounded-md absolute m-2 cursor-pointer"
+            onClick={() => setDrawer(true)}
+          >
+            <Bars3Icon className="h-6 w-6 text-black " />
+          </button>
+          <div className="w-full h-auto overflow-auto">
+            <Routes>
+              <Route
+                path="/community"
+                element={
+                  <Suspense>
+                    <IntroToCommunity />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="/community/createhackathons"
+                element={
+                  <Suspense>
+                    <CreateHackathons />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="/community/CreateEvents"
+                element={<CreateEvents />}
+              />
+              <Route path="/community/CreateInform" element={<CreateTweet />} />
+              <Route
+                path="/community/Account"
+                element={<AccountForCommuntity />}
+              />
+              <Route
+                path="/community/createcommunity"
+                element={<CreateCommuity />}
+              />
+            </Routes>
+          </div>
         </div>
       )}
       {!dateRetrived && (

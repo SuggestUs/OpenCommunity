@@ -1,24 +1,68 @@
-import HackTopicsCom from ".././community-page/hackathon-inputs/HackTopics";
-import HackSpeakersCom from ".././community-page/hackathon-inputs/HackSpeakers";
-import HackVenueCom from ".././community-page/hackathon-inputs/HackVenue";
-import HackDescriptionCom from ".././community-page/hackathon-inputs/HackDescription";
-import NavbarForDashBord from "../../component/NavbarForDashBord";
-export default function CreateHackathons() {
+import HackTopicsCom from "./hackathon-inputs/HackTopicsInput";
+import HackSpeakersCom from "./hackathon-inputs/HackCoOrganizersInput";
+import HackVenueCom from "./hackathon-inputs/HackVenueInput";
+import HackDescriptionCom from "./hackathon-inputs/HackDescriptionInput";
+import { useEffect, useState } from "react";
+// import HackJudgeInput from "./hackathon-inputs/HackJudgeInput";
+import HackResourceInput from "./hackathon-inputs/HackResourceInput";
+
+export default function CreateEvents() {
+  const [coverImage, setCoverImage] = useState<File | undefined>(undefined);
+
+  // const objForEventCreation = {
+  //   "event-name": "",
+  //   "coverImageId": "",
+  //   "event-mode": "",
+  //   "event-email": "",
+  //   "event-date": "",
+  //   "about-event": "",
+  //   "event-topic": [],
+  //   "event-tag": [],
+  //   "about-topic": [],
+  //   "speakersProfileId": [],
+  //   "speakers-name": [],
+  //   "speakers-post": [],
+  //   "Location": "",
+  //   "creatorId": "",
+  //   "event-fees": 0,
+  // };
+
+  // const [dataForEventCreation, setdataForEventCreation] =
+  //   useState<dataTypeForEventCreation>(objForEventCreation);
+
+  const [url, setUrl] = useState<string>("");
+
+  const handleChangeForCover = (event: any) => {
+    let file = event.target.files[0];
+    setUrl(URL.createObjectURL(file));
+    setCoverImage(file);
+  };
+
+  useEffect(() => {
+    if (url) {
+      document.getElementById("cover-place")?.classList.add("hidden");
+      document.getElementById("cover-image")?.classList.remove("hidden");
+    }
+  }, [coverImage]);
+
   return (
-    <section className="h-screen flex md:flex-row flex-col w-full">
-      <NavbarForDashBord />
-      <section className="my-5 min-h-[60rem]  text-black ">
-        <p className="text-2xl font-bold mb-5">Create a Hackathon 🎉</p>
-        {/*  for only cover image */}
-        <div className="col-span-full w-[94%] mx-auto ">
+    <>
+      <section className="flex flex-col">
+        <div className="flex justify-center font-serif ">
+          <p className="font-bold text-2xl font-inter pt-12">
+            Create a Hackathon 🎉
+          </p>
+        </div>
+        <div className="flex flex-col mx-4 mt-10">
           <label
             htmlFor="cover-photo"
             className="block text-sm font-medium leading-6 text-gray-900"
           >
             Cover photo
           </label>
-          <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-            <div className="text-center">
+          <div className=" flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 h-96 w-full">
+            <div className="text-center py-40 " id="cover-place">
+
               <svg
                 className="mx-auto h-12 w-12 text-gray-300"
                 viewBox="0 0 24 24"
@@ -31,7 +75,8 @@ export default function CreateHackathons() {
                   clipRule="evenodd"
                 />
               </svg>
-              <div className="mt-4 flex text-sm leading-6 text-gray-600">
+              <div className=" flex text-sm leading-6 text-gray-600 justify-center">
+
                 <label
                   htmlFor="file-upload"
                   className="relative cursor-pointer rounded-md bg-white font-semibold text-primary focus-within:outline-none focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 hover:text-purple-500"
@@ -43,6 +88,7 @@ export default function CreateHackathons() {
                     type="file"
                     className="sr-only"
                     accept="image/*"
+                    onChange={handleChangeForCover}
                   />
                 </label>
                 <p className="pl-1">or drag and drop</p>
@@ -51,26 +97,42 @@ export default function CreateHackathons() {
                 PNG, JPG up to 5MB
               </p>
             </div>
+            <div className="center hidden" id="cover-image">
+              <img src={url} className="h-96 w-full" alt="#Imaage" />
+            </div>
           </div>
         </div>
-        <article className="h-full  p-5 m-3 w-[95%]  grid grid-cols-2 border gap-10 ">
+        <div className="border w-auto flex flex-row:md flex-col mt-10 rounded-xl mx-4 flex-wrap">
           <HackDescriptionCom />
-        </article>
-        <article className=" p-5 m-3 border w-[95%]">
-          <p className="font-bold text-left text-2xl">Hackathon Topics 📌</p>
+        </div>
+        <div className="border w-auto flex flex-col mt-10 rounded-xl mx-4 flex-wrap">
+          <p className="flex items-center md:justify-center text-center pt-5 font-bold text-xl md:text-2xl">
+            Topics For Projects 📌
+          </p>
           <HackTopicsCom />
-        </article>
-        <article className="p-5  m-3 flex border mt-9 w-[95%]  justify-between ">
-          <p className="font-bold text-left  text-2xl">Judges 🧑‍⚖️</p>
-          <div className="mt-5">
-            <HackSpeakersCom />
-          </div>
-        </article>
-        <article className=" p-5 m-3 w-[95%]  border">
-          <p className="font-bold text-left text-2xl">Location 🗺️</p>
+        </div>
+        <div className="border w-auto flex flex-col mt-10 rounded-xl mx-4 flex-wrap">
+          <p className="flex items-center md:justify-center text-center  pt-5 font-bold text-xl md:text-2xl">
+            {" "}
+            Add Resources📌{" "}
+          </p>
+          <HackResourceInput />
+        </div>
+        <div className="border w-auto flex flex-col mt-10 rounded-xl mx-4 flex-wrap">
+          <p className="flex items-center justify-center p-10 font-bold text-xl md:text-2xl ">
+            {" "}
+            Rules & Regulations
+          </p>
+          <HackSpeakersCom />
+        </div>
+        <div className="border w-auto flex flex-row:md flex-col mt-10 rounded-xl mx-4 flex-wrap">
+          <p className="flex items-center justify-center p-10 font-bold text-xl md:text-2xl">
+            Event Venue 📌
+          </p>
           <HackVenueCom />
-        </article>
+        </div>
       </section>
-    </section>
+    </>
   );
 }
+
